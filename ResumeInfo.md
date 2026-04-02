@@ -1,6 +1,6 @@
 My name is Tyler
 
-I am looking to apply to early career Software Developer roles
+I am looking to apply to early career Software Developer roles. I am very self-motivated and self-directed. I didn't go to school for CS or Programming, so I am primarily self-taught with direction from an experienced coding mentor. I am very passionate about technology, especially when it comes to audio and programming. I am very interested in the modern development of AI and have fully embraced Agentic Coding tools like Claude Code. Most of my experience is in the form of personal and volunteer projects.
 
 # Education
 
@@ -37,7 +37,7 @@ I have a Mentor who is a Senior Software Architect
 
 ## Synthesizer VST
 
-- Modern subtractive synthesizer with a unique gesture based UI and a Juno inspired sound engine
+- Modern subtractive synthesizer with a unique gesture-based UI and a Juno-inspired sound engine
 - built with the JUCE C++ library
 - Features include:
   - Modulation Matrix
@@ -49,17 +49,17 @@ I have a Mentor who is a Senior Software Architect
 ## Self-Control Content Blocker
 
 - Custom website and application blocking app made for custom Arch Linux and Hyprland desktop
-- Designed to be bypass resistant for experienced developers
+- Designed to be bypass-resistant for experienced developers
 - Comprised of:
-  - Desktop app with Python backend + TypeScript and React frontend, styled with Tailwind
+  - Desktop app with Python backend and TypeScript and React frontend, styled with Tailwind
   - Systemd daemon with Python flask web server
   - Chrome extension that communicates with Systemd daemon
 
 ## Sermon Slide Generator
 
-- Python automation script in a desktop app that automates a previously manual process for chruch staff
+- Python automation script in a desktop app that automates a previously manual process for church staff
 - built with simple HTML, CSS, and JS frontend
-- Utilizes web scraping technieques and generates a PDF for slides that are used every week at The Redemption Church
+- Utilizes web scraping techniques and generates a PDF for slides that are used every week at The Redemption Church
 
 # Volunteering
 

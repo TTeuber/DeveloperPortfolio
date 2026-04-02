@@ -1,0 +1,611 @@
+---
+import Layout from '../Layouts/Layout.astro';
+---
+
+<Layout title="Tyler Teuber | Editorial Portfolio">
+  <!-- FIXED NAV -->
+  <nav id="nav" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-[#FAF8F5]/80 backdrop-blur-md border-b border-[#E8E4DF]">
+    <div class="max-w-[1400px] mx-auto px-6 flex items-center justify-between h-14">
+      <a href="#hero" class="font-[JetBrains_Mono] text-xs tracking-[0.2em] uppercase text-[#1A1A1A]">TT</a>
+      <div class="hidden md:flex items-center gap-8">
+        {['About', 'Projects', 'Experience', 'Skills', 'Contact'].map(item => (
+          <a href={`#${item.toLowerCase()}`} class="nav-link font-[JetBrains_Mono] text-[11px] tracking-[0.15em] uppercase text-[#666] hover:text-[#E54D2E] transition-colors duration-200">{item}</a>
+        ))}
+      </div>
+      <button id="mobile-toggle" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Menu">
+        <span class="block w-5 h-[1.5px] bg-[#1A1A1A] transition-transform duration-200"></span>
+        <span class="block w-5 h-[1.5px] bg-[#1A1A1A] transition-opacity duration-200"></span>
+        <span class="block w-3 h-[1.5px] bg-[#1A1A1A] transition-transform duration-200"></span>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="md:hidden hidden border-t border-[#E8E4DF] bg-[#FAF8F5]/95 backdrop-blur-md">
+      <div class="px-6 py-4 flex flex-col gap-4">
+        {['About', 'Projects', 'Experience', 'Skills', 'Contact'].map(item => (
+          <a href={`#${item.toLowerCase()}`} class="mobile-nav-link font-[JetBrains_Mono] text-xs tracking-[0.15em] uppercase text-[#666] hover:text-[#E54D2E]">{item}</a>
+        ))}
+      </div>
+    </div>
+  </nav>
+
+  <main class="bg-[#FAF8F5] text-[#1A1A1A]">
+
+    <!-- ═══════════════════ HERO ═══════════════════ -->
+    <section id="hero" class="min-h-screen pt-14 relative overflow-hidden">
+      <div class="max-w-[1400px] mx-auto px-6 h-[calc(100vh-56px)] grid grid-cols-1 lg:grid-cols-12 gap-0 items-end lg:items-stretch">
+        <!-- Left: Name block -->
+        <div class="lg:col-span-7 flex flex-col justify-center relative z-10 py-12 lg:py-0">
+          <div class="reveal">
+            <p class="font-[JetBrains_Mono] text-[11px] tracking-[0.3em] uppercase text-[#E54D2E] mb-4">Portfolio / 2026</p>
+            <h1 class="text-[clamp(3rem,8vw,8rem)] font-[Inter] font-900 leading-[0.9] tracking-tight text-[#1A1A1A] mb-6">
+              Tyler<br/>
+              <span class="text-stroke">Teuber</span>
+            </h1>
+            <div class="w-16 h-[2px] bg-[#E54D2E] mb-6"></div>
+            <p class="font-[JetBrains_Mono] text-[11px] tracking-[0.2em] uppercase text-[#999] mb-3">Frontend Developer</p>
+            <p class="font-[Inter] text-lg font-300 text-[#555] max-w-md leading-relaxed mb-8">
+              Bridging audio technology and web development — building interfaces that feel as good as they look.
+            </p>
+            <div class="flex items-center gap-4">
+              <a href="#projects" class="inline-flex items-center gap-2 px-6 py-3 bg-[#E54D2E] text-white font-[JetBrains_Mono] text-[11px] tracking-[0.15em] uppercase hover:bg-[#C9381A] transition-colors duration-200">
+                View Work
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </a>
+              <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 border border-[#1A1A1A] text-[#1A1A1A] font-[JetBrains_Mono] text-[11px] tracking-[0.15em] uppercase hover:bg-[#1A1A1A] hover:text-white transition-colors duration-200">
+                Contact
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Right: Portrait -->
+        <div class="lg:col-span-5 relative flex items-end justify-end">
+          <div class="reveal-right relative w-full max-w-[400px] lg:max-w-none">
+            <div class="relative overflow-hidden">
+              <img
+                src="/Images/Portrait.jpg"
+                alt="Tyler Teuber"
+                class="w-full h-[50vh] lg:h-[85vh] object-cover object-top grayscale-[30%] hover:grayscale-0 transition-all duration-700"
+              />
+              <!-- Overlay label -->
+              <div class="absolute bottom-6 left-6 bg-white/90 backdrop-blur-sm px-4 py-2 border border-[#E8E4DF]">
+                <p class="font-[JetBrains_Mono] text-[10px] tracking-[0.2em] uppercase text-[#999]">Based in WA</p>
+              </div>
+            </div>
+            <!-- Decorative border offset -->
+            <div class="hidden lg:block absolute -top-4 -right-4 w-full h-full border border-[#E54D2E]/20 -z-10"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+        <span class="font-[JetBrains_Mono] text-[9px] tracking-[0.3em] uppercase text-[#BBB]">Scroll</span>
+        <div class="w-[1px] h-6 bg-[#CCC]"></div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ ABOUT ═══════════════════ -->
+    <section id="about" class="py-24 lg:py-32 border-t border-[#E8E4DF]">
+      <div class="max-w-[1400px] mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4">
+          <!-- Section label -->
+          <div class="lg:col-span-2 reveal">
+            <p class="font-[JetBrains_Mono] text-[11px] tracking-[0.3em] uppercase text-[#E54D2E] lg:sticky lg:top-24">01 / About</p>
+          </div>
+          <!-- Main content -->
+          <div class="lg:col-span-5 reveal">
+            <h2 class="text-4xl lg:text-5xl font-[Inter] font-800 leading-[1.1] mb-8 tracking-tight">
+              Self-taught developer with a designer's eye.
+            </h2>
+            <div class="space-y-5 text-[#555] font-[Inter] font-300 text-base leading-relaxed">
+              <p>
+                I started coding in 2022 under the mentorship of a Senior Software Architect who continues to guide my growth. My formal education — an Economics degree with an Audio Technology minor from Western Washington University — gave me a unique lens for problem-solving.
+              </p>
+              <p>
+                I work at the intersection of audio and code, bringing the precision of signal processing to frontend development. I use Claude Code extensively for agentic development, leveraging AI as a true collaborator in my workflow.
+              </p>
+            </div>
+          </div>
+          <!-- Pull-quote & stats -->
+          <div class="lg:col-span-4 lg:col-start-9 flex flex-col gap-8 reveal-right">
+            <!-- Pull quote -->
+            <blockquote class="border-l-2 border-[#E54D2E] pl-6 py-4">
+              <p class="font-[Inter] text-xl font-600 italic leading-snug text-[#333]">
+                "The intersection of audio and code is where I do my best work."
+              </p>
+            </blockquote>
+            <!-- Stats grid -->
+            <div class="grid grid-cols-2 gap-[1px] bg-[#E8E4DF]">
+              <div class="bg-[#FAF8F5] p-6">
+                <p class="font-[Inter] text-4xl font-800 text-[#E54D2E]">4+</p>
+                <p class="font-[JetBrains_Mono] text-[10px] tracking-[0.2em] uppercase text-[#999] mt-1">Years Coding</p>
+              </div>
+              <div class="bg-[#FAF8F5] p-6">
+                <p class="font-[Inter] text-4xl font-800 text-[#E54D2E]">3</p>
+                <p class="font-[JetBrains_Mono] text-[10px] tracking-[0.2em] uppercase text-[#999] mt-1">Internships</p>
+              </div>
+              <div class="bg-[#FAF8F5] p-6">
+                <p class="font-[Inter] text-4xl font-800 text-[#E54D2E]">WWU</p>
+                <p class="font-[JetBrains_Mono] text-[10px] tracking-[0.2em] uppercase text-[#999] mt-1">Economics + Audio</p>
+              </div>
+              <div class="bg-[#FAF8F5] p-6">
+                <p class="font-[Inter] text-4xl font-800 text-[#E54D2E]">AI</p>
+                <p class="font-[JetBrains_Mono] text-[10px] tracking-[0.2em] uppercase text-[#999] mt-1">Agentic Workflow</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ PROJECTS ═══════════════════ -->
+    <section id="projects" class="py-24 lg:py-32 border-t border-[#E8E4DF] bg-[#F5F2EE]">
+      <div class="max-w-[1400px] mx-auto px-6">
+        <!-- Section header -->
+        <div class="flex items-start justify-between mb-16 reveal">
+          <div>
+            <p class="font-[JetBrains_Mono] text-[11px] tracking-[0.3em] uppercase text-[#E54D2E] mb-3">02 / Selected Work</p>
+            <h2 class="text-5xl lg:text-7xl font-[Inter] font-900 tracking-tight">Projects</h2>
+          </div>
+          <p class="hidden md:block font-[JetBrains_Mono] text-[11px] tracking-[0.15em] uppercase text-[#999] mt-2">3 Featured</p>
+        </div>
+
+        <!-- Bento Grid -->
+        <div class="bento-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-[1px] bg-[#DDD]">
+
+          <!-- Synthesizer VST — LARGE card spanning 7 cols and 2 rows -->
+          <div class="project-card lg:col-span-7 lg:row-span-2 bg-[#FAF8F5] group cursor-pointer relative overflow-hidden reveal">
+            <div class="h-full flex flex-col">
+              <div class="relative overflow-hidden flex-1 min-h-[300px] lg:min-h-[500px]">
+                <img
+                  src="/Images/Synth/Synth.png"
+                  alt="Synthesizer VST Plugin"
+                  class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/60 via-transparent to-transparent"></div>
+                <!-- Floating label -->
+                <div class="absolute top-4 left-4 bg-[#E54D2E] px-3 py-1">
+                  <p class="font-[JetBrains_Mono] text-[10px] tracking-[0.2em] uppercase text-white">Featured</p>
+                </div>
+              </div>
+              <div class="p-6 lg:p-8">
+                <div class="flex items-center gap-3 mb-3">
+                  <p class="font-[JetBrains_Mono] text-[10px] tracking-[0.2em] uppercase text-[#999]">01</p>
+                  <div class="w-8 h-[1px] bg-[#DDD]"></div>
+                  <p class="font-[JetBrains_Mono] text-[10px] tracking-[0.2em] uppercase text-[#999]">Audio / DSP</p>
+                </div>
+                <h3 class="text-2xl lg:text-3xl font-[Inter] font-800 tracking-tight mb-3 group-hover:text-[#E54D2E] transition-colors">Synthesizer VST Plugin</h3>
+                <p class="font-[Inter] font-300 text-[#666] text-sm leading-relaxed mb-4">
+                  A subtractive synthesizer with gesture-based UI and Juno-inspired sound engine, built in JUCE/C++. Features a Modulation Matrix, multi-oscillator architecture, effects chain, and an innovative "Modulation Mode" UX for intuitive sound design.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  {['C++', 'JUCE', 'DSP'].map(tech => (
+                    <span class="font-[JetBrains_Mono] text-[10px] tracking-[0.15em] uppercase px-3 py-1 border border-[#E8E4DF] text-[#888]">{tech}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Self-Control Content Blocker — medium card -->
+          <div class="project-card lg:col-span-5 bg-[#FAF8F5] group cursor-pointer relative overflow-hidden reveal-right">
+            <div class="h-full flex flex-col">
+              <div class="relative overflow-hidden min-h-[220px] lg:min-h-[260px]">
+                <img
+                  src="/Images/Blocker/WebsiteBlocker.png"
+                  alt="Self-Control Content Blocker"
+                  class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/50 via-transparent to-transparent"></div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center gap-3 mb-3">
+                  <p class="font-[JetBrains_Mono] text-[10px] tracking-[0.2em] uppercase text-[#999]">02</p>
+                  <div class="w-8 h-[1px] bg-[#DDD]"></div>
+                  <p class="font-[JetBrains_Mono] text-[10px] tracking-[0.2em] uppercase text-[#999]">Productivity</p>
+                </div>
+                <h3 class="text-xl font-[Inter] font-800 tracking-tight mb-2 group-hover:text-[#E54D2E] transition-colors">Self-Control Content Blocker</h3>
+                <p class="font-[Inter] font-300 text-[#666] text-sm leading-relaxed mb-4">
+                  Bypass-resistant website and app blocker for Arch Linux + Hyprland. Python backend with Systemd daemon and Flask API, TypeScript/React/Tailwind frontend, plus a Chrome extension.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  {['Python', 'TypeScript', 'React', 'Flask'].map(tech => (
+                    <span class="font-[JetBrains_Mono] text-[10px] tracking-[0.15em] uppercase px-3 py-1 border border-[#E8E4DF] text-[#888]">{tech}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sermon Slide Generator — medium card -->
+          <div class="project-card lg:col-span-5 bg-[#FAF8F5] group cursor-pointer relative overflow-hidden reveal">
+            <div class="h-full flex flex-col">
+              <div class="relative overflow-hidden min-h-[220px] lg:min-h-[260px]">
+                <img
+                  src="/Images/SermonSlides/SermonSlidesGenerator.png"
+                  alt="Sermon Slide Generator"
+                  class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/50 via-transparent to-transparent"></div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center gap-3 mb-3">
+                  <p class="font-[JetBrains_Mono] text-[10px] tracking-[0.2em] uppercase text-[#999]">03</p>
+                  <div class="w-8 h-[1px] bg-[#DDD]"></div>
+                  <p class="font-[JetBrains_Mono] text-[10px] tracking-[0.2em] uppercase text-[#999]">Automation</p>
+                </div>
+                <h3 class="text-xl font-[Inter] font-800 tracking-tight mb-2 group-hover:text-[#E54D2E] transition-colors">Sermon Slide Generator</h3>
+                <p class="font-[Inter] font-300 text-[#666] text-sm leading-relaxed mb-4">
+                  Python automation tool for The Redemption Church. Web scraping plus PDF generation for sermon slides, with an HTML/CSS/JS frontend for staff use.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  {['Python', 'HTML/CSS/JS', 'Web Scraping'].map(tech => (
+                    <span class="font-[JetBrains_Mono] text-[10px] tracking-[0.15em] uppercase px-3 py-1 border border-[#E8E4DF] text-[#888]">{tech}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ EXPERIENCE ═══════════════════ -->
+    <section id="experience" class="py-24 lg:py-32 border-t border-[#E8E4DF]">
+      <div class="max-w-[1400px] mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4">
+          <!-- Section label -->
+          <div class="lg:col-span-2 reveal">
+            <p class="font-[JetBrains_Mono] text-[11px] tracking-[0.3em] uppercase text-[#E54D2E] lg:sticky lg:top-24">03 / Experience</p>
+          </div>
+          <!-- Timeline -->
+          <div class="lg:col-span-9 lg:col-start-4">
+
+            <!-- Coding Mind -->
+            <div class="experience-item border-b border-[#E8E4DF] py-10 first:pt-0 reveal group">
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8">
+                <div class="md:col-span-4">
+                  <p class="font-[JetBrains_Mono] text-[11px] tracking-[0.15em] uppercase text-[#999]">Aug 2024 — Present</p>
+                  <p class="font-[JetBrains_Mono] text-[10px] tracking-[0.15em] uppercase text-[#BBB] mt-1">Redmond, WA</p>
+                </div>
+                <div class="md:col-span-8">
+                  <div class="flex items-baseline gap-3 mb-1">
+                    <h3 class="text-xl font-[Inter] font-700 tracking-tight group-hover:text-[#E54D2E] transition-colors">Teacher / Assistant Manager</h3>
+                  </div>
+                  <p class="font-[JetBrains_Mono] text-[11px] tracking-[0.15em] uppercase text-[#E54D2E] mb-3">Coding Mind</p>
+                  <p class="font-[Inter] font-300 text-[#666] text-sm leading-relaxed">
+                    Teaching Python, JavaScript, and C++ to students. Led curriculum development for
+                    <a href="https://playerpathwayproject.org" target="_blank" class="text-[#E54D2E] hover:underline">playerpathwayproject.org</a>
+                    — a full-stack project using TypeScript, React, Tailwind CSS with Nest.js and Prisma on the backend.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Kill That Noise -->
+            <div class="experience-item border-b border-[#E8E4DF] py-10 reveal group">
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8">
+                <div class="md:col-span-4">
+                  <p class="font-[JetBrains_Mono] text-[11px] tracking-[0.15em] uppercase text-[#999]">Jun — Oct 2023</p>
+                  <p class="font-[JetBrains_Mono] text-[10px] tracking-[0.15em] uppercase text-[#BBB] mt-1">Remote</p>
+                </div>
+                <div class="md:col-span-8">
+                  <h3 class="text-xl font-[Inter] font-700 tracking-tight mb-1 group-hover:text-[#E54D2E] transition-colors">Web Dev Intern</h3>
+                  <p class="font-[JetBrains_Mono] text-[11px] tracking-[0.15em] uppercase text-[#E54D2E] mb-3">Kill That Noise</p>
+                  <p class="font-[Inter] font-300 text-[#666] text-sm leading-relaxed">
+                    Led a team of 5 interns migrating a WordPress site to Next.js. Worked in Agile sprints, integrating the WordPress REST API for content management while building a modern frontend.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- DeveloperDB -->
+            <div class="experience-item py-10 reveal group">
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8">
+                <div class="md:col-span-4">
+                  <p class="font-[JetBrains_Mono] text-[11px] tracking-[0.15em] uppercase text-[#999]">Sep — Dec 2022</p>
+                  <p class="font-[JetBrains_Mono] text-[10px] tracking-[0.15em] uppercase text-[#BBB] mt-1">Remote</p>
+                </div>
+                <div class="md:col-span-8">
+                  <h3 class="text-xl font-[Inter] font-700 tracking-tight mb-1 group-hover:text-[#E54D2E] transition-colors">Data Engineering Intern</h3>
+                  <p class="font-[JetBrains_Mono] text-[11px] tracking-[0.15em] uppercase text-[#E54D2E] mb-3">DeveloperDB</p>
+                  <p class="font-[Inter] font-300 text-[#666] text-sm leading-relaxed">
+                    Built Selenium-based scraping pipelines to extract 10,000+ LinkedIn profiles. Processed and cleaned data with Pandas for the company's developer database product.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ SKILLS ═══════════════════ -->
+    <section id="skills" class="py-24 lg:py-32 border-t border-[#E8E4DF] bg-[#F5F2EE]">
+      <div class="max-w-[1400px] mx-auto px-6">
+        <div class="flex items-start justify-between mb-16 reveal">
+          <div>
+            <p class="font-[JetBrains_Mono] text-[11px] tracking-[0.3em] uppercase text-[#E54D2E] mb-3">04 / Capabilities</p>
+            <h2 class="text-5xl lg:text-7xl font-[Inter] font-900 tracking-tight">Skills</h2>
+          </div>
+        </div>
+
+        <!-- Skills bento grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-[1px] bg-[#DDD] reveal">
+          <!-- Frontend — large -->
+          <div class="lg:col-span-5 bg-[#FAF8F5] p-8">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-2 h-2 bg-[#E54D2E]"></div>
+              <p class="font-[JetBrains_Mono] text-[11px] tracking-[0.2em] uppercase text-[#999]">Frontend</p>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              {['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'HTML/CSS', 'Svelte'].map(skill => (
+                <span class="skill-tag font-[Inter] text-sm font-500 px-4 py-2 bg-[#F5F2EE] border border-[#E8E4DF] hover:border-[#E54D2E] hover:text-[#E54D2E] transition-all duration-200 cursor-default">{skill}</span>
+              ))}
+            </div>
+          </div>
+
+          <!-- Backend -->
+          <div class="lg:col-span-4 bg-[#FAF8F5] p-8">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-2 h-2 bg-[#E54D2E]"></div>
+              <p class="font-[JetBrains_Mono] text-[11px] tracking-[0.2em] uppercase text-[#999]">Backend</p>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              {['Python', 'Node.js', 'Nest.js', 'Flask', 'Prisma'].map(skill => (
+                <span class="skill-tag font-[Inter] text-sm font-500 px-4 py-2 bg-[#F5F2EE] border border-[#E8E4DF] hover:border-[#E54D2E] hover:text-[#E54D2E] transition-all duration-200 cursor-default">{skill}</span>
+              ))}
+            </div>
+          </div>
+
+          <!-- Languages -->
+          <div class="lg:col-span-3 bg-[#FAF8F5] p-8">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-2 h-2 bg-[#E54D2E]"></div>
+              <p class="font-[JetBrains_Mono] text-[11px] tracking-[0.2em] uppercase text-[#999]">Languages</p>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              {['JavaScript', 'TypeScript', 'Python', 'C++'].map(skill => (
+                <span class="skill-tag font-[Inter] text-sm font-500 px-4 py-2 bg-[#F5F2EE] border border-[#E8E4DF] hover:border-[#E54D2E] hover:text-[#E54D2E] transition-all duration-200 cursor-default">{skill}</span>
+              ))}
+            </div>
+          </div>
+
+          <!-- Tools — full width bottom row -->
+          <div class="lg:col-span-12 bg-[#FAF8F5] p-8">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-2 h-2 bg-[#E54D2E]"></div>
+              <p class="font-[JetBrains_Mono] text-[11px] tracking-[0.2em] uppercase text-[#999]">Tools & Platforms</p>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              {['Git', 'Linux', 'Selenium', 'Claude Code'].map(skill => (
+                <span class="skill-tag font-[Inter] text-sm font-500 px-4 py-2 bg-[#F5F2EE] border border-[#E8E4DF] hover:border-[#E54D2E] hover:text-[#E54D2E] transition-all duration-200 cursor-default">{skill}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ CONTACT ═══════════════════ -->
+    <section id="contact" class="py-24 lg:py-32 border-t border-[#E8E4DF]">
+      <div class="max-w-[1400px] mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4">
+          <div class="lg:col-span-2 reveal">
+            <p class="font-[JetBrains_Mono] text-[11px] tracking-[0.3em] uppercase text-[#E54D2E] lg:sticky lg:top-24">05 / Contact</p>
+          </div>
+          <div class="lg:col-span-7 lg:col-start-4 reveal">
+            <h2 class="text-5xl lg:text-7xl font-[Inter] font-900 tracking-tight mb-6">
+              Let's work<br/>together<span class="text-[#E54D2E]">.</span>
+            </h2>
+            <p class="font-[Inter] font-300 text-[#666] text-lg leading-relaxed mb-12 max-w-lg">
+              Available for frontend roles, freelance projects, and interesting collaborations.
+            </p>
+            <div class="flex flex-col gap-6">
+              <a href="mailto:hello@tylerteuber.com" class="contact-link group flex items-center justify-between border-b border-[#E8E4DF] pb-4 hover:border-[#E54D2E] transition-colors">
+                <div>
+                  <p class="font-[JetBrains_Mono] text-[10px] tracking-[0.2em] uppercase text-[#999] mb-1">Email</p>
+                  <p class="font-[Inter] font-500 text-lg group-hover:text-[#E54D2E] transition-colors">hello@tylerteuber.com</p>
+                </div>
+                <svg class="w-5 h-5 text-[#CCC] group-hover:text-[#E54D2E] group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+              </a>
+              <a href="https://github.com/TTeuber" target="_blank" class="contact-link group flex items-center justify-between border-b border-[#E8E4DF] pb-4 hover:border-[#E54D2E] transition-colors">
+                <div>
+                  <p class="font-[JetBrains_Mono] text-[10px] tracking-[0.2em] uppercase text-[#999] mb-1">GitHub</p>
+                  <p class="font-[Inter] font-500 text-lg group-hover:text-[#E54D2E] transition-colors">github.com/TTeuber</p>
+                </div>
+                <svg class="w-5 h-5 text-[#CCC] group-hover:text-[#E54D2E] group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/in/tyler-teuber/" target="_blank" class="contact-link group flex items-center justify-between border-b border-[#E8E4DF] pb-4 hover:border-[#E54D2E] transition-colors">
+                <div>
+                  <p class="font-[JetBrains_Mono] text-[10px] tracking-[0.2em] uppercase text-[#999] mb-1">LinkedIn</p>
+                  <p class="font-[Inter] font-500 text-lg group-hover:text-[#E54D2E] transition-colors">linkedin.com/in/tyler-teuber</p>
+                </div>
+                <svg class="w-5 h-5 text-[#CCC] group-hover:text-[#E54D2E] group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-[#E8E4DF] py-8">
+      <div class="max-w-[1400px] mx-auto px-6 flex items-center justify-between">
+        <p class="font-[JetBrains_Mono] text-[10px] tracking-[0.2em] uppercase text-[#BBB]">&copy; 2026 Tyler Teuber</p>
+        <p class="font-[JetBrains_Mono] text-[10px] tracking-[0.2em] uppercase text-[#BBB]">Built with Astro</p>
+      </div>
+    </footer>
+
+  </main>
+</Layout>
+
+<style>
+  /* Text stroke for outlined text effect */
+  .text-stroke {
+    -webkit-text-stroke: 2px #1A1A1A;
+    -webkit-text-fill-color: transparent;
+  }
+
+  @media (max-width: 1024px) {
+    .text-stroke {
+      -webkit-text-stroke: 1.5px #1A1A1A;
+    }
+  }
+
+  /* Scroll reveal initial states */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal.visible,
+  .reveal-right.visible {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Project card hover lift */
+  .project-card {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .project-card:hover {
+    z-index: 2;
+  }
+
+  /* Experience item hover */
+  .experience-item {
+    transition: padding-left 0.3s ease;
+  }
+
+  .experience-item:hover {
+    padding-left: 8px;
+  }
+
+  /* Nav active state */
+  .nav-link.active {
+    color: #E54D2E;
+  }
+
+  /* Custom selection color */
+  ::selection {
+    background: #E54D2E;
+    color: white;
+  }
+
+  /* Contact link hover bar animation */
+  .contact-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #E54D2E;
+    transition: width 0.4s ease;
+  }
+
+  .contact-link:hover::after {
+    width: 100%;
+  }
+</style>
+
+<script>
+  // ── IntersectionObserver for scroll reveals ──
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -60px 0px'
+  };
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.reveal, .reveal-right').forEach((el) => {
+    revealObserver.observe(el);
+  });
+
+  // ── Active nav link on scroll ──
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach((link) => {
+          link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach((section) => {
+    sectionObserver.observe(section);
+  });
+
+  // ── Mobile menu toggle ──
+  const mobileToggle = document.getElementById('mobile-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  mobileToggle?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+    const spans = mobileToggle.querySelectorAll('span');
+    if (!mobileMenu?.classList.contains('hidden')) {
+      spans[0].style.transform = 'rotate(45deg) translate(4px, 4px)';
+      spans[1].style.opacity = '0';
+      spans[2].style.transform = 'rotate(-45deg) translate(2px, -2px)';
+      spans[2].style.width = '20px';
+    } else {
+      spans[0].style.transform = '';
+      spans[1].style.opacity = '1';
+      spans[2].style.transform = '';
+      spans[2].style.width = '12px';
+    }
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+      const spans = mobileToggle?.querySelectorAll('span');
+      if (spans) {
+        spans[0].style.transform = '';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = '';
+        spans[2].style.width = '12px';
+      }
+    });
+  });
+
+  // ── Nav background on scroll ──
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      nav?.classList.add('shadow-sm');
+    } else {
+      nav?.classList.remove('shadow-sm');
+    }
+  });
+</script>
