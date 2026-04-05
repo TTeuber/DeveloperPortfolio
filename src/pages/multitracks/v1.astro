@@ -1,0 +1,945 @@
+---
+import Layout from '../../Layouts/Layout.astro';
+---
+
+<Layout title="Tyler Teuber | Frontend Developer — MultiTracks.com" description="Frontend developer portfolio for MultiTracks.com — building technology that serves worship teams worldwide.">
+  <!-- Fixed Navigation -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#hero" class="font-mono text-sm tracking-widest text-teal-400 hover:text-teal-300 transition-colors">
+        TT<span class="text-zinc-500">::</span>DEV
+      </a>
+      <!-- Mobile menu button -->
+      <button id="mobile-toggle" class="md:hidden text-zinc-400 hover:text-teal-400 transition-colors" aria-label="Toggle menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path class="menu-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          <path class="menu-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <ul class="hidden md:flex items-center gap-8 font-mono text-xs tracking-wider">
+        <li><a href="#why-multitracks" class="nav-link text-zinc-400 hover:text-teal-400 transition-colors uppercase">Why MultiTracks</a></li>
+        <li><a href="#projects" class="nav-link text-zinc-400 hover:text-teal-400 transition-colors uppercase">Projects</a></li>
+        <li><a href="#experience" class="nav-link text-zinc-400 hover:text-teal-400 transition-colors uppercase">Experience</a></li>
+        <li><a href="#skills" class="nav-link text-zinc-400 hover:text-teal-400 transition-colors uppercase">Skills</a></li>
+        <li><a href="#contact" class="nav-link text-zinc-400 hover:text-teal-400 transition-colors uppercase">Contact</a></li>
+      </ul>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-zinc-800/50 bg-[#0a0a0f]/95 backdrop-blur-md">
+      <ul class="flex flex-col items-center gap-4 py-6 font-mono text-xs tracking-wider">
+        <li><a href="#why-multitracks" class="mobile-nav-link text-zinc-400 hover:text-teal-400 transition-colors uppercase">Why MultiTracks</a></li>
+        <li><a href="#projects" class="mobile-nav-link text-zinc-400 hover:text-teal-400 transition-colors uppercase">Projects</a></li>
+        <li><a href="#experience" class="mobile-nav-link text-zinc-400 hover:text-teal-400 transition-colors uppercase">Experience</a></li>
+        <li><a href="#skills" class="mobile-nav-link text-zinc-400 hover:text-teal-400 transition-colors uppercase">Skills</a></li>
+        <li><a href="#contact" class="mobile-nav-link text-zinc-400 hover:text-teal-400 transition-colors uppercase">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="bg-[#0a0a0f] text-zinc-200 min-h-screen overflow-x-hidden">
+    <!-- Grid Background Overlay -->
+    <div class="grid-bg fixed inset-0 pointer-events-none z-0"></div>
+
+    <!-- ==================== HERO ==================== -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center px-6 pt-20 z-10">
+      <div class="waveform-bg absolute inset-0 opacity-[0.03] pointer-events-none"></div>
+
+      <div class="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
+        <!-- Text Content -->
+        <div class="reveal">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="eq-bars">
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <span class="font-mono text-xs tracking-[0.3em] text-teal-400/70 uppercase">Worship Tech Developer</span>
+          </div>
+
+          <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[0.9] mb-4">
+            <span class="text-zinc-100">Tyler</span><br />
+            <span class="text-teal-400">Teuber</span>
+          </h1>
+
+          <div class="flex items-center gap-3 my-6">
+            <span class="inline-block w-2 h-2 rounded-full bg-teal-400 shadow-[0_0_8px_rgba(45,212,191,0.6)] animate-pulse"></span>
+            <span class="font-mono text-sm text-teal-400 tracking-widest uppercase">Frontend Developer</span>
+          </div>
+
+          <p class="text-zinc-400 text-lg leading-relaxed max-w-lg mb-8">
+            Building technology that serves <span class="text-zinc-200 font-medium">worship teams worldwide</span> &mdash;
+            where a passion for <span class="text-zinc-200 font-medium">audio technology</span>,
+            <span class="text-zinc-200 font-medium">modern web development</span>, and
+            <span class="text-zinc-200 font-medium">the local church</span> converge.
+          </p>
+
+          <div class="flex flex-wrap gap-4">
+            <a href="#projects" class="group relative inline-flex items-center gap-2 px-6 py-3 bg-teal-500/10 border border-teal-500/30 text-teal-400 font-mono text-sm tracking-wider uppercase hover:bg-teal-500/20 hover:border-teal-400/50 hover:shadow-[0_0_20px_rgba(45,212,191,0.15)] transition-all duration-300">
+              <span>View My Work</span>
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </a>
+            <a href="#why-multitracks" class="inline-flex items-center gap-2 px-6 py-3 border border-zinc-700 text-zinc-400 font-mono text-sm tracking-wider uppercase hover:border-teal-500/30 hover:text-teal-400 transition-all duration-300">
+              Why MultiTracks
+            </a>
+          </div>
+        </div>
+
+        <!-- Portrait -->
+        <div class="reveal reveal-delay-1 flex justify-center md:justify-end">
+          <div class="relative">
+            <div class="absolute -inset-3 border border-teal-500/10 pointer-events-none"></div>
+            <div class="absolute -inset-6 border border-teal-500/5 pointer-events-none"></div>
+            <!-- Corner ticks -->
+            <div class="absolute -top-6 -left-6 w-4 h-4 border-t border-l border-teal-500/30"></div>
+            <div class="absolute -top-6 -right-6 w-4 h-4 border-t border-r border-teal-500/30"></div>
+            <div class="absolute -bottom-6 -left-6 w-4 h-4 border-b border-l border-teal-500/30"></div>
+            <div class="absolute -bottom-6 -right-6 w-4 h-4 border-b border-r border-teal-500/30"></div>
+
+            <div class="relative w-72 h-80 sm:w-80 sm:h-96 overflow-hidden bg-zinc-900">
+              <img src="/Images/Portrait.jpg" alt="Tyler Teuber" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+              <div class="absolute inset-0 bg-gradient-to-b from-transparent via-teal-500/[0.02] to-transparent bg-[length:100%_4px] pointer-events-none scanline-overlay"></div>
+            </div>
+
+            <!-- Volunteer badge -->
+            <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-2 bg-[#0a0a0f]/90 border border-teal-500/20 backdrop-blur-sm whitespace-nowrap">
+              <span class="inline-block w-1.5 h-1.5 rounded-full bg-teal-400 shadow-[0_0_6px_rgba(45,212,191,0.5)]"></span>
+              <span class="font-mono text-[0.6rem] tracking-widest text-teal-400/80 uppercase">Worship Musician &amp; Audio Tech</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 reveal reveal-delay-3">
+        <span class="font-mono text-[0.6rem] tracking-[0.3em] text-zinc-600 uppercase">Scroll</span>
+        <div class="w-px h-8 bg-gradient-to-b from-teal-500/40 to-transparent"></div>
+      </div>
+    </section>
+
+    <!-- ==================== WHY MULTITRACKS ==================== -->
+    <section id="why-multitracks" class="relative py-28 px-6 z-10">
+      <div class="max-w-5xl mx-auto">
+        <!-- Section header -->
+        <div class="reveal flex items-center gap-4 mb-16">
+          <div class="eq-bars">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <h2 class="font-mono text-xs tracking-[0.3em] text-teal-400/70 uppercase">Why MultiTracks</h2>
+          <div class="flex-1 h-px bg-gradient-to-r from-zinc-800 to-transparent"></div>
+        </div>
+
+        <div class="grid lg:grid-cols-5 gap-12">
+          <!-- Main statement -->
+          <div class="lg:col-span-3 reveal">
+            <h3 class="text-3xl sm:text-4xl font-bold text-zinc-100 leading-tight mb-8">
+              I don't just build for the church.<br />
+              <span class="text-teal-400">I serve in one every week.</span>
+            </h3>
+
+            <div class="space-y-6 text-zinc-400 leading-relaxed">
+              <p>
+                Every Sunday, I'm behind the soundboard or on the worship team at
+                <span class="text-zinc-200 font-medium">The Redemption Church</span>. I know what it's like to scramble
+                for the right click track, to troubleshoot monitoring issues mid-set, and to make sure every element of
+                the service flows seamlessly. I understand the end user because <span class="text-teal-400 font-medium">I am one</span>.
+              </p>
+
+              <p>
+                That's exactly why I already build tools for the church. My
+                <span class="text-zinc-200 font-medium">Sermon Slide Generator</span> is used every single week to
+                automate slide creation for our worship services. It wasn't a class project or a portfolio piece &mdash;
+                it was built because I saw a need and I shipped a solution.
+              </p>
+
+              <p>
+                MultiTracks' mission of <span class="text-teal-400 font-medium italic">"putting the needs of the church
+                at the heart of its brand"</span> isn't just a mission statement I read on a careers page. It's the same
+                conviction that drives me to volunteer my technical skills at my own church every week. The intersection
+                of my <span class="text-zinc-200 font-medium">audio technology background</span> and
+                <span class="text-zinc-200 font-medium">web development skills</span> is exactly what MultiTracks
+                lives in &mdash; and I want to be part of building that future.
+              </p>
+
+              <p>
+                I'm also genuinely excited about <span class="text-zinc-200 font-medium">Agentic Coding and
+                AI-first development</span>. I use Claude Code daily as a core part of my workflow &mdash; not as a crutch,
+                but as a multiplier. This entire portfolio was built with AI-assisted development. I believe the developers who
+                learn to collaborate with AI will ship faster, iterate smarter, and ultimately serve users better.
+              </p>
+            </div>
+          </div>
+
+          <!-- Side cards -->
+          <div class="lg:col-span-2 space-y-5">
+            <div class="stat-panel reveal reveal-delay-1">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="inline-block w-1.5 h-1.5 rounded-full bg-teal-400 shadow-[0_0_6px_rgba(45,212,191,0.5)]"></span>
+                <span class="font-mono text-[0.65rem] tracking-widest text-teal-400/70 uppercase">Volunteer Role</span>
+              </div>
+              <p class="text-zinc-200 font-medium text-sm">Audio Tech &amp; Worship Musician</p>
+              <p class="text-zinc-500 text-xs mt-1">The Redemption Church &mdash; Weekly</p>
+            </div>
+
+            <div class="stat-panel reveal reveal-delay-2">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="inline-block w-1.5 h-1.5 rounded-full bg-teal-400 shadow-[0_0_6px_rgba(45,212,191,0.5)]"></span>
+                <span class="font-mono text-[0.65rem] tracking-widest text-teal-400/70 uppercase">Church Tool</span>
+              </div>
+              <p class="text-zinc-200 font-medium text-sm">Sermon Slide Generator</p>
+              <p class="text-zinc-500 text-xs mt-1">Used in production every Sunday</p>
+            </div>
+
+            <div class="stat-panel reveal reveal-delay-3">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="inline-block w-1.5 h-1.5 rounded-full bg-teal-400 shadow-[0_0_6px_rgba(45,212,191,0.5)]"></span>
+                <span class="font-mono text-[0.65rem] tracking-widest text-teal-400/70 uppercase">Background</span>
+              </div>
+              <p class="text-zinc-200 font-medium text-sm">Audio Technology + Web Dev</p>
+              <p class="text-zinc-500 text-xs mt-1">The exact intersection MultiTracks lives in</p>
+            </div>
+
+            <div class="stat-panel reveal reveal-delay-3">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="inline-block w-1.5 h-1.5 rounded-full bg-teal-400 shadow-[0_0_6px_rgba(45,212,191,0.5)]"></span>
+                <span class="font-mono text-[0.65rem] tracking-widest text-teal-400/70 uppercase">Workflow</span>
+              </div>
+              <p class="text-zinc-200 font-medium text-sm">AI-First / Agentic Coding</p>
+              <p class="text-zinc-500 text-xs mt-1">Claude Code as a daily development partner</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PROJECTS ==================== -->
+    <section id="projects" class="relative py-28 px-6 z-10">
+      <div class="max-w-6xl mx-auto">
+        <!-- Section header -->
+        <div class="reveal flex items-center gap-4 mb-16">
+          <div class="eq-bars">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <h2 class="font-mono text-xs tracking-[0.3em] text-teal-400/70 uppercase">Projects</h2>
+          <div class="flex-1 h-px bg-gradient-to-r from-zinc-800 to-transparent"></div>
+        </div>
+
+        <div class="space-y-20">
+
+          <!-- PROJECT 1: Sermon Slide Generator -->
+          <div class="project-card reveal">
+            <div class="grid md:grid-cols-2">
+              <div class="relative overflow-hidden bg-zinc-900">
+                <img src="/Images/SermonSlides/SermonSlidesGenerator.png" alt="Sermon Slide Generator" class="w-full h-full object-cover object-top" />
+                <div class="absolute inset-0 bg-gradient-to-r from-transparent to-[#0a0a0f]/30"></div>
+                <!-- Church tech badge -->
+                <div class="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 bg-teal-500/15 border border-teal-500/25 backdrop-blur-sm">
+                  <span class="inline-block w-1.5 h-1.5 rounded-full bg-teal-400 shadow-[0_0_6px_rgba(45,212,191,0.5)] animate-pulse"></span>
+                  <span class="font-mono text-[0.6rem] tracking-widest text-teal-400 uppercase">Church Tech &mdash; Used Weekly</span>
+                </div>
+              </div>
+              <div class="p-8 lg:p-10 flex flex-col justify-center">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="font-mono text-[0.6rem] tracking-widest text-zinc-600 uppercase">01</span>
+                  <div class="w-8 h-px bg-zinc-800"></div>
+                  <span class="font-mono text-[0.6rem] tracking-widest text-teal-400/50 uppercase">Most Relevant</span>
+                </div>
+                <h3 class="text-2xl font-bold text-zinc-100 mb-3">Sermon Slide Generator</h3>
+                <p class="text-zinc-400 text-sm leading-relaxed mb-4">
+                  A Python automation desktop app built for church staff at
+                  <span class="text-zinc-200">The Redemption Church</span>. Automates the creation of sermon slides
+                  through web scraping and PDF generation. Features an HTML/CSS/JS frontend for an intuitive workflow.
+                  <span class="text-teal-400 font-medium">Used in production every single Sunday</span> &mdash; this isn't
+                  a side project, it's a tool that solves real problems for a real worship team.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">HTML/CSS/JS</span>
+                  <span class="tech-tag">Web Scraping</span>
+                  <span class="tech-tag">PDF Generation</span>
+                  <span class="tech-tag">Desktop App</span>
+                </div>
+                <div class="flex items-center gap-2 text-xs text-zinc-500">
+                  <svg class="w-4 h-4 text-teal-400/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                  <span>Solves real worship team problems. Built by a volunteer, for the church.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECT 2: Synthesizer VST -->
+          <div class="project-card reveal">
+            <div class="grid md:grid-cols-2">
+              <div class="relative overflow-hidden bg-zinc-900">
+                <img src="/Images/Synth/Synth.png" alt="Synthesizer VST Plugin" class="w-full h-full object-cover object-center" />
+                <div class="absolute inset-0 bg-gradient-to-r from-transparent to-[#0a0a0f]/30"></div>
+                <div class="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 bg-zinc-800/80 border border-zinc-700/50 backdrop-blur-sm">
+                  <span class="font-mono text-[0.6rem] tracking-widest text-zinc-400 uppercase">Audio Technology</span>
+                </div>
+              </div>
+              <div class="p-8 lg:p-10 flex flex-col justify-center">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="font-mono text-[0.6rem] tracking-widest text-zinc-600 uppercase">02</span>
+                  <div class="w-8 h-px bg-zinc-800"></div>
+                  <span class="font-mono text-[0.6rem] tracking-widest text-teal-400/50 uppercase">Audio Domain</span>
+                </div>
+                <h3 class="text-2xl font-bold text-zinc-100 mb-3">Synthesizer VST Plugin</h3>
+                <p class="text-zinc-400 text-sm leading-relaxed mb-4">
+                  A subtractive synthesizer plugin inspired by the Juno sound engine. Features a gesture-based UI,
+                  modulation matrix, effects rack, and multiple oscillator modes. Built with JUCE framework in C++
+                  with real-time DSP processing. Demonstrates deep
+                  <span class="text-teal-400 font-medium">audio technology expertise</span> directly relevant to
+                  MultiTracks' domain.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="tech-tag">C++</span>
+                  <span class="tech-tag">JUCE</span>
+                  <span class="tech-tag">DSP</span>
+                  <span class="tech-tag">Audio Plugin</span>
+                  <span class="tech-tag">UI/UX</span>
+                </div>
+                <div class="flex items-center gap-2 text-xs text-zinc-500">
+                  <svg class="w-4 h-4 text-teal-400/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" /></svg>
+                  <span>Audio technology background directly relevant to MultiTracks' product domain.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECT 3: Self-Control Content Blocker -->
+          <div class="project-card reveal">
+            <div class="grid md:grid-cols-2">
+              <div class="relative overflow-hidden bg-zinc-900">
+                <img src="/Images/Blocker/WebsiteBlocker.png" alt="Self-Control Content Blocker" class="w-full h-full object-cover object-top" />
+                <div class="absolute inset-0 bg-gradient-to-r from-transparent to-[#0a0a0f]/30"></div>
+                <div class="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 bg-zinc-800/80 border border-zinc-700/50 backdrop-blur-sm">
+                  <span class="font-mono text-[0.6rem] tracking-widest text-zinc-400 uppercase">Full Stack</span>
+                </div>
+              </div>
+              <div class="p-8 lg:p-10 flex flex-col justify-center">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="font-mono text-[0.6rem] tracking-widest text-zinc-600 uppercase">03</span>
+                  <div class="w-8 h-px bg-zinc-800"></div>
+                </div>
+                <h3 class="text-2xl font-bold text-zinc-100 mb-3">Self-Control Content Blocker</h3>
+                <p class="text-zinc-400 text-sm leading-relaxed mb-4">
+                  A bypass-resistant website and application blocker for Arch Linux + Hyprland. Features a Python backend
+                  with Flask API, TypeScript/React/Tailwind frontend, systemd daemon for persistence, and a Chrome
+                  extension. Demonstrates full-stack capability across multiple technology layers.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">TypeScript</span>
+                  <span class="tech-tag">React</span>
+                  <span class="tech-tag">Tailwind</span>
+                  <span class="tech-tag">Flask</span>
+                </div>
+                <div class="flex items-center gap-2 text-xs text-zinc-500">
+                  <svg class="w-4 h-4 text-teal-400/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                  <span>Full-stack TypeScript/React with Python backend &mdash; production-grade architecture.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== EXPERIENCE ==================== -->
+    <section id="experience" class="relative py-28 px-6 z-10">
+      <div class="max-w-5xl mx-auto">
+        <!-- Section header -->
+        <div class="reveal flex items-center gap-4 mb-16">
+          <div class="eq-bars">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <h2 class="font-mono text-xs tracking-[0.3em] text-teal-400/70 uppercase">Experience</h2>
+          <div class="flex-1 h-px bg-gradient-to-r from-zinc-800 to-transparent"></div>
+        </div>
+
+        <div class="space-y-0">
+
+          <!-- Experience 1 -->
+          <div class="experience-item reveal">
+            <div class="experience-dot"></div>
+            <div class="pl-8 pb-12 border-l border-zinc-800">
+              <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-1">
+                <h3 class="text-lg font-semibold text-zinc-100">Coding Mind</h3>
+                <span class="font-mono text-[0.65rem] tracking-widest text-teal-400/60 uppercase">Teacher / Assistant Manager</span>
+              </div>
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mb-4">
+                <span class="font-mono text-xs text-zinc-500">Redmond, WA</span>
+                <span class="text-zinc-700">|</span>
+                <span class="font-mono text-xs text-zinc-500">Aug 2024 &mdash; Present</span>
+              </div>
+              <ul class="space-y-2 text-sm text-zinc-400 leading-relaxed">
+                <li class="flex gap-2">
+                  <span class="text-teal-400/40 mt-1 shrink-0">&rsaquo;</span>
+                  <span>Teach Python, JavaScript, and C++ to students of all ages, translating complex concepts into accessible lessons</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-teal-400/40 mt-1 shrink-0">&rsaquo;</span>
+                  <span>Led curriculum development and engineering for <span class="text-zinc-200">playerpathwayproject.org</span> &mdash; a full-stack TypeScript/React/Tailwind frontend with Nest.js/Prisma backend</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-teal-400/40 mt-1 shrink-0">&rsaquo;</span>
+                  <span>Collaborate with teams to design engaging project-based learning experiences</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Experience 2 -->
+          <div class="experience-item reveal">
+            <div class="experience-dot"></div>
+            <div class="pl-8 pb-12 border-l border-zinc-800">
+              <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-1">
+                <h3 class="text-lg font-semibold text-zinc-100">Kill That Noise</h3>
+                <span class="font-mono text-[0.65rem] tracking-widest text-teal-400/60 uppercase">Web Developer Intern</span>
+              </div>
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mb-4">
+                <span class="font-mono text-xs text-zinc-500">Remote</span>
+                <span class="text-zinc-700">|</span>
+                <span class="font-mono text-xs text-zinc-500">Jun &mdash; Oct 2023</span>
+              </div>
+              <ul class="space-y-2 text-sm text-zinc-400 leading-relaxed">
+                <li class="flex gap-2">
+                  <span class="text-teal-400/40 mt-1 shrink-0">&rsaquo;</span>
+                  <span>Led a team of 5 interns in migrating a WordPress site to Next.js, coordinating tasks and code reviews</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-teal-400/40 mt-1 shrink-0">&rsaquo;</span>
+                  <span>Worked in an Agile environment with regular sprints and standups</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-teal-400/40 mt-1 shrink-0">&rsaquo;</span>
+                  <span>Integrated WordPress REST API with the new Next.js frontend for seamless content delivery</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Experience 3 -->
+          <div class="experience-item reveal">
+            <div class="experience-dot"></div>
+            <div class="pl-8 pb-4 border-l border-zinc-800">
+              <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-1">
+                <h3 class="text-lg font-semibold text-zinc-100">DeveloperDB</h3>
+                <span class="font-mono text-[0.65rem] tracking-widest text-teal-400/60 uppercase">Data Engineering Intern</span>
+              </div>
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mb-4">
+                <span class="font-mono text-xs text-zinc-500">Remote</span>
+                <span class="text-zinc-700">|</span>
+                <span class="font-mono text-xs text-zinc-500">Sep &mdash; Dec 2022</span>
+              </div>
+              <ul class="space-y-2 text-sm text-zinc-400 leading-relaxed">
+                <li class="flex gap-2">
+                  <span class="text-teal-400/40 mt-1 shrink-0">&rsaquo;</span>
+                  <span>Built Selenium-based web scrapers to collect and process 10,000+ LinkedIn developer profiles</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-teal-400/40 mt-1 shrink-0">&rsaquo;</span>
+                  <span>Processed and cleaned datasets using Pandas for analysis and reporting</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Volunteering -->
+          <div class="experience-item reveal">
+            <div class="experience-dot experience-dot-active"></div>
+            <div class="pl-8 pb-0">
+              <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-1">
+                <h3 class="text-lg font-semibold text-teal-400">The Redemption Church</h3>
+                <span class="font-mono text-[0.65rem] tracking-widest text-teal-400/60 uppercase">Volunteer</span>
+              </div>
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mb-4">
+                <span class="font-mono text-xs text-zinc-500">Audio Tech &amp; Worship Musician</span>
+                <span class="text-zinc-700">|</span>
+                <span class="font-mono text-xs text-zinc-500">Ongoing</span>
+              </div>
+              <ul class="space-y-2 text-sm text-zinc-400 leading-relaxed">
+                <li class="flex gap-2">
+                  <span class="text-teal-400/40 mt-1 shrink-0">&rsaquo;</span>
+                  <span>Run live sound for weekly worship services &mdash; mixing, monitoring, and troubleshooting</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-teal-400/40 mt-1 shrink-0">&rsaquo;</span>
+                  <span>Play on the worship team, understanding the performer's perspective on tech tools</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-teal-400/40 mt-1 shrink-0">&rsaquo;</span>
+                  <span>Built and maintain the Sermon Slide Generator used by staff every week</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SKILLS ==================== -->
+    <section id="skills" class="relative py-28 px-6 z-10">
+      <div class="max-w-5xl mx-auto">
+        <!-- Section header -->
+        <div class="reveal flex items-center gap-4 mb-16">
+          <div class="eq-bars">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <h2 class="font-mono text-xs tracking-[0.3em] text-teal-400/70 uppercase">Skills</h2>
+          <div class="flex-1 h-px bg-gradient-to-r from-zinc-800 to-transparent"></div>
+        </div>
+
+        <!-- AI-First Callout -->
+        <div class="reveal mb-10 p-5 bg-teal-500/[0.04] border border-teal-500/15 relative">
+          <div class="absolute top-0 left-0 w-1 h-full bg-teal-400/50"></div>
+          <div class="flex items-start gap-4 pl-3">
+            <div class="shrink-0 mt-0.5">
+              <div class="eq-bars">
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+            <div>
+              <h3 class="font-mono text-sm text-teal-400 tracking-wider uppercase mb-2">Agentic Coding / AI-First Development</h3>
+              <p class="text-zinc-400 text-sm leading-relaxed">
+                I use <span class="text-zinc-200 font-medium">Claude Code</span> as a daily development partner &mdash; not for
+                copy-paste, but for genuine AI-assisted engineering. From architecture decisions to debugging to code review,
+                agentic coding is core to how I ship. This portfolio was built entirely with an AI-first workflow.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+          <!-- Core Frontend (FIRST) -->
+          <div class="skill-group reveal">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="inline-block w-1.5 h-1.5 rounded-full bg-teal-400 shadow-[0_0_6px_rgba(45,212,191,0.5)]"></span>
+              <h3 class="font-mono text-[0.65rem] tracking-widest text-teal-400/70 uppercase">Core Frontend</h3>
+            </div>
+            <div class="space-y-0">
+              <div class="skill-item">HTML</div>
+              <div class="skill-item">CSS</div>
+              <div class="skill-item">Sass</div>
+              <div class="skill-item">JavaScript</div>
+              <div class="skill-item">TypeScript</div>
+            </div>
+          </div>
+
+          <!-- Frameworks & Libraries -->
+          <div class="skill-group reveal reveal-delay-1">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="inline-block w-1.5 h-1.5 rounded-full bg-teal-400 shadow-[0_0_6px_rgba(45,212,191,0.5)]"></span>
+              <h3 class="font-mono text-[0.65rem] tracking-widest text-teal-400/70 uppercase">Frameworks</h3>
+            </div>
+            <div class="space-y-0">
+              <div class="skill-item">React</div>
+              <div class="skill-item">Next.js</div>
+              <div class="skill-item">Tailwind CSS</div>
+              <div class="skill-item">Svelte</div>
+              <div class="skill-item">Astro</div>
+            </div>
+          </div>
+
+          <!-- Backend & Data -->
+          <div class="skill-group reveal reveal-delay-2">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="inline-block w-1.5 h-1.5 rounded-full bg-teal-400 shadow-[0_0_6px_rgba(45,212,191,0.5)]"></span>
+              <h3 class="font-mono text-[0.65rem] tracking-widest text-teal-400/70 uppercase">Backend & Data</h3>
+            </div>
+            <div class="space-y-0">
+              <div class="skill-item">Python</div>
+              <div class="skill-item">Node.js</div>
+              <div class="skill-item">Nest.js</div>
+              <div class="skill-item">Flask</div>
+              <div class="skill-item">Prisma</div>
+            </div>
+          </div>
+
+          <!-- Tools & Workflow -->
+          <div class="skill-group reveal reveal-delay-3">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="inline-block w-1.5 h-1.5 rounded-full bg-teal-400 shadow-[0_0_6px_rgba(45,212,191,0.5)]"></span>
+              <h3 class="font-mono text-[0.65rem] tracking-widest text-teal-400/70 uppercase">Tools & Workflow</h3>
+            </div>
+            <div class="space-y-0">
+              <div class="skill-item">Git</div>
+              <div class="skill-item">Linux</div>
+              <div class="skill-item">Claude Code</div>
+              <div class="skill-item">Selenium</div>
+              <div class="skill-item">.NET Awareness</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CONTACT ==================== -->
+    <section id="contact" class="relative py-28 px-6 z-10">
+      <div class="max-w-3xl mx-auto text-center">
+        <!-- Section header -->
+        <div class="reveal flex items-center justify-center gap-4 mb-8">
+          <div class="eq-bars">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <h2 class="font-mono text-xs tracking-[0.3em] text-teal-400/70 uppercase">Contact</h2>
+          <div class="eq-bars">
+            <span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+
+        <h3 class="reveal text-3xl sm:text-4xl font-bold text-zinc-100 mb-4">
+          Let's build something for the <span class="text-teal-400">church</span> together.
+        </h3>
+
+        <p class="reveal reveal-delay-1 text-zinc-400 text-lg leading-relaxed max-w-xl mx-auto mb-12">
+          I'm excited about the opportunity to bring my frontend skills, audio technology background,
+          and genuine passion for worship ministry to the MultiTracks team.
+        </p>
+
+        <div class="reveal reveal-delay-2 flex flex-wrap items-center justify-center gap-4">
+          <a href="https://github.com/TTeuber" target="_blank" rel="noopener noreferrer" class="contact-link">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" /></svg>
+            <span class="font-mono text-sm tracking-wider">GitHub</span>
+          </a>
+          <a href="https://www.linkedin.com/in/tyler-teuber/" target="_blank" rel="noopener noreferrer" class="contact-link">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
+            <span class="font-mono text-sm tracking-wider">LinkedIn</span>
+          </a>
+          <a href="mailto:tyler@example.com" class="contact-link">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+            <span class="font-mono text-sm tracking-wider">Email</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative py-8 px-6 border-t border-zinc-800/50 z-10">
+      <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <span class="font-mono text-xs text-zinc-600 tracking-wider">
+          TT<span class="text-zinc-700">::</span>DEV &copy; 2026
+        </span>
+        <span class="font-mono text-[0.6rem] text-zinc-700 tracking-widest uppercase">
+          Built with Astro + Tailwind &mdash; AI-First Workflow
+        </span>
+      </div>
+    </footer>
+  </main>
+</Layout>
+
+<style>
+  /* ========================================
+     GRID BACKGROUND
+     ======================================== */
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(45, 212, 191, 0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(45, 212, 191, 0.015) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* ========================================
+     WAVEFORM BACKGROUND
+     ======================================== */
+  .waveform-bg {
+    background-image: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 8px,
+      rgba(45, 212, 191, 0.3) 8px,
+      rgba(45, 212, 191, 0.3) 9px
+    );
+  }
+
+  /* ========================================
+     SCANLINE OVERLAY
+     ======================================== */
+  .scanline-overlay {
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(45, 212, 191, 0.015) 2px,
+      rgba(45, 212, 191, 0.015) 4px
+    );
+  }
+
+  /* ========================================
+     NAVBAR SCROLLED STATE
+     ======================================== */
+  :global(#navbar).scrolled {
+    background: rgba(10, 10, 15, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom-color: rgba(63, 63, 70, 0.2);
+  }
+
+  /* ========================================
+     EQ BARS
+     ======================================== */
+  .eq-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 16px;
+  }
+  .eq-bars span {
+    display: block;
+    width: 3px;
+    background: rgb(45, 212, 191);
+    border-radius: 1px;
+    animation: eq-dance 0.8s ease-in-out infinite alternate;
+  }
+  .eq-bars span:nth-child(1) { height: 6px; animation-delay: 0s; }
+  .eq-bars span:nth-child(2) { height: 12px; animation-delay: 0.15s; }
+  .eq-bars span:nth-child(3) { height: 8px; animation-delay: 0.3s; }
+  .eq-bars span:nth-child(4) { height: 14px; animation-delay: 0.45s; }
+
+  @keyframes eq-dance {
+    0% { transform: scaleY(0.3); }
+    100% { transform: scaleY(1); }
+  }
+
+  /* ========================================
+     STAT PANELS
+     ======================================== */
+  .stat-panel {
+    background: rgba(24, 24, 27, 0.5);
+    border: 1px solid rgba(63, 63, 70, 0.3);
+    padding: 1rem 1.25rem;
+    position: relative;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .stat-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: rgb(45, 212, 191);
+    opacity: 0.3;
+    transition: opacity 0.3s;
+  }
+  .stat-panel:hover {
+    border-color: rgba(45, 212, 191, 0.15);
+    box-shadow: 0 0 20px rgba(45, 212, 191, 0.03);
+  }
+  .stat-panel:hover::before {
+    opacity: 0.8;
+  }
+
+  /* ========================================
+     PROJECT CARDS
+     ======================================== */
+  .project-card {
+    background: rgba(24, 24, 27, 0.3);
+    border: 1px solid rgba(63, 63, 70, 0.25);
+    transition: border-color 0.4s, box-shadow 0.4s;
+    overflow: hidden;
+  }
+  .project-card:hover {
+    border-color: rgba(45, 212, 191, 0.2);
+    box-shadow:
+      0 0 30px rgba(45, 212, 191, 0.04),
+      0 0 60px rgba(45, 212, 191, 0.02),
+      inset 0 0 30px rgba(45, 212, 191, 0.01);
+  }
+
+  /* ========================================
+     TECH TAGS
+     ======================================== */
+  .tech-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    background: rgba(45, 212, 191, 0.06);
+    border: 1px solid rgba(45, 212, 191, 0.15);
+    color: rgb(45, 212, 191);
+  }
+
+  /* ========================================
+     EXPERIENCE TIMELINE
+     ======================================== */
+  .experience-item {
+    position: relative;
+  }
+  .experience-dot {
+    position: absolute;
+    top: 0.375rem;
+    left: -0.3125rem;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 50%;
+    background: rgba(63, 63, 70, 0.5);
+    border: 2px solid rgba(63, 63, 70, 0.8);
+    z-index: 1;
+  }
+  .experience-dot-active {
+    background: rgba(45, 212, 191, 0.3);
+    border-color: rgb(45, 212, 191);
+    box-shadow: 0 0 8px rgba(45, 212, 191, 0.3);
+  }
+
+  /* ========================================
+     SKILL GROUPS
+     ======================================== */
+  .skill-group {
+    background: rgba(24, 24, 27, 0.3);
+    border: 1px solid rgba(63, 63, 70, 0.2);
+    padding: 1.5rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .skill-group:hover {
+    border-color: rgba(45, 212, 191, 0.15);
+    box-shadow: 0 0 20px rgba(45, 212, 191, 0.03);
+  }
+
+  .skill-item {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: rgb(161, 161, 170);
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(63, 63, 70, 0.15);
+    transition: color 0.2s, padding-left 0.2s;
+  }
+  .skill-item:last-child {
+    border-bottom: none;
+  }
+  .skill-item:hover {
+    color: rgb(45, 212, 191);
+    padding-left: 0.5rem;
+  }
+
+  /* ========================================
+     CONTACT LINKS
+     ======================================== */
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1.5rem;
+    background: rgba(24, 24, 27, 0.5);
+    border: 1px solid rgba(63, 63, 70, 0.3);
+    color: rgb(161, 161, 170);
+    transition: all 0.3s;
+    min-width: 160px;
+    justify-content: center;
+  }
+  .contact-link:hover {
+    border-color: rgba(45, 212, 191, 0.3);
+    color: rgb(45, 212, 191);
+    box-shadow: 0 0 20px rgba(45, 212, 191, 0.06);
+  }
+
+  /* ========================================
+     SCROLL REVEAL ANIMATIONS
+     ======================================== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.15s; }
+  .reveal-delay-2 { transition-delay: 0.3s; }
+  .reveal-delay-3 { transition-delay: 0.45s; }
+
+  /* ========================================
+     SMOOTH SCROLL
+     ======================================== */
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
+<script>
+  // ========================================
+  // SCROLL REVEAL
+  // ========================================
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+  );
+
+  document.querySelectorAll('.reveal').forEach((el) => {
+    revealObserver.observe(el);
+  });
+
+  // ========================================
+  // NAVBAR SCROLL EFFECT
+  // ========================================
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar?.classList.add('scrolled');
+    } else {
+      navbar?.classList.remove('scrolled');
+    }
+  });
+
+  // ========================================
+  // MOBILE MENU TOGGLE
+  // ========================================
+  const mobileToggle = document.getElementById('mobile-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuOpen = mobileToggle?.querySelector('.menu-open');
+  const menuClose = mobileToggle?.querySelector('.menu-close');
+
+  mobileToggle?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+    menuOpen?.classList.toggle('hidden');
+    menuClose?.classList.toggle('hidden');
+  });
+
+  document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+      menuOpen?.classList.remove('hidden');
+      menuClose?.classList.add('hidden');
+    });
+  });
+
+  // ========================================
+  // ACTIVE NAV LINK HIGHLIGHTING
+  // ========================================
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach((link) => {
+            if (link.getAttribute('href') === `#${id}`) {
+              link.classList.add('text-teal-400');
+              link.classList.remove('text-zinc-400');
+            } else {
+              link.classList.remove('text-teal-400');
+              link.classList.add('text-zinc-400');
+            }
+          });
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  sections.forEach((section) => {
+    sectionObserver.observe(section);
+  });
+</script>
