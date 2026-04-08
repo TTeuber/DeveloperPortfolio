@@ -1,43 +1,34 @@
-# Astro Starter Kit: Minimal
+# Tyler Teuber — Portfolio
+
+Personal portfolio site built to showcase my frontend development work, projects, and professional background.
+
+**Live site:** [tylerteuber.com](https://tylerteuber.com) 
+
+## About
+
+A single-page portfolio with scroll-reveal animations, responsive layout, and a clean light theme. Built from scratch — no templates or UI libraries beyond Tailwind for utility classes.
+
+### Highlights
+
+- **Fully responsive** — mobile-first layout with adaptive navigation
+- **Scroll-triggered animations** via Intersection Observer
+- **Semantic HTML** with accessibility considerations (ARIA labels, proper heading hierarchy)
+- **Performance-focused** — static site generation, optimized fonts, minimal JavaScript
+
+## Tech Stack
+
+- **Astro** — static site framework
+- **Tailwind CSS v4** — utility-first styling
+- **TypeScript** — type-safe configuration
+- **Svelte** — available for interactive components when needed
+
+## Running Locally
 
 ```sh
-bun create astro@latest -- --template minimal
+bun install
+bun dev        # localhost:4321
+bun build      # static output to ./dist/
+bun preview    # preview production build
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Requires Node.js >= 22.12.0.
