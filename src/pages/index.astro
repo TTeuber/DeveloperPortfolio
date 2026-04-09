@@ -152,7 +152,10 @@ import YouTubeDemo from '../components/YouTubeDemo.svelte';
             <span class="timeline-meta">Coding Mind &middot; Redmond, WA</span>
           </div>
           <span class="timeline-date">Aug 2024 — Present</span>
-          <p>Teach Python, JavaScript, and C++ to students of varying skill levels. Led teaching and student development of <a href="https://playerpathwayproject.org" target="_blank" rel="noopener">playerpathwayproject.org</a> using TypeScript, React, Tailwind CSS on the frontend with Nest.js and Prisma on the backend.</p>
+          <ul>
+            <li>Teach Python, JavaScript, and C++ to students of varying skill levels</li>
+            <li>Led teaching and student development of <a href="https://playerpathwayproject.org" target="_blank" rel="noopener">playerpathwayproject.org</a> using TypeScript, React, Tailwind CSS on the frontend with Nest.js and Prisma on the backend</li>
+          </ul>
         </div>
       </div>
 
@@ -164,7 +167,11 @@ import YouTubeDemo from '../components/YouTubeDemo.svelte';
             <span class="timeline-meta">Kill That Noise &middot; Remote</span>
           </div>
           <span class="timeline-date">Jun — Oct 2023</span>
-          <p>Led a team of 5 interns through a WordPress-to-Next.js migration. Worked in an Agile environment with sprint planning and code reviews. Integrated REST APIs and improved site performance.</p>
+          <ul>
+            <li>Led a team of 5 interns through a WordPress-to-Next.js migration</li>
+            <li>Worked in an Agile environment with sprint planning and code reviews</li>
+            <li>Integrated REST APIs and improved site performance</li>
+          </ul>
         </div>
       </div>
 
@@ -176,7 +183,10 @@ import YouTubeDemo from '../components/YouTubeDemo.svelte';
             <span class="timeline-meta">DeveloperDB &middot; Remote</span>
           </div>
           <span class="timeline-date">Sep — Dec 2022</span>
-          <p>Built automated scraping pipelines with Selenium to collect 10,000+ developer profiles. Processed and cleaned datasets using Pandas for analysis and reporting.</p>
+          <ul>
+            <li>Built automated scraping pipelines with Selenium to collect 10,000+ developer profiles</li>
+            <li>Processed and cleaned datasets using Pandas for analysis and reporting</li>
+          </ul>
         </div>
       </div>
 
@@ -792,6 +802,23 @@ import YouTubeDemo from '../components/YouTubeDemo.svelte';
     line-height: 1.7;
     color: #52525B;
     margin: 0;
+  }
+
+  .timeline-content ul {
+    margin: 0;
+    padding-left: 20px;
+    list-style: disc;
+  }
+
+  .timeline-content li {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: #52525B;
+    margin-bottom: 4px;
+  }
+
+  .timeline-content li:last-child {
+    margin-bottom: 0;
   }
 
   .timeline-content a {
