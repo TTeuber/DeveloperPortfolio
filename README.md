@@ -6,7 +6,7 @@ Personal portfolio site built to showcase my frontend development work, projects
 
 ## About
 
-A single-page portfolio with scroll-reveal animations, responsive layout, and a clean light theme. Built from scratch — no templates or UI libraries beyond Tailwind for utility classes.
+A single-page portfolio with scroll-reveal animations, responsive layout, and a clean light theme. Built from scratch — no templates or UI libraries.
 
 ### Highlights
 
@@ -18,7 +18,7 @@ A single-page portfolio with scroll-reveal animations, responsive layout, and a 
 ## Tech Stack
 
 - **Astro** — static site framework
-- **Tailwind CSS v4** — utility-first styling
+- **Sass** — CSS preprocessor for styling
 - **TypeScript** — type-safe configuration
 - **Svelte** — available for interactive components when needed
 

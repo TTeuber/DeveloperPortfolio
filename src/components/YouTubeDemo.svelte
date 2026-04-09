@@ -20,7 +20,7 @@
   </div>
 </div>
 
-<style>
+<style lang="scss">
   .youtube-demo {
     width: 100%;
     margin-top: -48px;

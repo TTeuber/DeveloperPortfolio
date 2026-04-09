@@ -9,7 +9,7 @@
   </svg>
 </button>
 
-<style>
+<style lang="scss">
   .project-btn {
     display: inline-flex;
     align-items: center;
