@@ -51,7 +51,7 @@
 
   .video-card iframe {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    height: clamp(280px, 70vh, 600px);
     border-radius: 10px;
     display: block;
   }
