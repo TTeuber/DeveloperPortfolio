@@ -4,14 +4,13 @@ import DemoButton from '../components/DemoButton.svelte';
 import YouTubeDemo from '../components/YouTubeDemo.svelte';
 ---
 
-<Layout title="Tyler Teuber | MultiTracks Application" description="Frontend Developer application for MultiTracks.com — worship technology, audio engineering, and modern web development.">
+<Layout title="Tyler Teuber | Software Developer" description="Software developer building thoughtful, well-crafted software.">
 
 <!-- Fixed Navigation -->
 <nav id="navbar">
   <div class="nav-inner">
     <a href="#hero" class="nav-logo">TT</a>
     <div class="nav-links" id="navLinks">
-      <a href="#letter">Why MultiTracks</a>
       <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
@@ -27,7 +26,6 @@ import YouTubeDemo from '../components/YouTubeDemo.svelte';
 
 <!-- Mobile Menu Overlay -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#letter" class="mobile-link">Why MultiTracks</a>
   <a href="#projects" class="mobile-link">Projects</a>
   <a href="#experience" class="mobile-link">Experience</a>
   <a href="#skills" class="mobile-link">Skills</a>
@@ -37,30 +35,14 @@ import YouTubeDemo from '../components/YouTubeDemo.svelte';
 <!-- Hero -->
 <section id="hero">
   <div class="hero-content reveal">
-    <span class="label">Application for Frontend Developer</span>
+    <span class="label">Software Developer</span>
     <h1>Tyler Teuber</h1>
-    <p class="subtitle">Frontend Developer &middot; Worship Guitarist &middot; Audio Tech</p>
-    <p class="tagline">Building technology that serves the church — because I set up MultiTracks at mine.</p>
+    <p class="subtitle">Building thoughtful, well-crafted software.</p>
     <div class="portrait-wrap">
       <img src="/Images/Portrait.jpg" alt="Tyler Teuber" class="portrait" />
     </div>
     <div class="hero-ctas">
       <a href="#projects" class="btn btn-primary">See My Work</a>
-      <a href="#letter" class="btn btn-secondary">Why MultiTracks?</a>
-    </div>
-  </div>
-</section>
-
-<!-- Personal Letter -->
-<section id="letter">
-  <div class="container narrow reveal">
-    <span class="section-label">A Note to the Team</span>
-    <h2>Why MultiTracks</h2>
-    <div class="letter-body">
-      <p>When I joined my church plant, they weren't using MultiTracks. I saw how it would improve our worship experience, so I advocated for adding it and personally implemented it — integrating Playback with Planning Center and ProPresenter. Over a year later, our team relies on Playback, ChartBuilder, and RehearsalMix every week, and we love it. I know your products because I use them every Sunday.</p>
-      <p>That experience of implementing MultiTracks at my church showed me something: the best tools don't demand attention, they quietly remove friction so people can focus on what matters. I saw it again when I built the Sermon Slide Generator for our staff — a tool that turns sermon notes into formatted PDF slides in seconds, replacing hours of manual work. Watching purposeful software give people their time back is exactly what draws me to MultiTracks' mission.</p>
-      <p>I play electric guitar on the worship team and volunteer on the tech team, especially audio. So I understand the end user deeply — I know what it feels like to be setting up Sunday morning and need technology that just works. Beyond that, I'm genuinely excited by MultiTracks' emphasis on Agentic Coding and AI-first development. That's already my daily workflow — I build with Claude Code every day, and I see enormous potential in applying those patterns to worship technology.</p>
-      <p>I want to bring my unique intersection of audio technology, frontend development, and hands-on MultiTracks experience to help your team continue delivering tools that serve worship teams around the world.</p>
     </div>
   </div>
 </section>
@@ -71,26 +53,6 @@ import YouTubeDemo from '../components/YouTubeDemo.svelte';
     <span class="section-label">Selected Work</span>
     <h2>Projects</h2>
     <div class="projects-grid">
-
-      <!-- Sermon Slide Generator -->
-      <div class="project-card reveal">
-        <div class="project-image">
-          <img src="/Images/SermonSlides/SermonSlides.png" alt="Sermon Slide Generator" />
-        </div>
-        <div class="project-info">
-          <h3>Sermon Slide Generator</h3>
-          <p class="project-context">Built for The Redemption Church</p>
-          <p>A tool that transforms raw sermon notes into polished, branded slide presentations in seconds. Built to solve a real pain point for our church media team — replacing hours of manual formatting with a single automated workflow. The Python backend parses sermon structure and applies consistent styling, while the web frontend provides an intuitive interface for non-technical volunteers.</p>
-          <div class="tags">
-            <span class="tag">Python</span>
-            <span class="tag">HTML</span>
-            <span class="tag">CSS</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">Automation</span>
-          </div>
-          <a href="https://github.com/TTeuber/Sermon_Slides_Generator" target="_blank" rel="noopener noreferrer" class="project-btn">See Code</a>
-        </div>
-      </div>
 
       <!-- Synthesizer VST -->
       <div class="project-card reveal">
@@ -112,6 +74,29 @@ import YouTubeDemo from '../components/YouTubeDemo.svelte';
         </div>
       </div>
       <YouTubeDemo client:load />
+
+      <!-- Retro Arcade SFX Gen -->
+      <div class="project-card reveal">
+        <div class="project-image">
+          <img src="/Images/ArcadeFX/ArcadeFX.png" alt="Retro Arcade SFX Gen" />
+        </div>
+        <div class="project-info">
+          <h3>Retro Arcade SFX Gen</h3>
+          <p class="project-context">Browser-Based Synth + Built for Students</p>
+          <p>A browser-based 8-bit sound effects generator inspired by classic arcade machines. A dual-oscillator synth engine with AD envelopes and a vibrato LFO produces the pitch sweeps and gritty impacts that define the genre; presets and a randomizer get you close fast, then offline rendering exports the patch as a 16-bit PCM WAV. Built for my students whose Pygame and Scratch games kept ending up silent.</p>
+          <div class="tags">
+            <span class="tag">React</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Tone.js</span>
+            <span class="tag">Web Audio</span>
+            <span class="tag">Tailwind</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://tteuber.github.io/ArcadeSoundFX/" target="_blank" rel="noopener noreferrer" class="project-btn">Live Demo</a>
+            <a href="https://github.com/TTeuber/ArcadeSoundFX" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-outline">See Code</a>
+          </div>
+        </div>
+      </div>
 
       <!-- Content Blocker -->
       <div class="project-card reveal">
@@ -244,10 +229,6 @@ import YouTubeDemo from '../components/YouTubeDemo.svelte';
       </div>
 
     </div>
-    <div class="callout reveal">
-      <span class="callout-icon">&#9836;</span>
-      <span>Volunteer Audio Tech & Worship Musician</span>
-    </div>
   </div>
 </section>
 
@@ -256,7 +237,7 @@ import YouTubeDemo from '../components/YouTubeDemo.svelte';
   <div class="container narrow reveal">
     <span class="section-label">Get in Touch</span>
     <h2>Let's Connect</h2>
-    <p class="contact-text">I'd love to talk about how I can contribute to the MultiTracks team. Reach out anytime.</p>
+    <p class="contact-text">Open to software roles. I'd love to hear about what you're building.</p>
     <div class="contact-links">
       <a href="https://github.com/TTeuber" target="_blank" rel="noopener" class="contact-card">
         <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -279,735 +260,6 @@ import YouTubeDemo from '../components/YouTubeDemo.svelte';
 </footer>
 
 </Layout>
-
-<style lang="scss">
-  /* ========== BASE ========== */
-  :global(body) {
-    margin: 0;
-    padding: 0;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #FAFAF8;
-    color: #18181B;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    scroll-behavior: smooth;
-  }
-
-  :global(*) {
-    box-sizing: border-box;
-  }
-
-  :global(html) {
-    scroll-behavior: smooth;
-  }
-
-  .container {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-
-  .container.narrow {
-    max-width: 720px;
-  }
-
-  .section-label {
-    display: inline-block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #3730A3;
-    margin-bottom: 12px;
-  }
-
-  h2 {
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 0 0 48px 0;
-    color: #18181B;
-    letter-spacing: -0.02em;
-  }
-
-  section {
-    padding: 96px 0;
-  }
-
-  a {
-    color: #3730A3;
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-
-  a:hover {
-    color: #4338CA;
-  }
-
-  /* ========== REVEAL ANIMATION ========== */
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ========== NAVIGATION ========== */
-  #navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    background: rgba(250, 250, 248, 0.85);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-    transition: box-shadow 0.3s ease;
-  }
-
-  #navbar.scrolled {
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
-  }
-
-  .nav-inner {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 0 24px;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .nav-logo {
-    font-weight: 700;
-    font-size: 1.125rem;
-    color: #18181B;
-    letter-spacing: -0.02em;
-  }
-
-  .nav-logo:hover {
-    color: #3730A3;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 32px;
-  }
-
-  .nav-links a {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: #52525B;
-    transition: color 0.2s ease;
-  }
-
-  .nav-links a:hover {
-    color: #18181B;
-  }
-
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
-  }
-
-  .hamburger span {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background: #18181B;
-    border-radius: 1px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-  }
-
-  .hamburger.open span:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
-  }
-
-  .hamburger.open span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .hamburger.open span:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
-  }
-
-  .mobile-menu {
-    position: fixed;
-    top: 64px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(250, 250, 248, 0.98);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    z-index: 99;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 32px;
-  }
-
-  .mobile-menu.open {
-    display: flex;
-  }
-
-  .mobile-link {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #18181B;
-  }
-
-  /* ========== HERO ========== */
-  #hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 120px 24px 96px;
-  }
-
-  .hero-content {
-    max-width: 640px;
-  }
-
-  .label {
-    display: inline-block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #3730A3;
-    background: rgba(55, 48, 163, 0.06);
-    padding: 6px 16px;
-    border-radius: 100px;
-    margin-bottom: 24px;
-  }
-
-  #hero h1 {
-    font-size: 3.5rem;
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    margin: 0 0 12px 0;
-    color: #18181B;
-    line-height: 1.1;
-  }
-
-  .subtitle {
-    font-size: 1.125rem;
-    font-weight: 400;
-    color: #52525B;
-    margin: 0 0 16px 0;
-  }
-
-  .tagline {
-    font-size: 1rem;
-    color: #71717A;
-    font-style: italic;
-    margin: 0 0 40px 0;
-    line-height: 1.6;
-  }
-
-  .portrait-wrap {
-    margin: 0 auto 40px;
-    width: 160px;
-    height: 160px;
-  }
-
-  .portrait {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #fff;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-  }
-
-  .hero-ctas {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    padding: 12px 28px;
-    border-radius: 10px;
-    font-size: 0.9375rem;
-    font-weight: 600;
-    transition: all 0.2s ease;
-    cursor: pointer;
-    border: none;
-  }
-
-  .btn-primary {
-    background: #3730A3;
-    color: #fff;
-  }
-
-  .btn-primary:hover {
-    background: #4338CA;
-    color: #fff;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(55, 48, 163, 0.25);
-  }
-
-  .btn-secondary {
-    background: #fff;
-    color: #3730A3;
-    border: 1px solid rgba(55, 48, 163, 0.2);
-  }
-
-  .btn-secondary:hover {
-    background: rgba(55, 48, 163, 0.04);
-    color: #3730A3;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  }
-
-  /* ========== LETTER ========== */
-  #letter {
-    background: #fff;
-    border-top: 1px solid rgba(0, 0, 0, 0.04);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-  }
-
-  .letter-body p {
-    font-size: 1.0625rem;
-    line-height: 1.75;
-    color: #3F3F46;
-    margin: 0 0 20px 0;
-  }
-
-  .letter-body p:last-child {
-    margin-bottom: 0;
-  }
-
-  /* ========== PROJECTS ========== */
-  .projects-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
-  }
-
-  .project-card {
-    background: #fff;
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-  }
-
-  .project-card:hover {
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-    transform: translateY(-2px);
-  }
-
-  .project-image {
-    overflow: hidden;
-    background: #F4F4F5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 280px;
-  }
-
-  .project-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-  }
-
-  .project-card:hover .project-image img {
-    transform: scale(1.03);
-  }
-
-  .project-info {
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .project-info h3 {
-    font-size: 1.375rem;
-    font-weight: 700;
-    margin: 0 0 4px 0;
-    color: #18181B;
-    letter-spacing: -0.01em;
-  }
-
-  .project-context {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: #E11D48;
-    margin: 0 0 16px 0;
-    letter-spacing: 0.02em;
-  }
-
-  .project-info p {
-    font-size: 0.9375rem;
-    line-height: 1.7;
-    color: #52525B;
-    margin: 0 0 20px 0;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.6875rem;
-    font-weight: 500;
-    padding: 4px 12px;
-    background: #F4F4F5;
-    color: #52525B;
-    border-radius: 6px;
-    letter-spacing: 0.02em;
-  }
-
-  .project-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.8125rem;
-    font-weight: 600;
-    padding: 10px 20px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s ease, transform 0.15s ease;
-    background: #3730A3;
-    color: #fff;
-    text-decoration: none;
-    margin-top: 16px;
-    width: fit-content;
-  }
-
-  .project-btn:hover {
-    background: #312E81;
-    transform: translateY(-1px);
-  }
-
-  /* ========== EXPERIENCE ========== */
-  #experience {
-    background: #fff;
-    border-top: 1px solid rgba(0, 0, 0, 0.04);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-  }
-
-  .timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    position: relative;
-    padding-left: 32px;
-  }
-
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 7px;
-    top: 8px;
-    bottom: 8px;
-    width: 1px;
-    background: rgba(0, 0, 0, 0.08);
-  }
-
-  .timeline-item {
-    position: relative;
-    padding-bottom: 48px;
-  }
-
-  .timeline-item:last-child {
-    padding-bottom: 0;
-  }
-
-  .timeline-marker {
-    position: absolute;
-    left: -32px;
-    top: 8px;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background: #FAFAF8;
-    border: 2px solid #3730A3;
-  }
-
-  #experience .timeline-marker {
-    background: #fff;
-  }
-
-  .timeline-content {
-    padding: 0;
-  }
-
-  .timeline-header {
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-bottom: 4px;
-  }
-
-  .timeline-header h3 {
-    font-size: 1.125rem;
-    font-weight: 700;
-    margin: 0;
-    color: #18181B;
-  }
-
-  .timeline-meta {
-    font-size: 0.875rem;
-    color: #71717A;
-  }
-
-  .timeline-date {
-    display: inline-block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: #3730A3;
-    margin-bottom: 12px;
-    letter-spacing: 0.02em;
-  }
-
-  .timeline-content p {
-    font-size: 0.9375rem;
-    line-height: 1.7;
-    color: #52525B;
-    margin: 0;
-  }
-
-  .timeline-content ul {
-    margin: 0;
-    padding-left: 20px;
-    list-style: disc;
-  }
-
-  .timeline-content li {
-    font-size: 0.9375rem;
-    line-height: 1.7;
-    color: #52525B;
-    margin-bottom: 4px;
-  }
-
-  .timeline-content li:last-child {
-    margin-bottom: 0;
-  }
-
-  .timeline-content a {
-    color: #3730A3;
-    text-decoration: underline;
-    text-decoration-color: rgba(55, 48, 163, 0.3);
-    text-underline-offset: 2px;
-  }
-
-  .timeline-content a:hover {
-    text-decoration-color: #3730A3;
-  }
-
-  /* ========== SKILLS ========== */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    margin-bottom: 40px;
-  }
-
-  .skill-group {
-    background: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    border-radius: 12px;
-    padding: 28px 24px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
-  }
-
-  .skill-group h3 {
-    font-size: 0.8125rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: #3730A3;
-    margin: 0 0 16px 0;
-  }
-
-  .skill-items {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .skill-items span {
-    font-size: 0.9375rem;
-    color: #3F3F46;
-    font-weight: 500;
-  }
-
-  .callout {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: rgba(55, 48, 163, 0.04);
-    border: 1px solid rgba(55, 48, 163, 0.1);
-    border-radius: 10px;
-    padding: 16px 24px;
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: #3730A3;
-  }
-
-  .callout-icon {
-    font-size: 1.25rem;
-  }
-
-  /* ========== CONTACT ========== */
-  #contact {
-    text-align: center;
-    background: #fff;
-    border-top: 1px solid rgba(0, 0, 0, 0.04);
-  }
-
-  .contact-text {
-    font-size: 1.0625rem;
-    color: #52525B;
-    line-height: 1.7;
-    margin: -24px 0 40px 0;
-  }
-
-  .contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-
-  .contact-card {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 14px 28px;
-    background: #FAFAF8;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    border-radius: 12px;
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: #18181B;
-    transition: all 0.2s ease;
-  }
-
-  .contact-card:hover {
-    color: #3730A3;
-    border-color: rgba(55, 48, 163, 0.2);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-    transform: translateY(-1px);
-  }
-
-  .contact-card svg {
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-  }
-
-  /* ========== FOOTER ========== */
-  footer {
-    text-align: center;
-    padding: 40px 24px;
-    border-top: 1px solid rgba(0, 0, 0, 0.04);
-  }
-
-  footer p {
-    font-size: 0.8125rem;
-    color: #A1A1AA;
-    margin: 0;
-  }
-
-  /* ========== RESPONSIVE ========== */
-  @media (max-width: 900px) {
-    .skills-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .project-card {
-      grid-template-columns: 1fr;
-    }
-
-    .project-image {
-      min-height: 220px;
-      max-height: 280px;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .nav-links {
-      display: none;
-    }
-
-    .hamburger {
-      display: flex;
-    }
-
-    #hero h1 {
-      font-size: 2.5rem;
-    }
-
-    h2 {
-      font-size: 1.625rem;
-    }
-
-    section {
-      padding: 64px 0;
-    }
-
-    .project-info {
-      padding: 24px;
-    }
-
-    .skills-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .timeline-header {
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .hero-ctas {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .contact-links {
-      flex-direction: column;
-      align-items: center;
-    }
-  }
-</style>
 
 <script>
   // Scroll reveal
