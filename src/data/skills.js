@@ -40,6 +40,7 @@ export const skillGroups = [
       { name: 'JUCE', filter: 'JUCE' },
       { name: 'DSP', filter: 'DSP' },
       { name: 'Web Audio', filter: 'Web Audio' },
+      { name: 'LVGL', filter: 'LVGL' },
       { name: 'Jetpack Compose', filter: 'Jetpack Compose' },
       { name: 'Electron', filter: 'Electron' },
     ],

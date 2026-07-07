@@ -4,6 +4,36 @@
 
 export const projects = [
   {
+    id: 'pistomp-pedalboard',
+    title: 'Pistomp Pedalboard',
+    context: 'Embedded Real-Time Audio',
+    description:
+      'A live multi-effect guitar pedalboard in C++17 for the pi-Stomp hardware (Raspberry Pi 5), built for worship-service use. One binary drives the whole instrument: 30+ JUCE-based effects plus a Neural Amp Modeler running in real time, an on-device LVGL screen UI, and a phone-friendly Svelte web control surface kept in sync over Server-Sent Events. The audio thread never takes a lock — chain edits publish through an epoch-based RCU scheme so effects can be added and reordered mid-performance without a click, verified by sanitizer-swept stress tests in CI. The whole app also runs as a macOS desktop simulator, so it can be developed without touching the Pi.',
+    image: null,
+    tags: ['C++', 'JUCE', 'Svelte', 'LVGL', 'Embedded'],
+    languages: ['C++'],
+    areas: ['Audio & DSP', 'Systems'],
+    links: {
+      code: 'https://github.com/TTeuber/PistompPedalboard',
+    },
+    accent: 10,
+  },
+  {
+    id: 'pistomp-hal',
+    title: 'Pistomp HAL',
+    context: 'C++ Library + Hardware Drivers',
+    description:
+      'A JUCE-free C++17 hardware abstraction layer for the pi-Stomp guitar-pedal platform, extracted from the Pistomp Pedalboard project and consumed by it as a tagged CMake dependency. It packages rotary encoders, footswitches, NeoPixel LEDs, an ILI9341/LVGL display, and a realtime ALSA duplex audio loop behind clean headers — the board object owns the shared SPI mutex and vends fully-wired controls, so a consumer can never forget the lock and corrupt the bus. The same headers are backed by a macOS simulator (LVGL in an SDL2 window, CoreAudio, keyboard controls), so an entire pedal app can run with no Pi attached.',
+    image: null,
+    tags: ['C++', 'ALSA', 'LVGL', 'CMake', 'Embedded'],
+    languages: ['C++'],
+    areas: ['Systems', 'Audio & DSP'],
+    links: {
+      code: 'https://github.com/TTeuber/pistomp-hal',
+    },
+    accent: 105,
+  },
+  {
     id: 'gesture-synth',
     title: 'Gesture Synth',
     context: 'Audio DSP + Creative UI',
