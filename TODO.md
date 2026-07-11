@@ -44,22 +44,23 @@ than an equivalent muted looping video.
 
 ## Polish / later (me, on request)
 
-- [ ] **favicon.ico is still the old Astro logo** — the SVG favicon is now an amber
-      waveform; regenerate the .ico to match (or drop it; modern browsers use the SVG)
-- [ ] **Social/OG image** — currently your portrait; a proper 1200×630 card with the
-      waveform branding would look much better in link previews
-- [ ] **Image optimization** — images live in `public/` and bypass Astro's asset pipeline;
-      moving to `src/assets` + `<Image>` would give responsive sizes and modern formats
-- [ ] **Per-project detail pages** — shareable URLs + room for deep write-ups (the card
-      descriptions are intentionally short now); good SEO win if you want it
-- [ ] **Video modal focus trap** — Escape and backdrop-click work, but keyboard focus
-      isn't trapped inside the modal
-- [ ] **README.md** still describes the old site
+All done (July 2026):
+
+- [x] **favicon.ico** — regenerated from the amber waveform SVG (16/32/48 px)
+- [x] **Social/OG image** — branded 1200×630 card at `public/Images/og-card.png`;
+      `Layout.astro` now uses it with `summary_large_image`
+- [x] **Image optimization** — static images moved to `src/assets` and served as
+      responsive WebP via Astro's pipeline; the two GIFs stay in `public/` (the pipeline
+      would flatten their animation — they're due to become `<video>` anyway, see above)
+- [x] **Per-project detail pages** — `/projects/<id>` built from a new `details` field in
+      `projects.js`; cards link via title + "Read More"
+- [x] **Video modal focus trap** — Tab/Shift+Tab now cycle inside the dialog, and focus
+      returns to the triggering button on close
+- [x] **README.md** rewritten for the new site
 
 ## Housekeeping notes
 
-- The MultiTracks page and its components (`DemoButton`, `YouTubeDemo`, `demoState`) are
-  deleted — the deletions are **staged in git** but not committed
+- The July 2026 redesign (including the MultiTracks page removal) is committed
 - Deleted the empty `site/` directory and the `.DS_Store` files in `public/` (they were
   being deployed; `.gitignore` already covers them)
 - After deploying: check the live site on your phone, and re-share the URL somewhere
