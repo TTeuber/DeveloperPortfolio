@@ -6,7 +6,10 @@ interface Props {
   description?: string;
 }
 
-const { title = "Tyler Teuber | Software Developer", description = "Software developer portfolio showcasing projects in audio technology, web development, and creative coding." } = Astro.props;
+const {
+  title = "Tyler Teuber | Software Engineer",
+  description = "Software engineer building across the whole signal chain — real-time C++ audio DSP, full-stack web apps, and AI-powered tools.",
+} = Astro.props;
 ---
 
 <html lang="en">
@@ -24,10 +27,10 @@ const { title = "Tyler Teuber | Software Developer", description = "Software dev
     <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
     <meta property="og:image" content={new URL('/Images/Portrait.jpg', Astro.site)} />
     <meta name="twitter:card" content="summary" />
-    <meta name="theme-color" content="#FAFAF8" />
+    <meta name="theme-color" content="#131009" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
     <title>{title}</title>
   </head>
   <body>

@@ -64,25 +64,37 @@
     {/if}
   </div>
   <p class="filter-count" aria-live="polite">
-    {filtered.length === projects.length ? `All ${projects.length} projects` : `${filtered.length} of ${projects.length} projects`}
+    {filtered.length === projects.length ? `ALL ${projects.length} PROJECTS` : `${filtered.length} OF ${projects.length} PROJECTS`}
   </p>
 </div>
 
 <div class="pgrid">
   {#each filtered as project (project.id)}
-    <article class="pcard" animate:flip={{ duration: 350 }} transition:scale={{ duration: 250, start: 0.96 }}>
-      <div class="pcard-media" style={`--accent: ${project.accent}`}>
+    <article
+      class="pcard"
+      class:featured={project.featured}
+      style={`--h: ${project.accent}`}
+      animate:flip={{ duration: 350 }}
+      transition:scale={{ duration: 250, start: 0.96 }}
+    >
+      <div class="pcard-media">
         {#if project.image}
-          <img src={project.image} alt={project.title} loading="lazy" />
+          <img src={project.image} alt={`${project.title} screenshot`} loading="lazy" />
         {:else}
           <div class="pcard-placeholder" aria-hidden="true">
-            <span>{initials(project.title)}</span>
+            <span class="ph-initials">{initials(project.title)}</span>
+            <svg class="ph-wave" viewBox="0 0 200 32" fill="none" preserveAspectRatio="none">
+              <path d="M0 16h24l4-8 5 14 4-9 4 6 4-3h22l4-12 5 22 4-16 4 10 4-4h26l4-6 5 10 4-4h24l4-10 5 18 4-13 4 8 4-3h24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            {#if project.mediaPlanned}
+              <span class="ph-chip">MEDIA IN PRODUCTION</span>
+            {/if}
           </div>
         {/if}
       </div>
       <div class="pcard-body">
+        <p class="pcard-context"><span class="pcard-led" aria-hidden="true"></span>{project.context}</p>
         <h3>{project.title}</h3>
-        <p class="pcard-context">{project.context}</p>
         <p class="pcard-desc">{project.description}</p>
         <div class="tags">
           {#each project.tags as tag}
@@ -138,7 +150,7 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-bottom: 40px;
+    margin-bottom: 44px;
   }
 
   .filter-row {
@@ -149,44 +161,47 @@
   }
 
   .filter-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 0.6875rem;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #a1a1aa;
+    letter-spacing: 0.1em;
+    color: var(--text-faint);
     width: 76px;
     flex-shrink: 0;
   }
 
   .chip {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 0.75rem;
     font-weight: 500;
     padding: 6px 14px;
-    border-radius: 100px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    background: #fff;
-    color: #52525b;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    color: var(--text-dim);
     cursor: pointer;
-    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 2px 3px rgba(0, 0, 0, 0.3);
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 
     &:hover {
-      border-color: rgba(55, 48, 163, 0.4);
-      color: #3730a3;
+      border-color: var(--amber-dim);
+      color: var(--amber);
     }
 
     &.active {
-      background: #3730a3;
-      border-color: #3730a3;
-      color: #fff;
+      background: var(--amber);
+      border-color: var(--amber);
+      color: var(--bg);
+      box-shadow: 0 0 14px var(--amber-glow), inset 0 1px 0 rgba(255, 255, 255, 0.25);
     }
   }
 
   .filter-count {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    color: #a1a1aa;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    color: var(--text-faint);
     margin: 0;
     padding-left: 84px;
   }
@@ -194,22 +209,23 @@
   /* ---- Card grid ---- */
   .pgrid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
-    gap: 28px;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+    gap: 24px;
   }
 
   .pcard {
-    background: #fff;
-    border-radius: 16px;
+    background: var(--panel);
+    border-radius: 14px;
     overflow: hidden;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    border: 1px solid var(--line);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
     display: flex;
     flex-direction: column;
 
     &:hover {
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+      border-color: hsl(var(--h), 40%, 40%);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 24px hsla(var(--h), 70%, 55%, 0.1);
       transform: translateY(-2px);
 
       .pcard-media img {
@@ -218,10 +234,39 @@
     }
   }
 
+  // Featured cards span the full row and lay out horizontally on wide screens.
+  .pcard.featured {
+    grid-column: 1 / -1;
+
+    @media (min-width: 861px) {
+      flex-direction: row;
+
+      .pcard-media {
+        width: 52%;
+        flex-shrink: 0;
+        aspect-ratio: auto;
+        min-height: 340px;
+      }
+
+      .pcard-body {
+        padding: 36px 40px;
+      }
+
+      h3 {
+        font-size: 1.75rem;
+      }
+
+      .pcard-desc {
+        font-size: 0.9375rem;
+      }
+    }
+  }
+
   .pcard-media {
     aspect-ratio: 16 / 10;
     overflow: hidden;
-    background: #f4f4f5;
+    background: var(--bg-deep);
+    border-bottom: 1px solid var(--line);
 
     img {
       width: 100%;
@@ -231,55 +276,101 @@
     }
   }
 
-  .pcard-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(
-      135deg,
-      hsl(var(--accent), 45%, 96%),
-      hsl(var(--accent), 42%, 87%)
-    );
-
-    span {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 2.75rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      color: hsl(var(--accent), 45%, 45%);
+  .pcard.featured .pcard-media {
+    @media (min-width: 861px) {
+      border-bottom: none;
+      border-right: 1px solid var(--line);
     }
   }
 
+  /* Faceplate placeholder: brushed-panel gradient, corner screws, waveform trace */
+  .pcard-placeholder {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    background:
+      radial-gradient(circle 3px at 16px 16px, hsl(var(--h), 12%, 22%) 0 2.5px, transparent 3px),
+      radial-gradient(circle 3px at calc(100% - 16px) 16px, hsl(var(--h), 12%, 22%) 0 2.5px, transparent 3px),
+      radial-gradient(circle 3px at 16px calc(100% - 16px), hsl(var(--h), 12%, 22%) 0 2.5px, transparent 3px),
+      radial-gradient(circle 3px at calc(100% - 16px) calc(100% - 16px), hsl(var(--h), 12%, 22%) 0 2.5px, transparent 3px),
+      linear-gradient(160deg, hsl(var(--h), 18%, 14%), hsl(var(--h), 24%, 9%));
+  }
+
+  .ph-initials {
+    font-family: var(--font-mono);
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: hsl(var(--h), 45%, 62%);
+    text-shadow: 0 0 24px hsla(var(--h), 70%, 55%, 0.35);
+  }
+
+  .ph-wave {
+    width: min(200px, 70%);
+    height: 32px;
+    color: hsl(var(--h), 40%, 45%);
+    opacity: 0.6;
+  }
+
+  .ph-chip {
+    position: absolute;
+    bottom: 14px;
+    font-family: var(--font-mono);
+    font-size: 0.5625rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: hsl(var(--h), 35%, 60%);
+    border: 1px solid hsla(var(--h), 35%, 55%, 0.35);
+    border-radius: 100px;
+    padding: 4px 12px;
+  }
+
   .pcard-body {
-    padding: 28px;
+    padding: 26px 28px 28px;
     display: flex;
     flex-direction: column;
     flex: 1;
 
     h3 {
-      font-size: 1.25rem;
+      font-size: 1.375rem;
       font-weight: 700;
-      margin: 0 0 4px 0;
-      color: #18181b;
+      margin: 0 0 10px 0;
+      color: var(--text);
       letter-spacing: -0.01em;
     }
   }
 
   .pcard-context {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
     font-weight: 500;
-    color: #e11d48;
-    margin: 0 0 14px 0;
-    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin: 0 0 12px 0;
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .pcard-led {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: hsl(var(--h), 75%, 62%);
+    box-shadow: 0 0 8px hsla(var(--h), 85%, 60%, 0.8);
   }
 
   .pcard-desc {
     font-size: 0.9rem;
     line-height: 1.7;
-    color: #52525b;
+    color: var(--text-dim);
     margin: 0 0 18px 0;
     flex: 1;
   }
@@ -289,7 +380,7 @@
     position: fixed;
     inset: 0;
     z-index: 200;
-    background: rgba(24, 24, 27, 0.72);
+    background: rgba(10, 8, 5, 0.8);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     display: flex;
@@ -300,9 +391,11 @@
 
   .modal {
     width: min(960px, 100%);
-    background: #fff;
-    border-radius: 16px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
     padding: 12px 16px 16px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
   }
 
   .modal-header {
@@ -313,28 +406,29 @@
   }
 
   .modal-title {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 0.8125rem;
     font-weight: 600;
-    color: #18181b;
+    color: var(--text);
   }
 
   .modal-close {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    border: none;
-    background: #f4f4f5;
-    color: #18181b;
+    border: 1px solid var(--line);
+    background: var(--bg-deep);
+    color: var(--text);
     font-size: 0.875rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.15s ease;
+    transition: background 0.15s ease, color 0.15s ease;
 
     &:hover {
-      background: #e4e4e7;
+      background: var(--amber);
+      color: var(--bg);
     }
   }
 

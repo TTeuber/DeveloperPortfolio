@@ -1,51 +1,38 @@
 ---
 import Layout from '../Layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
 import ProjectsGrid from '../components/ProjectsGrid.svelte';
 import { filterableTags } from '../data/projects.js';
 import { skillGroups } from '../data/skills.js';
 ---
 
-<Layout title="Tyler Teuber | Software Developer" description="Software developer building thoughtful, well-crafted software.">
+<Layout>
 
-<!-- Fixed Navigation -->
-<nav id="navbar">
-  <div class="nav-inner">
-    <a href="#hero" class="nav-logo">TT</a>
-    <div class="nav-links" id="navLinks">
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </div>
-</nav>
-
-<!-- Mobile Menu Overlay -->
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#projects" class="mobile-link">Projects</a>
-  <a href="#experience" class="mobile-link">Experience</a>
-  <a href="#skills" class="mobile-link">Skills</a>
-  <a href="#contact" class="mobile-link">Contact</a>
-</div>
+<Nav />
 
 <!-- Hero -->
 <section id="hero">
-  <div class="hero-content reveal">
-    <span class="label">Software Developer</span>
-    <h1>Tyler Teuber</h1>
-    <p class="subtitle">Building thoughtful, well-crafted software.</p>
-    <p class="tagline">From hand-written C++ audio DSP to full-stack web apps — I like building across the whole stack.</p>
-    <div class="portrait-wrap">
-      <img src="/Images/Portrait.jpg" alt="Tyler Teuber" class="portrait" />
-    </div>
+  <div class="hero-content">
+    <p class="hero-status">
+      <span class="led led-green" aria-hidden="true"></span>
+      OPEN TO SOFTWARE ROLES&ensp;&middot;&ensp;GREATER SEATTLE, WA
+    </p>
+    <h1>Tyler<br />Teuber</h1>
+    <svg class="hero-wave" viewBox="0 0 600 80" aria-hidden="true" fill="none" preserveAspectRatio="none">
+      <path
+        pathLength="1"
+        d="M0 40h20l8-16 8 28 8-18 8 12 8-6h18l8-30 8 56 8-44 8 32 8-14h22l8-10 8 20 8-10h26l8-24 8 46 8-34 8 20 8-8h30l8-6 8 12 8-6h26l8-34 8 64 8-50 8 36 8-16h26l8-10 8 26 8-16h24l8-18 8 34 8-22 8 10 8-6h26l8-28 8 52 8-38 8 24 8-10h26l8-8 8 14 8-6h20"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      />
+    </svg>
+    <p class="hero-tagline">
+      Software engineer working the whole signal chain — from hand-written
+      C++ DSP on the audio thread to the web apps that control it.
+    </p>
     <div class="hero-ctas">
-      <a href="#projects" class="btn btn-primary">See My Work</a>
-      <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+      <a href="#projects" class="btn btn-primary">See my work</a>
+      <a href="#contact" class="btn btn-secondary">Get in touch</a>
     </div>
   </div>
 </section>
@@ -53,30 +40,77 @@ import { skillGroups } from '../data/skills.js';
 <!-- Projects -->
 <section id="projects">
   <div class="container reveal">
-    <span class="section-label">Selected Work</span>
-    <h2>Projects</h2>
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2>Projects</h2>
+      <span class="section-rule" aria-hidden="true"></span>
+    </div>
     <ProjectsGrid client:load />
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="container reveal">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2>About</h2>
+      <span class="section-rule" aria-hidden="true"></span>
+    </div>
+    <div class="about-grid">
+      <div class="about-portrait">
+        <img src="/Images/Portrait.jpg" alt="Tyler Teuber" class="portrait" width="320" height="320" />
+      </div>
+      <div class="about-text">
+        <p>
+          I've been recording music since high school, and that's still the shape of
+          everything I build: I like software close to the signal. That means real-time
+          C++ where a dropped buffer is audible — like the synthesizer plugin I wrote
+          from scratch and the Raspberry Pi pedalboard I'm building as my live rig —
+          and it also means the TypeScript web apps, Python tools, and AI agents that
+          make those things usable by actual people.
+        </p>
+        <p>
+          I'm self-taught with an asterisk: since my first day of programming four years
+          ago, I've met biweekly with a senior software architect who tells me what to
+          learn next, and I go learn it. Along the way I've taught programming
+          professionally, led a student team contributing to a
+          <a href="https://playerpathwayproject.org" target="_blank" rel="noopener">production codebase</a>,
+          and shipped tools that people still use every week without me.
+        </p>
+        <ul class="about-facts">
+          <li><span class="fact-label">Education</span>B.A. Economics + Audio Technology minor, Western Washington University</li>
+          <li><span class="fact-label">Mentorship</span>Biweekly with a senior software architect, 4 years running</li>
+          <li><span class="fact-label">Elsewhere</span>Guitarist, recording engineer, volunteer live-audio tech</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- Experience -->
 <section id="experience">
   <div class="container reveal">
-    <span class="section-label">Professional Background</span>
-    <h2>Experience</h2>
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2>Experience</h2>
+      <span class="section-rule" aria-hidden="true"></span>
+    </div>
     <div class="timeline">
 
       <div class="timeline-item reveal">
         <div class="timeline-marker"></div>
         <div class="timeline-content">
           <div class="timeline-header">
-            <h3>Teacher / Assistant Manager</h3>
+            <h3>Coding Instructor / Assistant Manager</h3>
             <span class="timeline-meta">Coding Mind &middot; Redmond, WA</span>
           </div>
           <span class="timeline-date">Aug 2024 — Present</span>
           <ul>
-            <li>Teach Python, JavaScript, and C++ to students of varying skill levels</li>
-            <li>Led teaching and student development of <a href="https://playerpathwayproject.org" target="_blank" rel="noopener">playerpathwayproject.org</a> using TypeScript, React, Tailwind CSS on the frontend with Nest.js and Prisma on the backend</li>
+            <li>Teach Python, JavaScript/TypeScript, C++, and Java to students of all levels</li>
+            <li>Designed the curriculum for and led a student team contributing to <a href="https://playerpathwayproject.org" target="_blank" rel="noopener">playerpathwayproject.org</a> — a production TypeScript codebase (React/Tailwind frontend, Nest.js/Prisma backend) built in collaboration with Coerver Coaching, an international soccer coaching company</li>
+            <li>Currently guiding students building an SAT vocabulary app in React Native</li>
+            <li>Promoted to Assistant Manager (Jul 2025 — Apr 2026): onboarded and assessed teachers and launched new program offerings as the branch grew; stepped back to focus on engineering</li>
           </ul>
         </div>
       </div>
@@ -85,14 +119,13 @@ import { skillGroups } from '../data/skills.js';
         <div class="timeline-marker"></div>
         <div class="timeline-content">
           <div class="timeline-header">
-            <h3>Web Developer Intern</h3>
+            <h3>Web Developer / Coding Manager</h3>
             <span class="timeline-meta">Kill That Noise &middot; Remote</span>
           </div>
           <span class="timeline-date">Jun — Oct 2023</span>
           <ul>
-            <li>Led a team of 5 interns through a WordPress-to-Next.js migration</li>
-            <li>Worked in an Agile environment with sprint planning and code reviews</li>
-            <li>Integrated REST APIs and improved site performance</li>
+            <li>Proposed and led the site's migration from WordPress to Next.js/TypeScript/Tailwind, keeping WordPress as a headless CMS via its REST API</li>
+            <li>Promoted to coding manager; coordinated the intern dev team using agile practices and shipped new custom features post-migration</li>
           </ul>
         </div>
       </div>
@@ -101,13 +134,13 @@ import { skillGroups } from '../data/skills.js';
         <div class="timeline-marker"></div>
         <div class="timeline-content">
           <div class="timeline-header">
-            <h3>Data Engineering Intern</h3>
-            <span class="timeline-meta">DeveloperDB &middot; Remote</span>
+            <h3>Python Data Engineering Intern</h3>
+            <span class="timeline-meta">developerDB &middot; Remote</span>
           </div>
           <span class="timeline-date">Sep — Dec 2022</span>
           <ul>
-            <li>Built automated scraping pipelines with Selenium to collect 10,000+ developer profiles</li>
-            <li>Processed and cleaned datasets using Pandas for analysis and reporting</li>
+            <li>Maintained and built web scraping pipelines (Python, Selenium) for a recruiting-data product</li>
+            <li>Processed and cleaned datasets with pandas; earned a letter of recommendation</li>
           </ul>
         </div>
       </div>
@@ -119,10 +152,13 @@ import { skillGroups } from '../data/skills.js';
 <!-- Skills -->
 <section id="skills">
   <div class="container reveal">
-    <span class="section-label">Technical Toolkit</span>
-    <h2>Skills</h2>
-    <p class="skills-hint">Skills with an underline are used in a project — click one to see it in action.</p>
-    <div class="skills-grid compact">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2>Skills</h2>
+      <span class="section-rule" aria-hidden="true"></span>
+    </div>
+    <p class="skills-hint">Skills with an underline are wired to a project — click one to see it in action.</p>
+    <div class="skills-grid">
       {skillGroups.map((group) => (
         <div class="skill-group reveal">
           <h3>{group.title}</h3>
@@ -144,8 +180,11 @@ import { skillGroups } from '../data/skills.js';
 <!-- Contact -->
 <section id="contact">
   <div class="container narrow reveal">
-    <span class="section-label">Get in Touch</span>
-    <h2>Let's Connect</h2>
+    <div class="section-head">
+      <span class="section-num">05</span>
+      <h2>Contact</h2>
+      <span class="section-rule" aria-hidden="true"></span>
+    </div>
     <p class="contact-text">Open to software roles. I'd love to hear about what you're building.</p>
     <div class="contact-links">
       <a href="https://github.com/TTeuber" target="_blank" rel="noopener" class="contact-card">
@@ -160,13 +199,15 @@ import { skillGroups } from '../data/skills.js';
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
         <span>Email</span>
       </a>
+      <a href="/resume" class="contact-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
+        <span>Résumé</span>
+      </a>
     </div>
   </div>
 </section>
 
-<footer>
-  <p>&copy; 2026 Tyler Teuber. Built with Astro & crafted with care.</p>
-</footer>
+<Footer />
 
 </Layout>
 
@@ -184,34 +225,6 @@ import { skillGroups } from '../data/skills.js';
   );
 
   document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-
-  // Navbar scroll effect
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 10) {
-      navbar?.classList.add('scrolled');
-    } else {
-      navbar?.classList.remove('scrolled');
-    }
-  });
-
-  // Mobile menu
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-
-  hamburger?.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    mobileMenu?.classList.toggle('open');
-    document.body.style.overflow = mobileMenu?.classList.contains('open') ? 'hidden' : '';
-  });
-
-  document.querySelectorAll('.mobile-link').forEach((link) => {
-    link.addEventListener('click', () => {
-      hamburger?.classList.remove('open');
-      mobileMenu?.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  });
 
   // Skills → project filter: clicking a filterable skill filters the projects
   // grid (handled inside ProjectsGrid.svelte) and scrolls to it.

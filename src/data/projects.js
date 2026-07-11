@@ -1,18 +1,42 @@
 // Single source of truth for the projects shown on the site.
 // `languages` and `areas` drive the filter bar; `tags` are the chips displayed on each card.
-// `accent` is a hue (0-360) used for the placeholder art when a project has no screenshot.
+// `accent` is a hue (0-360) used for the card's LED dot and the placeholder faceplate.
+// `featured: true` renders a large full-width card at the top of the grid.
+// `video` is a YouTube video ID shown in the demo modal.
+// `mediaPlanned: true` marks projects whose screenshots/videos are still being produced —
+// the placeholder shows a "media in production" chip until an `image` or `video` lands.
 
 export const projects = [
   {
+    id: 'gesture-synth',
+    title: 'GestureSynth',
+    context: 'Audio DSP + Creative UI',
+    description:
+      'A Juno-inspired polyphonic synthesizer plugin in C++20/JUCE with entirely hand-written DSP — PolyBLEP anti-aliased oscillators, a state-variable filter, bucket-brigade delay, and a 16-line FDN reverb. Drag any LFO or envelope onto any knob to route it, with live connector lines drawing the whole modulation graph. Real-time-safe by construction; ships as AU, VST3, AUv3, and CLAP.',
+    image: '/Images/Synth/GestureSynth.gif', // TODO(Tyler): replace GIF with a muted looping <video> (see TODO.md)
+    tags: ['C++', 'JUCE', 'DSP', 'Audio', 'UI Design'],
+    languages: ['C++'],
+    areas: ['Audio & DSP', 'Desktop'],
+    video: 'nWYTKmqFDi4',
+    featured: true,
+    links: {
+      code: 'https://github.com/TTeuber/GestureSynth',
+    },
+    accent: 245,
+  },
+  {
     id: 'pistomp-pedalboard',
     title: 'Pistomp Pedalboard',
-    context: 'Embedded Real-Time Audio',
+    context: 'Embedded Real-Time Audio · My Live Rig in Progress',
     description:
-      'A live multi-effect guitar pedalboard in C++17 for the pi-Stomp hardware (Raspberry Pi 5), built for worship-service use. One binary drives the whole instrument: 30+ JUCE-based effects plus a Neural Amp Modeler running in real time, an on-device LVGL screen UI, and a phone-friendly Svelte web control surface kept in sync over Server-Sent Events. The audio thread never takes a lock — chain edits publish through an epoch-based RCU scheme so effects can be added and reordered mid-performance without a click, verified by sanitizer-swept stress tests in CI. The whole app also runs as a macOS desktop simulator, so it can be developed without touching the Pi.',
-    image: null,
+      'A C++17 multi-effect guitar pedalboard on a Raspberry Pi 5 — the rig I\'m building to perform through live, nearly complete. One binary runs 30+ JUCE effects plus real-time neural amp modeling, an on-device LVGL UI, and a phone-friendly Svelte control surface synced over Server-Sent Events. The audio thread never takes a lock: chain edits publish through epoch-based RCU, so effects reorder mid-performance without a click.',
+    image: null, // TODO(Tyler): photo of the physical pedalboard
     tags: ['C++', 'JUCE', 'Svelte', 'LVGL', 'Embedded'],
     languages: ['C++'],
     areas: ['Audio & DSP', 'Systems'],
+    video: null, // TODO(Tyler): YouTube ID of a live playing/demo video
+    featured: true,
+    mediaPlanned: true,
     links: {
       code: 'https://github.com/TTeuber/PistompPedalboard',
     },
@@ -23,42 +47,27 @@ export const projects = [
     title: 'Pistomp HAL',
     context: 'C++ Library + Hardware Drivers',
     description:
-      'A JUCE-free C++17 hardware abstraction layer for the pi-Stomp guitar-pedal platform, extracted from the Pistomp Pedalboard project and consumed by it as a tagged CMake dependency. It packages rotary encoders, footswitches, NeoPixel LEDs, an ILI9341/LVGL display, and a realtime ALSA duplex audio loop behind clean headers — the board object owns the shared SPI mutex and vends fully-wired controls, so a consumer can never forget the lock and corrupt the bus. The same headers are backed by a macOS simulator (LVGL in an SDL2 window, CoreAudio, keyboard controls), so an entire pedal app can run with no Pi attached.',
-    image: null,
+      'A JUCE-free C++17 hardware abstraction layer extracted from the pedalboard: rotary encoders, footswitches, NeoPixel LEDs, an LVGL display, and a realtime ALSA duplex audio loop behind clean headers — the board object owns the shared SPI mutex so consumers can never corrupt the bus. The same headers are backed by a full macOS simulator, so an entire pedal app can be developed with no Pi attached.',
+    image: null, // TODO(Tyler): screenshot of the macOS simulator next to the real hardware
     tags: ['C++', 'ALSA', 'LVGL', 'CMake', 'Embedded'],
     languages: ['C++'],
     areas: ['Systems', 'Audio & DSP'],
+    mediaPlanned: true,
     links: {
       code: 'https://github.com/TTeuber/pistomp-hal',
     },
     accent: 105,
   },
   {
-    id: 'gesture-synth',
-    title: 'Gesture Synth',
-    context: 'Audio DSP + Creative UI',
-    description:
-      'A Juno-inspired polyphonic synthesizer plugin built from scratch in modern C++20 with JUCE — hand-written DSP including a PolyBLEP anti-aliased oscillator, state-variable filter, and a 16-line feedback-delay-network reverb. Its gesture-based modulation system lets you drag a source onto any knob to route it, with live connector lines visualizing the whole modulation graph. Real-time-safe by construction: lock-free UI-to-audio messaging and no allocations on the audio thread. Ships as AU, VST3, AUv3, CLAP, and Standalone with CI builds.',
-    image: '/Images/Synth/Synth.png',
-    tags: ['C++', 'JUCE', 'DSP', 'Audio', 'UI Design'],
-    languages: ['C++'],
-    areas: ['Audio & DSP', 'Desktop'],
-    video: 'nWYTKmqFDi4',
-    links: {
-      code: 'https://github.com/TTeuber/GestureSynth',
-    },
-    accent: 245,
-  },
-  {
     id: 'arcade-sfx',
-    title: 'Retro Arcade SFX Gen',
-    context: 'Browser-Based Synth + Built for Students',
+    title: 'ArcadeSoundFX',
+    context: 'Browser Synth · Built for My Students',
     description:
-      'A browser-based 8-bit sound effects generator inspired by classic arcade machines. A dual-oscillator synth engine with AD envelopes and a vibrato LFO produces the pitch sweeps and gritty impacts that define the genre; presets and a randomizer get you close fast, then offline rendering exports the patch as a 16-bit PCM WAV. Built for my students whose Pygame and Scratch games kept ending up silent.',
-    image: '/Images/ArcadeFX/ArcadeFX.png',
-    tags: ['React', 'TypeScript', 'Tone.js', 'Web Audio', 'Tailwind'],
+      'A browser-based 8-bit sound-effects generator built so my coding students’ games wouldn’t be silent. A dual-oscillator Tone.js engine with curated presets, a smart randomizer, and one-click WAV export through a custom encoder — plus an AI prompt bar that turns “a sad laser powering down” into synth parameters via the Claude API behind a rate-limited Cloudflare Worker.',
+    image: '/Images/ArcadeFX/ArcadeSoundFX.gif', // TODO(Tyler): replace GIF with a muted looping <video>
+    tags: ['React', 'TypeScript', 'Tone.js', 'Web Audio', 'Claude API'],
     languages: ['TypeScript'],
-    areas: ['Audio & DSP', 'Web'],
+    areas: ['Audio & DSP', 'Web', 'AI'],
     links: {
       demo: 'https://tteuber.github.io/ArcadeSoundFX/',
       code: 'https://github.com/TTeuber/ArcadeSoundFX',
@@ -70,8 +79,8 @@ export const projects = [
     title: 'Personal Lesson Agent',
     context: 'Agentic AI Engineering',
     description:
-      'An AI-powered desktop learning platform that turns a short interview into a complete personalized course — lessons, multi-file coding exercises, and quizzes — with a context-aware AI tutor beside every module. Built on a custom multi-agent framework with a bounded tool-use loop and a four-level hierarchical context system, so every agent knows exactly who it is teaching. React 19, strict TypeScript, and Electron with a sandboxed IPC bridge, tested with Vitest and MSW.',
-    image: null,
+      'An AI desktop learning platform that turns a short interview into a complete personalized course — lessons, multi-file coding exercises, and quizzes — with a context-aware tutor beside every module. Built on a custom multi-agent framework with a bounded tool-use loop and a four-level hierarchical context model, in Electron + React 19 + strict TypeScript.',
+    image: '/Images/PersonalLessonAssistant/course-view.png',
     tags: ['TypeScript', 'React', 'Electron', 'AI Agents', 'Tailwind'],
     languages: ['TypeScript'],
     areas: ['AI', 'Desktop'],
@@ -85,11 +94,12 @@ export const projects = [
     title: 'SelfControl for Android',
     context: 'OS-Level Enforcement',
     description:
-      'An Android self-control app that blocks apps and websites using Device Owner APIs — the same device-management layer as enterprise MDM software — so restrictions cannot be bypassed by simply uninstalling the app. Supports scheduled blocks (including overnight windows), commitment locks that can tighten but never loosen, and website rules pushed directly into Chrome via managed configurations. Built with Jetpack Compose, Room, Hilt, and WorkManager, with CI on GitHub Actions.',
-    image: null,
+      'An Android self-control app enforced at the OS level through Device Owner APIs — the same layer as enterprise MDM — so blocks survive any attempt to uninstall the app. Scheduled blocks with overnight windows, commitment locks that can tighten but never loosen, and website rules pushed into Chrome via managed configurations. Kotlin 2.0, Jetpack Compose, Room, Hilt.',
+    image: null, // TODO(Tyler): app screenshots
     tags: ['Kotlin', 'Jetpack Compose', 'Android', 'Room', 'Hilt'],
     languages: ['Kotlin'],
     areas: ['Mobile', 'Systems'],
+    mediaPlanned: true,
     links: {
       code: 'https://github.com/TTeuber/AndroidPhoneManager',
     },
@@ -98,12 +108,12 @@ export const projects = [
   {
     id: 'hypr-blocker',
     title: 'HyprBlocker',
-    context: 'Multi-Component System',
+    context: 'Adversarial Systems Design',
     description:
-      'A tamper-resistant website and app blocker for Linux/Hyprland: a Python daemon running as a systemd service with a FastAPI control API, a desktop GUI, a system tray app, and a browser extension enforcing blocks in Firefox and Chrome. A watchdog restarts the daemon if it is killed, NTP time verification defeats clock tampering, and lock mode makes configuration read-only during focus periods. Demonstrates systems thinking — from low-level scripting to polished interfaces.',
+      'A tamper-resistant website and app blocker for Linux that treats “future me trying to cheat” as the adversary: a Python/FastAPI daemon defended by a self-healing mesh of watchdog processes, NTP-verified time locks that defeat clock tampering, and a heartbeat-tracked browser extension — any browser that stops reporting gets closed. Managed from a React + TypeScript GUI; fails closed on any error.',
     image: '/Images/Blocker/BlockScreen.png',
-    tags: ['Python', 'FastAPI', 'JavaScript', 'Linux', 'Browser Extension'],
-    languages: ['Python', 'JavaScript'],
+    tags: ['Python', 'FastAPI', 'React', 'Linux', 'Browser Extension'],
+    languages: ['Python', 'TypeScript'],
     areas: ['Systems', 'Desktop'],
     links: {
       code: 'https://github.com/TTeuber/HyprBlocker',
@@ -113,9 +123,9 @@ export const projects = [
   {
     id: 'sermon-slides',
     title: 'Sermon Slides Generator',
-    context: 'Built for My Church',
+    context: 'Automation With Real Users',
     description:
-      'A macOS desktop app that turns a list of Bible references into presentation-ready PDF slides in seconds — replacing a weekly manual copy-paste job at my church. It fetches each passage from BibleGateway, cleans the text, splits long passages across slides at sentence boundaries, and renders polished slides with custom typography and a QR-coded title slide before assembling the final PDF. Packaged as a standalone .app with PyInstaller, with a pytest suite and a headless CLI.',
+      'A macOS desktop app that turns a list of Bible references into presentation-ready PDF slides in seconds, replacing a weekly manual copy-paste job — still used every week by the church I built it for. Passages are scraped and cleaned, split across slides at sentence boundaries, rendered with Pillow, and shipped as a self-contained .app with a headless CLI.',
     image: '/Images/SermonSlides/SermonSlides.png',
     tags: ['Python', 'PyWebView', 'Pillow', 'Web Scraping'],
     languages: ['Python'],
@@ -130,7 +140,7 @@ export const projects = [
     title: 'This Portfolio',
     context: "You're Looking at It",
     description:
-      'This site — designed and built from scratch with Astro, Svelte 5, and Sass. Static-first with islands of interactivity (like the project filter above), scroll-driven reveal animations, and a fully responsive layout. No UI frameworks, no templates.',
+      'This site — designed and built from scratch with Astro, Svelte 5, and Sass. Static-first with islands of interactivity like the project filter above, and a design system borrowed from the hardware I build: signal-chain sections, silkscreen labels, and one amber LED too many.',
     image: null,
     tags: ['Astro', 'Svelte', 'Sass'],
     languages: ['JavaScript'],

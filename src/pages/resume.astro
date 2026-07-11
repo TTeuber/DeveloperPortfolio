@@ -1,0 +1,361 @@
+---
+// Web version of the general-purpose resume. Content mirrors the master copy
+// in info/resumes/RESUME_GENERAL.md — keep the two in sync when updating.
+import Layout from '../Layouts/Layout.astro';
+---
+
+<Layout title="Résumé | Tyler Teuber" description="Résumé of Tyler Teuber — software engineer working across real-time C++ audio, TypeScript web apps, Python, and AI applications.">
+
+<div class="resume-page">
+  <div class="resume-toolbar">
+    <a href="/" class="toolbar-link">&larr; tylerteuber.com</a>
+    <button class="toolbar-btn" id="printBtn">Print / Save as PDF</button>
+  </div>
+
+  <article class="sheet">
+    <header class="r-header">
+      <h1>Tyler Teuber</h1>
+      <p class="r-role">Software Engineer</p>
+      <p class="r-contact">
+        <a href="mailto:tyler.teuber@gmail.com">tyler.teuber@gmail.com</a> ·
+        <a href="https://github.com/TTeuber" target="_blank" rel="noopener">github.com/TTeuber</a> ·
+        <a href="https://tylerteuber.com">tylerteuber.com</a> ·
+        Greater Seattle, WA
+      </p>
+    </header>
+
+    <section class="r-section">
+      <h2>Summary</h2>
+      <p>
+        Software engineer who builds across the whole stack: real-time C++ audio software,
+        TypeScript/React web apps, Python backends and tooling, and LLM-powered applications.
+        Self-taught over four years under biweekly mentorship from a senior software architect,
+        while teaching programming professionally — currently Python, TypeScript, C++, and Java
+        at a coding school, where I designed the curriculum for and led a student team contributing
+        to a <a href="https://playerpathwayproject.org/" target="_blank" rel="noopener">production TypeScript codebase</a>
+        for an international soccer coaching company. My projects get real use: a sound-effects
+        tool my students use in their games, a slides app still in weekly use at the organization
+        I built it for, and a nearly finished guitar pedalboard I'm building as my own live rig.
+      </p>
+    </section>
+
+    <section class="r-section">
+      <h2>Skills</h2>
+      <ul class="r-skills">
+        <li><strong>Web:</strong> TypeScript, React, Next.js, Svelte, Astro, Tailwind, Node.js, Nest.js, Prisma, REST APIs, Server-Sent Events, Cloudflare Workers</li>
+        <li><strong>C++ / systems:</strong> C++17/20, JUCE 8, real-time DSP, lock-free/real-time-safe design, ALSA, LVGL, Raspberry Pi / embedded Linux, CMake, Catch2, TSan/ASan</li>
+        <li><strong>Python:</strong> FastAPI, pandas, Selenium, pytest, desktop apps (pywebview, PyInstaller)</li>
+        <li><strong>AI:</strong> Claude API, agent architectures (tool-use loops, multi-agent orchestration, hierarchical context), structured outputs; daily Claude Code power user</li>
+        <li><strong>Other:</strong> Kotlin (Jetpack Compose), Java, Docker, Git, GitHub Actions CI, Linux</li>
+      </ul>
+    </section>
+
+    <section class="r-section">
+      <h2>Selected Projects</h2>
+
+      <div class="r-item">
+        <h3>GestureSynth — polyphonic synthesizer plugin <span class="r-links">(<a href="https://github.com/TTeuber/GestureSynth" target="_blank" rel="noopener">github</a>)</span></h3>
+        <p>Juno-inspired synth built from scratch in C++20/JUCE 8 (AU, VST3, AUv3, CLAP) with entirely hand-written DSP — anti-aliased oscillators, state-variable filter, chorus, delay, FDN reverb — and a novel drag-gesture modulation workflow with a live-rendered modulation graph. Real-time-safe throughout (no locks or allocations on the audio thread); Catch2 tests, pluginval, 3-OS CI.</p>
+      </div>
+
+      <div class="r-item">
+        <h3>PistompPedalboard + pistomp-hal — live guitar pedalboard on Raspberry Pi 5 <span class="r-links">(<a href="https://github.com/TTeuber/PistompPedalboard" target="_blank" rel="noopener">app</a> · <a href="https://github.com/TTeuber/pistomp-hal" target="_blank" rel="noopener">HAL</a>)</span></h3>
+        <p>C++17 multi-effect pedalboard I'm building as my own live rig: 30+ effects, real-time neural amp modeling, on-device LVGL UI, and a phone-friendly Svelte web control surface synced over Server-Sent Events. Lock-free chain editing lets effects be reordered mid-performance without a click (TSan/ASan-verified). Extracted the hardware layer into a standalone open-source HAL with a full macOS simulator.</p>
+      </div>
+
+      <div class="r-item">
+        <h3>Personal Lesson Agent — AI-powered learning platform <span class="r-links">(<a href="https://github.com/TTeuber/PersonalLessonAgent" target="_blank" rel="noopener">github</a>)</span></h3>
+        <p>Electron + React 19 + TypeScript desktop app where a custom multi-agent framework (interview → course design → content generation → tutoring) turns a short interview into a complete personalized course. Built the agent tool-use loop and a four-level hierarchical context model from scratch against a typed OpenRouter/Claude client.</p>
+      </div>
+
+      <div class="r-item">
+        <h3>ArcadeSoundFX — browser-based 8-bit sound effects generator <span class="r-links">(<a href="https://tteuber.github.io/ArcadeSoundFX/" target="_blank" rel="noopener">live demo</a> · <a href="https://github.com/TTeuber/ArcadeSoundFX" target="_blank" rel="noopener">github</a>)</span></h3>
+        <p>React 19 + TypeScript + Tone.js synth that exports game-ready WAV files, built so my coding students could add sound to their games. Includes an AI "describe a sound" feature powered by the Claude API behind a rate-limited Cloudflare Worker proxy, shareable patch URLs, and a custom WAV encoder.</p>
+      </div>
+
+      <div class="r-item">
+        <h3>HyprBlocker — tamper-resistant Linux content blocker <span class="r-links">(<a href="https://github.com/TTeuber/HyprBlocker" target="_blank" rel="noopener">github</a>)</span></h3>
+        <p>Python/FastAPI daemon that defends in depth against its own user: a self-healing watchdog-process mesh, NTP-verified time locks, and a heartbeat-tracked browser extension, managed from a React + TypeScript GUI. Fails closed on any error.</p>
+      </div>
+    </section>
+
+    <section class="r-section">
+      <h2>Experience</h2>
+
+      <div class="r-item">
+        <h3>Coding Instructor / Assistant Manager — Coding Mind <span class="r-date">· Aug 2024 – Present</span></h3>
+        <ul>
+          <li>Teach Python, JavaScript/TypeScript, C++, and Java to students of all levels</li>
+          <li>Designed the curriculum for and led a student team contributing to a <a href="https://playerpathwayproject.org/" target="_blank" rel="noopener">production TypeScript codebase</a> (React/Tailwind frontend, Nest.js/Prisma backend) in a collaboration with Coerver Coaching, an international soccer coaching company</li>
+          <li>Currently guiding students building an SAT vocabulary app in React Native</li>
+          <li>Promoted to Assistant Manager (Jul 2025 – Apr 2026): onboarded and assessed teachers and launched new program offerings as the branch grew; stepped back to focus on engineering</li>
+        </ul>
+      </div>
+
+      <div class="r-item">
+        <h3>Web Developer / Coding Manager — KillThatNoise (sports news site) <span class="r-date">· Jun 2023 – Oct 2023</span></h3>
+        <ul>
+          <li>Proposed and led the site's migration from WordPress to Next.js/TypeScript/Tailwind, keeping WordPress as a headless CMS via its REST API</li>
+          <li>Promoted to coding manager; coordinated the intern dev team using agile practices and JetBrains Space, and shipped new custom features post-migration</li>
+        </ul>
+      </div>
+
+      <div class="r-item">
+        <h3>Python Data Engineering Intern — developerDB (tech recruiting) <span class="r-date">· Sep 2022 – Dec 2022</span></h3>
+        <ul>
+          <li>Maintained and built web scraping pipelines (Python, Selenium) and processed datasets with pandas for a recruiting-data product; earned a letter of recommendation</li>
+        </ul>
+      </div>
+
+      <div class="r-item">
+        <h3>Guitar &amp; Bass Instructor — School of Rock <span class="r-date">· Apr 2023 – Feb 2024</span></h3>
+        <ul>
+          <li>Taught individual and group guitar and bass lessons</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="r-section">
+      <h2>Volunteer — Live Audio Production</h2>
+      <p>
+        Weekly volunteer guitarist and audio tech at church for 2.5 years. Brought a church plant's
+        production from scratch to a modern workflow — in-ear monitors, click track, MultiTracks
+        Playback, ProPresenter — and trained volunteers on every system so the workflows outlived
+        my transition. Built a <a href="https://github.com/TTeuber/Sermon_Slides_Generator" target="_blank" rel="noopener">sermon slides app</a>
+        they still use every week. Currently serving at Doxa Church in Redmond, training under the
+        Director of Production &amp; Technology on networked audio (Dante).
+      </p>
+    </section>
+
+    <section class="r-section">
+      <h2>Education</h2>
+      <div class="r-item">
+        <h3>B.A. Economics, minor in Audio Technology <span class="r-date">· Western Washington University, 2017–2022</span></h3>
+        <p>Audio minor: Pro Tools, analog consoles, outboard gear, mic techniques, digital audio fundamentals</p>
+      </div>
+      <div class="r-item">
+        <h3>Software engineering mentorship <span class="r-date">· 2022–Present</span></h3>
+        <p>Biweekly mentorship with a senior software architect (TypeScript/React/.NET) since my first day of programming, four years running</p>
+      </div>
+    </section>
+  </article>
+</div>
+
+</Layout>
+
+<script>
+  document.getElementById('printBtn')?.addEventListener('click', () => window.print());
+</script>
+
+<style lang="scss">
+  .resume-page {
+    min-height: 100vh;
+    padding: 40px 24px 80px;
+  }
+
+  .resume-toolbar {
+    max-width: 800px;
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .toolbar-link {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--text-dim);
+
+    &:hover {
+      color: var(--amber);
+    }
+  }
+
+  .toolbar-btn {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 9px 18px;
+    border-radius: 8px;
+    border: none;
+    background: var(--amber);
+    color: var(--bg);
+    cursor: pointer;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      background: var(--amber-bright);
+      box-shadow: 0 0 16px var(--amber-glow);
+    }
+  }
+
+  // The "paper sheet" — deliberately light even on the dark site, since it's a document.
+  .sheet {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fdfcf9;
+    color: #1c1a16;
+    border-radius: 12px;
+    padding: 56px 60px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+
+    a {
+      color: #8a5a12;
+      text-decoration: underline;
+      text-decoration-color: rgba(138, 90, 18, 0.35);
+      text-underline-offset: 2px;
+
+      &:hover {
+        text-decoration-color: #8a5a12;
+      }
+    }
+  }
+
+  .r-header {
+    border-bottom: 2px solid #1c1a16;
+    padding-bottom: 20px;
+    margin-bottom: 28px;
+
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 0 0 2px;
+    }
+  }
+
+  .r-role {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #8a5a12;
+    margin: 0 0 10px;
+  }
+
+  .r-contact {
+    font-size: 0.875rem;
+    color: #57534b;
+    margin: 0;
+  }
+
+  .r-section {
+    margin-bottom: 28px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    h2 {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #8a5a12;
+      border-bottom: 1px solid rgba(28, 26, 22, 0.15);
+      padding-bottom: 6px;
+      margin: 0 0 14px;
+    }
+
+    p {
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      margin: 0 0 10px;
+      color: #33302a;
+    }
+  }
+
+  .r-skills {
+    margin: 0;
+    padding-left: 18px;
+
+    li {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #33302a;
+      margin-bottom: 5px;
+    }
+  }
+
+  .r-item {
+    margin-bottom: 16px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0 0 5px;
+      color: #1c1a16;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    li {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #33302a;
+      margin-bottom: 4px;
+    }
+  }
+
+  .r-links {
+    font-weight: 400;
+    font-size: 0.875rem;
+  }
+
+  .r-date {
+    font-weight: 400;
+    font-size: 0.875rem;
+    color: #57534b;
+  }
+
+  @media (max-width: 640px) {
+    .sheet {
+      padding: 32px 24px;
+    }
+  }
+
+  @media print {
+    .resume-page {
+      padding: 0;
+    }
+
+    .resume-toolbar {
+      display: none;
+    }
+
+    .sheet {
+      max-width: none;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 0;
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+  }
+</style>
+
+<style is:global>
+  /* Print: strip the dark chrome so only the sheet prints */
+  @media print {
+    body {
+      background: #fff !important;
+    }
+
+    body::after {
+      display: none !important;
+    }
+  }
+</style>

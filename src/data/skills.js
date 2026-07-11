@@ -11,6 +11,7 @@ export const skillGroups = [
       { name: 'Python', filter: 'Python' },
       { name: 'C++', filter: 'C++' },
       { name: 'Kotlin', filter: 'Kotlin' },
+      { name: 'Java' },
     ],
   },
   {
@@ -30,8 +31,8 @@ export const skillGroups = [
       { name: 'Node.js' },
       { name: 'Nest.js' },
       { name: 'FastAPI', filter: 'FastAPI' },
-      { name: 'Flask' },
       { name: 'Prisma' },
+      { name: 'Cloudflare Workers' },
     ],
   },
   {
@@ -40,6 +41,7 @@ export const skillGroups = [
       { name: 'JUCE', filter: 'JUCE' },
       { name: 'DSP', filter: 'DSP' },
       { name: 'Web Audio', filter: 'Web Audio' },
+      { name: 'ALSA', filter: 'ALSA' },
       { name: 'LVGL', filter: 'LVGL' },
       { name: 'Jetpack Compose', filter: 'Jetpack Compose' },
       { name: 'Electron', filter: 'Electron' },
@@ -49,10 +51,12 @@ export const skillGroups = [
     title: 'Tools & AI',
     skills: [
       { name: 'AI Agents', filter: 'AI Agents' },
+      { name: 'Claude API', filter: 'Claude API' },
       { name: 'Claude Code' },
       { name: 'Git' },
+      { name: 'Docker' },
+      { name: 'GitHub Actions' },
       { name: 'Linux', filter: 'Linux' },
-      { name: 'Selenium' },
     ],
   },
 ];
