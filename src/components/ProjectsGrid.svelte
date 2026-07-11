@@ -4,8 +4,19 @@
   import { flip } from 'svelte/animate';
   import { projects, languageFilters, areaFilters } from '../data/projects.js';
 
+  // Optimized responsive variants keyed by project id, generated with
+  // getImage() in index.astro. GIF cards aren't in the map and fall back to
+  // their public/ path (or the imported asset's own src).
+  let { images = {} } = $props();
+
   let active = $state('All');
   let videoProject = $state(null);
+  let modalEl = $state(null);
+  let lastFocused = null;
+
+  function imageSrc(project) {
+    return typeof project.image === 'string' ? project.image : project.image.src;
+  }
 
   const matches = (p, f) =>
     f === 'All' || p.languages.includes(f) || p.areas.includes(f) || p.tags.includes(f);
@@ -42,9 +53,39 @@
       document.body.style.overflow = '';
     };
   });
+
+  // Move focus into the dialog on open and back to the trigger on close.
+  $effect(() => {
+    if (videoProject && modalEl) {
+      lastFocused = document.activeElement;
+      modalEl.querySelector('.modal-close')?.focus();
+    } else if (!videoProject && lastFocused) {
+      lastFocused.focus?.();
+      lastFocused = null;
+    }
+  });
+
+  // Keep Tab / Shift+Tab cycling inside the open dialog.
+  function trapFocus(e) {
+    if (e.key !== 'Tab' || !modalEl) return;
+    const focusables = modalEl.querySelectorAll('button, a[href], iframe, [tabindex]:not([tabindex="-1"])');
+    if (!focusables.length) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (!modalEl.contains(document.activeElement)) {
+      e.preventDefault();
+      first.focus();
+    } else if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
 </script>
 
-<svelte:window onkeydown={(e) => { if (e.key === 'Escape') videoProject = null; }} />
+<svelte:window onkeydown={(e) => { if (e.key === 'Escape') videoProject = null; else trapFocus(e); }} />
 
 <div class="filter-bar" role="toolbar" aria-label="Filter projects">
   <div class="filter-row">
@@ -79,7 +120,13 @@
     >
       <div class="pcard-media">
         {#if project.image}
-          <img src={project.image} alt={`${project.title} screenshot`} loading="lazy" />
+          <img
+            src={images[project.id]?.src ?? imageSrc(project)}
+            srcset={images[project.id]?.srcset}
+            sizes={images[project.id]?.sizes}
+            alt={`${project.title} screenshot`}
+            loading="lazy"
+          />
         {:else}
           <div class="pcard-placeholder" aria-hidden="true">
             <span class="ph-initials">{initials(project.title)}</span>
@@ -94,7 +141,7 @@
       </div>
       <div class="pcard-body">
         <p class="pcard-context"><span class="pcard-led" aria-hidden="true"></span>{project.context}</p>
-        <h3>{project.title}</h3>
+        <h3><a href={`/projects/${project.id}`} class="pcard-title-link">{project.title}</a></h3>
         <p class="pcard-desc">{project.description}</p>
         <div class="tags">
           {#each project.tags as tag}
@@ -114,6 +161,7 @@
           {#if project.links.code}
             <a href={project.links.code} target="_blank" rel="noopener noreferrer" class="project-btn" class:project-btn-outline={project.video || project.links.demo}>See Code</a>
           {/if}
+          <a href={`/projects/${project.id}`} class="project-btn project-btn-outline">Read More</a>
         </div>
       </div>
     </article>
@@ -127,7 +175,7 @@
     transition:fade={{ duration: 200 }}
     onclick={(e) => { if (e.target === e.currentTarget) videoProject = null; }}
   >
-    <div class="modal" role="dialog" aria-modal="true" aria-label={`${videoProject.title} demo video`} transition:scale={{ duration: 250, start: 0.95 }}>
+    <div class="modal" role="dialog" aria-modal="true" aria-label={`${videoProject.title} demo video`} bind:this={modalEl} transition:scale={{ duration: 250, start: 0.95 }}>
       <div class="modal-header">
         <span class="modal-title">{videoProject.title} — Demo</span>
         <button class="modal-close" onclick={() => (videoProject = null)} aria-label="Close demo">✕</button>
@@ -342,6 +390,15 @@
       margin: 0 0 10px 0;
       color: var(--text);
       letter-spacing: -0.01em;
+    }
+  }
+
+  .pcard-title-link {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--amber);
     }
   }
 
