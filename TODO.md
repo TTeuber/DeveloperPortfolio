@@ -39,8 +39,12 @@ than an equivalent muted looping video.
       (`src/data/projects.js`)
 - [ ] Personal Lesson Agent card uses `course-view.png` — swap for `interview.png` or
       `module-browser.png` if you like one better
-- [ ] The `/resume` page mirrors `info/resumes/RESUME_GENERAL.md`. **They are two copies**
-      (info/ is gitignored, so the site can't read it) — when you update one, update the other
+- [x] ~~The `/resume` page mirrors `info/resumes/RESUME_GENERAL.md`~~ — solved July 2026:
+      the resume html in `src/data/resumes/` is now the single source of truth, rendered
+      at `/resume/<variant>` and exported to PDF/Word by ResumeBuilder via symlink
+- [ ] Read the per-variant copy in `src/data/variants.js` (hero taglines, About intros
+      for /web /ai /audio /cpp /python) — written in your voice from the resume summaries;
+      make sure it sounds like you
 
 ## Polish / later (me, on request)
 

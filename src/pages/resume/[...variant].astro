@@ -1,0 +1,116 @@
+---
+// /resume (general) plus /resume/web, /resume/ai, ... — each rendering its
+// variant from the shared html in src/data/resumes/ via ResumeSheet.
+import Layout from '../../Layouts/Layout.astro';
+import ResumeSheet from '../../components/ResumeSheet.astro';
+import { variants, resumeVariantIds } from '../../data/variants.js';
+
+export function getStaticPaths() {
+  return [
+    { params: { variant: undefined } }, // /resume → general
+    ...resumeVariantIds.map((id) => ({ params: { variant: id } })),
+  ];
+}
+
+const id = Astro.params.variant ?? 'general';
+const labels = {
+  general: '',
+  web: 'Web',
+  ai: 'AI',
+  audio: 'Audio',
+  cpp: 'C++',
+  python: 'Python',
+  ministry: 'Ministry',
+};
+const label = labels[id];
+const title = label ? `Résumé (${label}) | Tyler Teuber` : 'Résumé | Tyler Teuber';
+const description =
+  variants[id]?.description ??
+  'Résumé of Tyler Teuber — software engineer working across real-time C++ audio, TypeScript web apps, Python, and AI applications.';
+// Back link goes to the matching tailored home page ('/' for general/ministry).
+const backPath = variants[id]?.path ?? '/';
+---
+
+<Layout title={title} description={description}>
+
+<div class="resume-page">
+  <div class="resume-toolbar">
+    <a href={backPath} class="toolbar-link">&larr; tylerteuber.com{backPath === '/' ? '' : backPath}</a>
+    <button class="toolbar-btn" id="printBtn">Print / Save as PDF</button>
+  </div>
+
+  <ResumeSheet variant={id} />
+</div>
+
+</Layout>
+
+<script>
+  document.getElementById('printBtn')?.addEventListener('click', () => window.print());
+</script>
+
+<style lang="scss">
+  .resume-page {
+    min-height: 100vh;
+    padding: 40px 24px 80px;
+  }
+
+  .resume-toolbar {
+    max-width: 800px;
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .toolbar-link {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--text-dim);
+
+    &:hover {
+      color: var(--amber);
+    }
+  }
+
+  .toolbar-btn {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 9px 18px;
+    border-radius: 8px;
+    border: none;
+    background: var(--amber);
+    color: var(--bg);
+    cursor: pointer;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      background: var(--amber-bright);
+      box-shadow: 0 0 16px var(--amber-glow);
+    }
+  }
+
+  @media print {
+    .resume-page {
+      padding: 0;
+    }
+
+    .resume-toolbar {
+      display: none;
+    }
+  }
+</style>
+
+<style is:global>
+  /* Print: strip the dark chrome so only the sheet prints */
+  @media print {
+    body {
+      background: #fff !important;
+    }
+
+    body::after {
+      display: none !important;
+    }
+  }
+</style>

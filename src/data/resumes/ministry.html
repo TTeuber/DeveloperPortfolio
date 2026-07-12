@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tyler Teuber — Resume (Ministry)</title>
+<!--
+TARGET ROLE: Software Engineer (junior/associate) at a worship or audio technology
+company — e.g. MultiTracks.com, RenewedVision (ProPresenter), Loop Community,
+Planning Center, or an audio plugin/hardware company.
+
+WHY THIS ROLE:
+- Your strongest, rarest asset is the overlap: real C++ audio DSP work
+  (GestureSynth, PistompPedalboard) + solid TypeScript/React web skills + years of
+  hands-on worship production experience (you literally implemented MultiTracks
+  Playback at a church). Almost no junior candidate has all three.
+- These companies hire for mission/domain fit as much as raw experience, which
+  offsets the lack of a CS degree and full-time engineering title.
+- The teaching background reads as communication skill, not filler.
+This resume works nearly as-is for general junior full-stack roles too — swap the
+summary's last sentence and reorder projects to lead with ArcadeSoundFX/PLA.
+-->
+<link rel="stylesheet" href="../styles/resume.css">
+</head>
+<body>
+
+<header class="resume-header">
+  <h1>Tyler Teuber</h1>
+  <p class="role">Software Engineer — Audio &amp; Web</p>
+  <p class="contact">
+    <a href="mailto:tyler.teuber@gmail.com">tyler.teuber@gmail.com</a> ·
+    <a href="https://github.com/TTeuber">github.com/TTeuber</a> ·
+    <a href="https://tylerteuber.com">tylerteuber.com</a> ·
+    Greater Seattle, WA
+  </p>
+</header>
+
+<section class="summary">
+  <h2>Summary</h2>
+  <p>Software engineer with a rare combination of real-time C++ audio development, full-stack TypeScript experience, and years of hands-on worship production. Built a JUCE synthesizer plugin with hand-written DSP and web apps in React/Next.js, and I'm finishing a Raspberry Pi guitar pedalboard to be my own live rig — alongside 2.5 years serving as a church audio tech, where I implemented MultiTracks Playback, in-ear monitors, click tracks, and ProPresenter for a church plant and trained volunteers to run them. Mentored biweekly by a senior software architect for four years. Looking to build software for musicians and worship teams.</p>
+</section>
+
+<section class="skills">
+  <h2>Skills</h2>
+  <ul>
+    <li><strong>Audio / C++:</strong> C++17/20, JUCE 8, real-time DSP (oscillators, filters, delays, FDN reverb), lock-free/real-time-safe design, Neural Amp Modeler, ALSA, CMake, Catch2, TSan/ASan</li>
+    <li><strong>Web:</strong> TypeScript, React, Next.js, Svelte, Tailwind, Node.js, Nest.js, Prisma, REST APIs, Server-Sent Events</li>
+    <li><strong>Other languages &amp; platforms:</strong> Python (FastAPI, pandas, Selenium), Kotlin (Jetpack Compose), Java, Linux, Raspberry Pi / embedded, Docker, Git, GitHub Actions CI</li>
+    <li><strong>Production tech:</strong> MultiTracks Playback &amp; Tracks, ProPresenter, Pro Tools, Logic Pro, IEM/click workflows, analog consoles, mic technique; learning Dante</li>
+    <li><strong>AI integration:</strong> Claude API, tool-use/agent loops, structured outputs, Cloudflare Workers</li>
+  </ul>
+</section>
+
+<section class="projects">
+  <h2>Selected Projects</h2>
+
+  <article class="entry">
+    <h3>GestureSynth — polyphonic synthesizer plugin <span class="links"><a href="https://github.com/TTeuber/GestureSynth">github</a></span></h3>
+    <p>Juno-inspired subtractive synth built from scratch in C++20/JUCE 8 (AU, VST3, AUv3, CLAP). Hand-written DSP: PolyBLEP anti-aliased 4×-oversampled oscillators, state-variable filter, BBD-style delay, 16-line FDN reverb. Novel drag-gesture modulation routing with a live-rendered modulation graph. Real-time-safe throughout — lock-free UI↔audio messaging, no locks or allocations on the audio thread. Catch2 tests, pluginval, 3-OS CI.</p>
+  </article>
+
+  <article class="entry">
+    <h3>PistompPedalboard + pistomp-hal — live guitar pedalboard on Raspberry Pi 5 <span class="links"><a href="https://github.com/TTeuber/PistompPedalboard">app</a> · <a href="https://github.com/TTeuber/pistomp-hal">HAL</a></span></h3>
+    <p>C++17 multi-effect pedalboard I'm building as my own live rig: 30+ effects, real-time neural amp modeling (.nam captures), on-device LVGL UI, and a phone-friendly Svelte web control surface synced over SSE. Lock-free chain editing via epoch-based RCU lets effects be reordered mid-performance without a click (TSan/ASan-verified). Extracted the hardware layer into a standalone open-source HAL with a full macOS simulator so the app develops without the Pi.</p>
+  </article>
+
+  <article class="entry">
+    <h3>ArcadeSoundFX — browser-based 8-bit sound effects generator <span class="links"><a href="https://tteuber.github.io/ArcadeSoundFX/">live demo</a> · <a href="https://github.com/TTeuber/ArcadeSoundFX">github</a></span></h3>
+    <p>React 19 + TypeScript + Tone.js synth that exports game-ready WAV files; built so my coding students could add sound to their games. Includes an AI "describe a sound" feature powered by the Claude API behind a rate-limited Cloudflare Worker proxy, shareable patch URLs, and a custom WAV encoder.</p>
+  </article>
+
+  <article class="entry">
+    <h3>Personal Lesson Agent — AI-powered learning platform <span class="links"><a href="https://github.com/TTeuber/PersonalLessonAgent">github</a></span></h3>
+    <p>Electron + React 19 + TypeScript desktop app where a custom multi-agent framework (interview → course design → content generation → tutoring) generates personalized courses. Built the agent tool-use loop and a four-level hierarchical context model from scratch against a typed OpenRouter/Claude client.</p>
+  </article>
+</section>
+
+<section class="experience">
+  <h2>Experience</h2>
+
+  <article class="entry">
+    <div class="entry-head">
+      <h3>Coding Instructor / Assistant Manager — Coding Mind</h3>
+      <span class="dates">Aug 2024 – Present</span>
+    </div>
+    <ul>
+      <li>Teach Python, JavaScript/TypeScript, C++, and Java to students of all levels</li>
+      <li>Designed the curriculum for and led a student team contributing to a <a href="https://playerpathwayproject.org/">production TypeScript codebase</a> (React/Tailwind frontend, Nest.js/Prisma backend) in a collaboration with Coerver Coaching, an international soccer coaching company</li>
+      <li>Currently guiding students building an SAT vocabulary app in React Native</li>
+      <li>Promoted to Assistant Manager (Jul 2025 – Apr 2026): onboarded and assessed teachers and launched new program offerings (e.g. 3D printing) as the branch grew; stepped back to focus on engineering</li>
+    </ul>
+  </article>
+
+  <article class="entry">
+    <div class="entry-head">
+      <h3>Web Developer / Coding Manager — KillThatNoise (sports news site)</h3>
+      <span class="dates">Jun 2023 – Oct 2023</span>
+    </div>
+    <ul>
+      <li>Proposed and led the site's migration from WordPress to Next.js/TypeScript/Tailwind, keeping WordPress as a headless CMS via its REST API</li>
+      <li>Promoted to coding manager; coordinated the intern dev team using agile practices and JetBrains Space, and shipped new custom features post-migration</li>
+    </ul>
+  </article>
+
+  <article class="entry">
+    <div class="entry-head">
+      <h3>Python Data Engineering Intern — developerDB (tech recruiting)</h3>
+      <span class="dates">Sep 2022 – Dec 2022</span>
+    </div>
+    <ul>
+      <li>Maintained and built web scraping pipelines (Python, Selenium) and processed datasets with pandas for a recruiting-data product; earned a letter of recommendation</li>
+    </ul>
+  </article>
+
+  <article class="entry">
+    <div class="entry-head">
+      <h3>Guitar &amp; Bass Instructor — School of Rock</h3>
+      <span class="dates">Apr 2023 – Feb 2024</span>
+    </div>
+    <ul>
+      <li>Taught individual and group guitar and bass lessons</li>
+    </ul>
+  </article>
+</section>
+
+<section class="volunteer">
+  <h2>Volunteer — Worship Production</h2>
+
+  <article class="entry">
+    <div class="entry-head">
+      <h3>Worship Guitarist &amp; Audio Tech — Doxa Church, Redmond</h3>
+      <span class="dates">Jan 2026 – Present</span>
+    </div>
+    <ul>
+      <li>Serve most weeks on guitar and audio; training under the Director of Production &amp; Technology, including networked audio (Dante)</li>
+    </ul>
+  </article>
+
+  <article class="entry">
+    <div class="entry-head">
+      <h3>Worship Guitarist &amp; Audio Tech — The Redemption Church (plant), Renton</h3>
+      <span class="dates">Oct 2023 – Dec 2025</span>
+    </div>
+    <ul>
+      <li>Brought the plant's production from scratch to a modern workflow: introduced and implemented in-ear monitors, click track, <strong>MultiTracks Playback and Tracks</strong>, and ProPresenter</li>
+      <li>Trained volunteers on every system so the workflows outlived my transition</li>
+      <li>Created <a href="https://github.com/TTeuber/Sermon_Slides_Generator">Sermon Slides Generation App</a> used every week</li>
+    </ul>
+  </article>
+</section>
+
+<section class="education">
+  <h2>Education</h2>
+
+  <article class="entry">
+    <h3>B.A. Economics, minor in Audio Technology — Western Washington University, 2017–2022</h3>
+    <p class="edu-detail">Audio minor: Pro Tools, analog consoles, outboard gear (compressors, EQs, preamps), mic techniques, digital audio fundamentals</p>
+  </article>
+
+  <article class="entry">
+    <h3>Software engineering mentorship — 2022–Present</h3>
+    <p class="edu-detail">Biweekly mentorship with a senior software architect (TypeScript/React/.NET) since my first day of programming, four years running</p>
+  </article>
+</section>
+
+</body>
+</html>

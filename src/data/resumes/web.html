@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tyler Teuber — Resume (Web)</title>
+<!--
+TARGET ROLE: Web / Full-Stack Software Engineer (junior/associate).
+Leads with TypeScript/React/Next.js experience, the WordPress→Next.js migration,
+and the production Coerver codebase work. Audio/C++ projects appear as depth,
+framed by their web-facing parts (Svelte control surface, SSE, Workers proxy).
+-->
+<link rel="stylesheet" href="../styles/resume.css">
+</head>
+<body>
+
+<header class="resume-header">
+  <h1>Tyler Teuber</h1>
+  <p class="role">Software Engineer — Web / Full-Stack</p>
+  <p class="contact">
+    <a href="mailto:tyler.teuber@gmail.com">tyler.teuber@gmail.com</a> ·
+    <a href="https://github.com/TTeuber">github.com/TTeuber</a> ·
+    <a href="https://tylerteuber.com/web">tylerteuber.com/web</a> ·
+    Greater Seattle, WA
+  </p>
+</header>
+
+<section class="summary">
+  <h2>Summary</h2>
+  <p>Full-stack engineer working in TypeScript since 2022. Led a production site's migration from WordPress to Next.js/TypeScript/Tailwind (keeping WordPress as a headless CMS) and managed the intern team that shipped it. Designed the curriculum for and led a student team contributing to a production React/Nest.js/Prisma codebase for an international soccer coaching company. Ships polished frontends across React, Next.js, Svelte, and Astro — including a real-time device control surface synced over Server-Sent Events and an AI-assisted browser synth deployed behind a Cloudflare Worker. Mentored biweekly by a senior software architect (TypeScript/React/.NET) for four years.</p>
+</section>
+
+<section class="skills">
+  <h2>Skills</h2>
+  <ul>
+    <li><strong>Frontend:</strong> TypeScript, React 19, Next.js, Svelte, Astro, Tailwind, Sass, React Native (current project), Electron</li>
+    <li><strong>Backend:</strong> Node.js, Nest.js, Prisma, REST APIs, Server-Sent Events, Cloudflare Workers + KV, headless WordPress</li>
+    <li><strong>Other languages:</strong> Python (FastAPI, pandas, Selenium), C++ (real-time audio), Kotlin (Jetpack Compose), Java</li>
+    <li><strong>Tooling &amp; practices:</strong> Git, GitHub Actions CI, Docker, Linux, agile task management, AI-assisted development (Claude API integration, agent tool-use loops)</li>
+  </ul>
+</section>
+
+<section class="projects">
+  <h2>Selected Projects</h2>
+
+  <article class="entry">
+    <h3>ArcadeSoundFX — browser-based 8-bit sound effects generator <span class="links"><a href="https://tteuber.github.io/ArcadeSoundFX/">live demo</a> · <a href="https://github.com/TTeuber/ArcadeSoundFX">github</a></span></h3>
+    <p>React 19 + TypeScript synth app that exports game-ready WAV files, built for my coding students. Dual-oscillator Tone.js engine, curated presets, patches shareable via URL hash, live oscilloscope, and one-click WAV export through a custom 16-bit PCM encoder. An AI "describe a sound" prompt bar turns text into synth parameters via the Claude API behind a rate-limited Cloudflare Worker proxy (origin-locked CORS, per-IP/global limits in Workers KV). Static deploy to GitHub Pages via CI.</p>
+  </article>
+
+  <article class="entry">
+    <h3>Personal Lesson Agent — AI-powered learning platform <span class="links"><a href="https://github.com/TTeuber/PersonalLessonAgent">github</a></span></h3>
+    <p>Electron + React 19 + TypeScript desktop app that turns a short interview into a complete personalized course with a context-aware tutor beside every module. Built a custom multi-agent framework (Interview → CourseDesigner → ContentGenerator → Tutor agents sharing an abstract base with a bounded tool-use loop) against a typed OpenRouter/Claude client, with a sandboxed renderer behind a path-validated IPC layer.</p>
+  </article>
+
+  <article class="entry">
+    <h3>PistompPedalboard web control surface <span class="links"><a href="https://github.com/TTeuber/PistompPedalboard">github</a></span></h3>
+    <p>Phone-friendly Svelte control surface for the C++ guitar pedalboard I'm building as my own live rig. Served from the device itself and kept live-consistent with the hardware UI over Server-Sent Events — edits from the phone, the on-device screen, or the footswitches all stay in sync.</p>
+  </article>
+
+  <article class="entry">
+    <h3>HyprBlocker — tamper-resistant Linux content blocker <span class="links"><a href="https://github.com/TTeuber/HyprBlocker">github</a></span></h3>
+    <p>React + TypeScript GUI in a native pywebview window managing a Python/FastAPI enforcement daemon: wildcard URL rules, per-weekday schedules, lock modes, plus a Manifest v3 browser extension with heartbeat tracking. Fails closed on any error; pytest/ruff/bun CI.</p>
+  </article>
+
+  <article class="entry">
+    <h3>tylerteuber.com — this portfolio <span class="links"><a href="https://tylerteuber.com">site</a></span></h3>
+    <p>Astro + Svelte + Sass site with a filterable project grid, data-driven skills that click-to-filter projects, and scroll-reveal animations.</p>
+  </article>
+</section>
+
+<section class="experience">
+  <h2>Experience</h2>
+
+  <article class="entry">
+    <div class="entry-head">
+      <h3>Coding Instructor / Assistant Manager — Coding Mind</h3>
+      <span class="dates">Aug 2024 – Present</span>
+    </div>
+    <ul>
+      <li>Teach Python, JavaScript/TypeScript, C++, and Java to students of all levels</li>
+      <li>Designed the curriculum for and led a student team contributing to a <a href="https://playerpathwayproject.org/">production TypeScript codebase</a> (React/Tailwind frontend, Nest.js/Prisma backend) in a collaboration with Coerver Coaching, an international soccer coaching company</li>
+      <li>Currently guiding students building an SAT vocabulary app in React Native</li>
+      <li>Promoted to Assistant Manager (Jul 2025 – Apr 2026): onboarded and assessed teachers and launched new program offerings as the branch grew; stepped back to focus on engineering</li>
+    </ul>
+  </article>
+
+  <article class="entry">
+    <div class="entry-head">
+      <h3>Web Developer / Coding Manager — KillThatNoise (sports news site)</h3>
+      <span class="dates">Jun 2023 – Oct 2023</span>
+    </div>
+    <ul>
+      <li>Proposed and led the site's migration from WordPress to Next.js/TypeScript/Tailwind, keeping WordPress as a headless CMS via its REST API</li>
+      <li>Promoted to coding manager; coordinated the intern dev team using agile practices and JetBrains Space, and shipped new custom features post-migration</li>
+    </ul>
+  </article>
+
+  <article class="entry">
+    <div class="entry-head">
+      <h3>Python Data Engineering Intern — developerDB (tech recruiting)</h3>
+      <span class="dates">Sep 2022 – Dec 2022</span>
+    </div>
+    <ul>
+      <li>Maintained and built web scraping pipelines (Python, Selenium) and processed datasets with pandas for a recruiting-data product; earned a letter of recommendation</li>
+    </ul>
+  </article>
+</section>
+
+<section class="education">
+  <h2>Education</h2>
+
+  <article class="entry">
+    <h3>B.A. Economics, minor in Audio Technology — Western Washington University, 2017–2022</h3>
+  </article>
+
+  <article class="entry">
+    <h3>Software engineering mentorship — 2022–Present</h3>
+    <p class="edu-detail">Biweekly mentorship with a senior software architect (TypeScript/React/.NET) since my first day of programming, four years running</p>
+  </article>
+</section>
+
+</body>
+</html>

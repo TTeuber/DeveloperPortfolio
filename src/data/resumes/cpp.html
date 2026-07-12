@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tyler Teuber — Resume (C++)</title>
+<!--
+TARGET ROLE: C++ Software Engineer (junior/associate) — systems, embedded, or
+performance-sensitive application work. Leads with GestureSynth and the
+Pistomp projects as proof of real-time-safe, concurrency-correct, tested C++.
+The pedalboard is framed honestly as the rig I'm building for my own live
+performances (it's nearly complete, not yet gigged) — the point is that the
+code is engineered for real-time constraints with a real user (me).
+-->
+<link rel="stylesheet" href="../styles/resume.css">
+</head>
+<body>
+
+<header class="resume-header">
+  <h1>Tyler Teuber</h1>
+  <p class="role">Software Engineer — C++</p>
+  <p class="contact">
+    <a href="mailto:tyler.teuber@gmail.com">tyler.teuber@gmail.com</a> ·
+    <a href="https://github.com/TTeuber">github.com/TTeuber</a> ·
+    <a href="https://tylerteuber.com/cpp">tylerteuber.com/cpp</a> ·
+    Greater Seattle, WA
+  </p>
+</header>
+
+<section class="summary">
+  <h2>Summary</h2>
+  <p>C++ engineer focused on real-time and embedded systems, with three substantial projects: a shipped polyphonic synthesizer plugin with hand-written DSP (C++20/JUCE 8), a multi-effect guitar pedalboard on Raspberry Pi 5 that I'm building as my own live performance rig, and a standalone hardware abstraction library with a full macOS simulator. Writes real-time-safe code by construction — lock-free messaging, epoch-based RCU, no locks or allocations on the audio thread — and verifies it with TSan/ASan sweeps, Catch2 suites, and cross-platform CI. Also productive in TypeScript and Python; four years of biweekly mentorship from a senior software architect.</p>
+</section>
+
+<section class="skills">
+  <h2>Skills</h2>
+  <ul>
+    <li><strong>C++:</strong> C++17/20, real-time-safe design (lock-free queues, atomics, epoch-based RCU, no allocations on hot paths), JUCE 8, LVGL, DSP (oscillators, filters, delays, FDN reverb), Neural Amp Modeler integration</li>
+    <li><strong>Systems &amp; embedded:</strong> Linux, ALSA (SCHED_FIFO, xrun recovery), Raspberry Pi 5, libgpiod, SPI peripherals, systemd, cross-compilation, containerized arm64 builds</li>
+    <li><strong>Testing &amp; tooling:</strong> CMake (FetchContent), Catch2 (tests + benchmarks), TSan/ASan, pluginval, GitHub Actions CI (3-OS), Docker, Git</li>
+    <li><strong>Other languages:</strong> TypeScript/React/Svelte, Python (FastAPI, pandas), Kotlin, Java</li>
+  </ul>
+</section>
+
+<section class="projects">
+  <h2>Selected Projects</h2>
+
+  <article class="entry">
+    <h3>GestureSynth — polyphonic synthesizer plugin <span class="links"><a href="https://github.com/TTeuber/GestureSynth">github</a></span></h3>
+    <p>Juno-inspired subtractive synth built from scratch in C++20/JUCE 8, shipping as Standalone, AU, VST3, AUv3, and CLAP. All DSP hand-written: PolyBLEP anti-aliased 4×-oversampled oscillators with a morphing sub-oscillator, resonant state-variable filter, Juno-style chorus, bucket-brigade-style delay, 16-line feedback-delay-network reverb. Novel drag-gesture modulation routing with a live-rendered modulation graph. Real-time-safe throughout: lock-free UI↔audio messaging, cached atomics, no locks or allocations in <code>processBlock</code>. Catch2 tests/benchmarks, pluginval validation, cross-platform CI.</p>
+  </article>
+
+  <article class="entry">
+    <h3>PistompPedalboard — live multi-effect pedalboard on Raspberry Pi 5 <span class="links"><a href="https://github.com/TTeuber/PistompPedalboard">github</a></span></h3>
+    <p>C++17 pedalboard I'm building as my own live performance rig — engineered to real-world reliability requirements, not as a demo. One binary drives 30+ effects on <code>juce::dsp</code>, a Neural Amp Modeler block running <code>.nam</code> amp captures in realtime, the on-device LVGL screen/encoders/footswitches, and a Svelte web control surface kept live-consistent over Server-Sent Events. Chain edits are lock-free via epoch-based RCU, so effects can be added and reordered mid-performance without a click — verified by a TSan/ASan-swept stress test. Rigs/presets/setlists as JSON with atomic writes, hardware-free Catch2 DSP invariant suite, containerized arm64 build/deploy pipeline.</p>
+  </article>
+
+  <article class="entry">
+    <h3>pistomp-hal — hardware abstraction layer + simulator <span class="links"><a href="https://github.com/TTeuber/pistomp-hal">github</a></span></h3>
+    <p>JUCE-free C++17 HAL for the pi-Stomp v3 platform, extracted from the pedalboard and consumed as a static library via CMake FetchContent. Packages rotary encoders (libgpiod), SPI footswitches, NeoPixel LEDs, an ILI9341 TFT driven by LVGL v9, ADC metering, and a realtime duplex ALSA path (SCHED_FIFO, xrun recovery) behind clean headers — the <code>Board</code> class owns the shared SPI mutex so consumers can't corrupt the bus. The same headers are backed by a macOS simulator (LVGL in SDL2, CoreAudio/miniaudio), so an entire device app can be developed with no hardware attached.</p>
+  </article>
+
+  <article class="entry">
+    <h3>SelfControl — Android content blocker <span class="links"><a href="https://github.com/TTeuber/AndroidPhoneManager">github</a></span></h3>
+    <p>Kotlin 2.0 / Jetpack Compose app using Device Owner APIs (the enterprise-MDM layer) to suspend apps at the OS level and push Chrome managed configurations. Add-only lock semantics enforced in a single <code>LockManager</code>; unit-tested domain logic and CI.</p>
+  </article>
+</section>
+
+<section class="experience">
+  <h2>Experience</h2>
+
+  <article class="entry">
+    <div class="entry-head">
+      <h3>Coding Instructor / Assistant Manager — Coding Mind</h3>
+      <span class="dates">Aug 2024 – Present</span>
+    </div>
+    <ul>
+      <li>Teach Python, JavaScript/TypeScript, C++, and Java to students of all levels</li>
+      <li>Designed the curriculum for and led a student team contributing to a <a href="https://playerpathwayproject.org/">production TypeScript codebase</a> (React/Tailwind, Nest.js/Prisma) in a collaboration with Coerver Coaching, an international soccer coaching company</li>
+      <li>Promoted to Assistant Manager (Jul 2025 – Apr 2026); stepped back to focus on engineering</li>
+    </ul>
+  </article>
+
+  <article class="entry">
+    <div class="entry-head">
+      <h3>Web Developer / Coding Manager — KillThatNoise (sports news site)</h3>
+      <span class="dates">Jun 2023 – Oct 2023</span>
+    </div>
+    <ul>
+      <li>Proposed and led the site's migration from WordPress to Next.js/TypeScript/Tailwind; promoted to coding manager, coordinating the intern dev team with agile practices</li>
+    </ul>
+  </article>
+
+  <article class="entry">
+    <div class="entry-head">
+      <h3>Python Data Engineering Intern — developerDB (tech recruiting)</h3>
+      <span class="dates">Sep 2022 – Dec 2022</span>
+    </div>
+    <ul>
+      <li>Built and maintained web scraping pipelines (Python, Selenium) and processed datasets with pandas; earned a letter of recommendation</li>
+    </ul>
+  </article>
+</section>
+
+<section class="education">
+  <h2>Education</h2>
+
+  <article class="entry">
+    <h3>B.A. Economics, minor in Audio Technology — Western Washington University, 2017–2022</h3>
+    <p class="edu-detail">Audio minor: digital audio fundamentals, Pro Tools, analog signal chains — the domain grounding behind the DSP work</p>
+  </article>
+
+  <article class="entry">
+    <h3>Software engineering mentorship — 2022–Present</h3>
+    <p class="edu-detail">Biweekly mentorship with a senior software architect since my first day of programming, four years running</p>
+  </article>
+</section>
+
+</body>
+</html>

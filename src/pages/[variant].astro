@@ -1,0 +1,19 @@
+---
+// Tailored home pages (/web, /ai, /audio, /cpp, /python) — each variant's
+// resume links here from its contact line, so a recruiter reading e.g. the
+// web resume lands on a web-leaning version of the portfolio. Canonical
+// points at / since these are near-duplicates of the main page.
+import Layout from '../Layouts/Layout.astro';
+import HomePage from '../components/HomePage.astro';
+import { variants, homeVariantIds } from '../data/variants.js';
+
+export function getStaticPaths() {
+  return homeVariantIds.map((id) => ({ params: { variant: id } }));
+}
+
+const variant = variants[Astro.params.variant];
+---
+
+<Layout title={variant.title} description={variant.description} canonical="/">
+  <HomePage variant={variant} />
+</Layout>

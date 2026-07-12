@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tyler Teuber — Resume (Audio)</title>
+<!--
+TARGET ROLE: Audio Software Engineer (junior/associate) at a plugin, DAW,
+instrument, or audio hardware company — e.g. Ableton, Native Instruments,
+Universal Audio, Spectrasonics, iZotope, Focusrite, Neural DSP.
+Secular framing of the original RESUME.md: same DSP/C++ core, but the
+pedalboard is framed as the rig I'm building for my own live performances
+(nearly complete, not yet gigged) and the volunteer section becomes a short
+live-production line. Leads with the ear + DSP + shipped-plugin combination.
+-->
+<link rel="stylesheet" href="../styles/resume.css">
+</head>
+<body>
+
+<header class="resume-header">
+  <h1>Tyler Teuber</h1>
+  <p class="role">Audio Software Engineer</p>
+  <p class="contact">
+    <a href="mailto:tyler.teuber@gmail.com">tyler.teuber@gmail.com</a> ·
+    <a href="https://github.com/TTeuber">github.com/TTeuber</a> ·
+    <a href="https://tylerteuber.com/audio">tylerteuber.com/audio</a> ·
+    Greater Seattle, WA
+  </p>
+</header>
+
+<section class="summary">
+  <h2>Summary</h2>
+  <p>Audio software engineer who is also a lifelong musician and recording engineer. Built a polyphonic synthesizer plugin from scratch in C++20/JUCE 8 with entirely hand-written DSP, and I'm finishing a Raspberry Pi guitar pedalboard with real-time neural amp modeling to be my own live rig — both real-time-safe by construction and TSan/ASan-verified. Formal audio technology training (university minor: Pro Tools, analog consoles, mic technique) plus a decade of self-recording in Logic Pro means I hear the artifacts I'm debugging. Also solid on web (TypeScript/React/Svelte) for control surfaces and companion tools.</p>
+</section>
+
+<section class="skills">
+  <h2>Skills</h2>
+  <ul>
+    <li><strong>DSP:</strong> PolyBLEP anti-aliased oscillators, oversampling, state-variable filters, BBD-style delays, chorus, 16-line FDN reverb, envelopes/LFOs/modulation matrices, neural amp modeling (NAM)</li>
+    <li><strong>Audio C++:</strong> C++17/20, JUCE 8 (AU, VST3, AUv3, CLAP), real-time-safe design (lock-free messaging, epoch-based RCU, no locks/allocations on the audio thread), ALSA (SCHED_FIFO, xrun recovery), CoreAudio/miniaudio</li>
+    <li><strong>Testing &amp; tooling:</strong> Catch2 tests + benchmarks, pluginval, TSan/ASan, CMake, cross-platform GitHub Actions CI, Docker</li>
+    <li><strong>Music &amp; production:</strong> guitar/bass (performing + former instructor), Logic Pro, Pro Tools, analog consoles and outboard gear, mic technique, live sound (IEMs, click/playback workflows); learning Dante</li>
+    <li><strong>Also:</strong> TypeScript/React/Svelte, Python, Kotlin, LVGL embedded UIs, Claude API integration</li>
+  </ul>
+</section>
+
+<section class="projects">
+  <h2>Selected Projects</h2>
+
+  <article class="entry">
+    <h3>GestureSynth — polyphonic synthesizer plugin <span class="links"><a href="https://github.com/TTeuber/GestureSynth">github</a></span></h3>
+    <p>Gesture-driven, Juno-inspired subtractive synth written from scratch in C++20/JUCE 8, shipping as Standalone, AU, VST3, AUv3, and CLAP. All DSP hand-written: 4×-oversampled PolyBLEP DCO with morphing sub-oscillator, resonant state-variable filter, Juno-style chorus, bucket-brigade-style delay, 16-line FDN reverb. Defining feature: drag any modulation source (4 LFOs, 4 curve-shaped envelopes, MIDI expression) onto any knob, with live connector lines visualizing the whole modulation graph. Real-time-safe audio path, Catch2 tests/benchmarks, pluginval, 3-OS CI.</p>
+  </article>
+
+  <article class="entry">
+    <h3>PistompPedalboard — live multi-effect guitar pedalboard, Raspberry Pi 5 <span class="links"><a href="https://github.com/TTeuber/PistompPedalboard">github</a></span></h3>
+    <p>C++17 pedalboard I'm building as my own live rig: 30+ effects (delays, reverbs, modulation, drives, dynamics, EQ, tuner) on <code>juce::dsp</code>, a Neural Amp Modeler block running <code>.nam</code> captures in realtime, on-device LVGL UI, and a phone-friendly Svelte control surface synced over Server-Sent Events. Lock-free chain editing via epoch-based RCU lets effects be reordered mid-performance without a click (TSan/ASan-verified stress test). Tap-tempo sync, JSON rigs/presets/setlists with atomic writes, hardware-free Catch2 DSP invariant suite.</p>
+  </article>
+
+  <article class="entry">
+    <h3>pistomp-hal — audio hardware abstraction layer + simulator <span class="links"><a href="https://github.com/TTeuber/pistomp-hal">github</a></span></h3>
+    <p>JUCE-free C++17 HAL for the pi-Stomp v3 platform: realtime duplex ALSA audio (SCHED_FIFO, xrun recovery), encoders, SPI footswitches, NeoPixels, and an LVGL TFT behind clean headers, with a full macOS simulator (SDL2 + CoreAudio/miniaudio) so pedal apps develop with no hardware attached.</p>
+  </article>
+
+  <article class="entry">
+    <h3>ArcadeSoundFX — browser-based 8-bit sound effects generator <span class="links"><a href="https://tteuber.github.io/ArcadeSoundFX/">live demo</a> · <a href="https://github.com/TTeuber/ArcadeSoundFX">github</a></span></h3>
+    <p>React 19 + TypeScript + Tone.js dual-oscillator synth (tone + noise, amp/pitch envelopes, vibrato LFO) that exports game-ready WAVs through a custom 16-bit PCM encoder — built so my coding students could add sound to their games. Includes an AI "describe a sound" feature (Claude API behind a rate-limited Cloudflare Worker) and shareable patch URLs.</p>
+  </article>
+</section>
+
+<section class="experience">
+  <h2>Experience</h2>
+
+  <article class="entry">
+    <div class="entry-head">
+      <h3>Coding Instructor / Assistant Manager — Coding Mind</h3>
+      <span class="dates">Aug 2024 – Present</span>
+    </div>
+    <ul>
+      <li>Teach Python, JavaScript/TypeScript, C++, and Java to students of all levels</li>
+      <li>Designed the curriculum for and led a student team contributing to a <a href="https://playerpathwayproject.org/">production TypeScript codebase</a> in a collaboration with Coerver Coaching, an international soccer coaching company</li>
+      <li>Promoted to Assistant Manager (Jul 2025 – Apr 2026); stepped back to focus on engineering</li>
+    </ul>
+  </article>
+
+  <article class="entry">
+    <div class="entry-head">
+      <h3>Guitar &amp; Bass Instructor — School of Rock</h3>
+      <span class="dates">Apr 2023 – Feb 2024</span>
+    </div>
+    <ul>
+      <li>Taught individual and group guitar and bass lessons</li>
+    </ul>
+  </article>
+
+  <article class="entry">
+    <div class="entry-head">
+      <h3>Web Developer / Coding Manager — KillThatNoise</h3>
+      <span class="dates">Jun 2023 – Oct 2023</span>
+    </div>
+    <ul>
+      <li>Led the site's migration from WordPress to Next.js/TypeScript/Tailwind and managed the intern dev team</li>
+    </ul>
+  </article>
+
+  <article class="entry">
+    <div class="entry-head">
+      <h3>Python Data Engineering Intern — developerDB</h3>
+      <span class="dates">Sep 2022 – Dec 2022</span>
+    </div>
+    <ul>
+      <li>Built web scraping pipelines (Python, Selenium) and processed datasets with pandas; earned a letter of recommendation</li>
+    </ul>
+  </article>
+</section>
+
+<section class="volunteer">
+  <h2>Live Audio Production (Volunteer) · 2023 – Present</h2>
+  <p>Weekly volunteer guitarist and audio tech for live events over the past 2.5 years: introduced and implemented in-ear monitor, click-track, and playback workflows for a venue starting from scratch, trained the volunteer operators who still run them, and currently training under a Director of Production &amp; Technology on networked audio (Dante).</p>
+</section>
+
+<section class="education">
+  <h2>Education</h2>
+
+  <article class="entry">
+    <h3>B.A. Economics, minor in Audio Technology — Western Washington University, 2017–2022</h3>
+    <p class="edu-detail">Audio minor: Pro Tools, analog consoles, outboard gear (compressors, EQs, preamps), mic techniques, digital audio fundamentals</p>
+  </article>
+
+  <article class="entry">
+    <h3>Software engineering mentorship — 2022–Present</h3>
+    <p class="edu-detail">Biweekly mentorship with a senior software architect since my first day of programming, four years running</p>
+  </article>
+</section>
+
+</body>
+</html>

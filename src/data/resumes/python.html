@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tyler Teuber — Resume (Python)</title>
+<!--
+TARGET ROLE: Python Software Engineer (junior/associate) — backend, data, or
+tooling. Leads with the developerDB scraping/pandas internship (the only paid-ish
+Python-titled experience), then HyprBlocker as the flagship Python project
+(FastAPI daemon, systemd, defense in depth). Sermon Slides Generator is framed
+tech-first as a desktop automation app.
+-->
+<link rel="stylesheet" href="../styles/resume.css">
+</head>
+<body>
+
+<header class="resume-header">
+  <h1>Tyler Teuber</h1>
+  <p class="role">Software Engineer — Python</p>
+  <p class="contact">
+    <a href="mailto:tyler.teuber@gmail.com">tyler.teuber@gmail.com</a> ·
+    <a href="https://github.com/TTeuber">github.com/TTeuber</a> ·
+    <a href="https://tylerteuber.com/python">tylerteuber.com/python</a> ·
+    Greater Seattle, WA
+  </p>
+</header>
+
+<section class="summary">
+  <h2>Summary</h2>
+  <p>Software engineer with production Python experience across data pipelines, backend services, and desktop tooling. Built and maintained web scraping pipelines with Selenium and processed datasets with pandas at a recruiting-data startup. Designed a tamper-resistant Linux content blocker around a Python/FastAPI daemon with a self-healing watchdog mesh, and shipped a packaged desktop app that automates a weekly document-production workflow, still in use by its users today. Comfortable across the stack — TypeScript/React frontends, C++ where performance demands it — with four years of biweekly mentorship from a senior software architect.</p>
+</section>
+
+<section class="skills">
+  <h2>Skills</h2>
+  <ul>
+    <li><strong>Python:</strong> FastAPI, pandas, Selenium, Requests, BeautifulSoup, Pillow, pypdf, pywebview, PyInstaller, pytest, ruff</li>
+    <li><strong>Systems &amp; infra:</strong> Linux, systemd services, Raspberry Pi / embedded, Docker, Git, GitHub Actions CI</li>
+    <li><strong>Web:</strong> TypeScript, React, Next.js, Svelte, Node.js, Nest.js, Prisma, REST APIs</li>
+    <li><strong>Other languages:</strong> C++17/20 (real-time audio), Kotlin (Jetpack Compose), Java</li>
+    <li><strong>AI integration:</strong> Claude API, tool-use/agent loops, structured outputs, Cloudflare Workers</li>
+  </ul>
+</section>
+
+<section class="projects">
+  <h2>Selected Projects</h2>
+
+  <article class="entry">
+    <h3>HyprBlocker — tamper-resistant Linux content blocker <span class="links"><a href="https://github.com/TTeuber/HyprBlocker">github</a></span></h3>
+    <p>Website and app blocker for Linux + Hyprland that treats "future me trying to cheat" as the adversary. A Python/FastAPI daemon (systemd) owns all enforcement and defends in depth: a self-healing mesh of 2–5 watchdog processes with obfuscated names that monitor the daemon and each other, NTP-verified time locks so changing the system clock can't end a block early, and a Manifest v3 browser extension whose heartbeat is tracked — any browser that stops reporting gets closed via Hyprland IPC. Wildcard/path-level URL rules with allow-list exceptions, per-weekday schedules, and read-only lock mode, managed from a React + TypeScript GUI in a native pywebview window. Fails closed on any error; pytest/ruff/bun CI.</p>
+  </article>
+
+  <article class="entry">
+    <h3>Sermon Slides Generator — desktop document automation <span class="links"><a href="https://github.com/TTeuber/Sermon_Slides_Generator">github</a></span></h3>
+    <p>macOS desktop app that turns a list of text references into presentation-ready PDF slides in seconds, replacing a weekly manual copy-paste job — still used every week by the organization I built it for. Content is fetched with Requests + BeautifulSoup (polite rate limiting), cleaned, and split across slides at sentence boundaries; slides are rendered with Pillow (custom typography, optional QR-code title slide) and merged with pypdf. PyWebView UI plus a headless CLI, packaged by PyInstaller as a self-contained ~19 MB .app. pytest + ruff in CI.</p>
+  </article>
+
+  <article class="entry">
+    <h3>Personal Lesson Agent — AI-powered learning platform <span class="links"><a href="https://github.com/TTeuber/PersonalLessonAgent">github</a></span></h3>
+    <p>Desktop app (Electron, React 19, TypeScript) where a custom multi-agent framework — four specialized agents sharing an abstract base with a bounded tool-use loop — generates personalized courses from a short interview. Designed a four-level hierarchical context model (User → Subject → Course → Module) so every AI interaction knows the learner's background and current objective.</p>
+  </article>
+
+  <article class="entry">
+    <h3>PistompPedalboard — real-time audio on Raspberry Pi 5 <span class="links"><a href="https://github.com/TTeuber/PistompPedalboard">github</a></span></h3>
+    <p>C++17 multi-effect guitar pedalboard I'm building as my own live rig: 30+ effects, real-time neural amp modeling, on-device LVGL UI, and a Svelte web control surface synced over Server-Sent Events. Lock-free chain editing (epoch-based RCU), TSan/ASan-verified, containerized arm64 build/deploy pipeline.</p>
+  </article>
+</section>
+
+<section class="experience">
+  <h2>Experience</h2>
+
+  <article class="entry">
+    <div class="entry-head">
+      <h3>Python Data Engineering Intern — developerDB (tech recruiting)</h3>
+      <span class="dates">Sep 2022 – Dec 2022</span>
+    </div>
+    <ul>
+      <li>Maintained and built web scraping pipelines (Python, Selenium) for a recruiting-data product</li>
+      <li>Processed and cleaned scraped datasets with pandas for downstream sale to hiring teams</li>
+      <li>Earned a letter of recommendation from my manager</li>
+    </ul>
+  </article>
+
+  <article class="entry">
+    <div class="entry-head">
+      <h3>Coding Instructor / Assistant Manager — Coding Mind</h3>
+      <span class="dates">Aug 2024 – Present</span>
+    </div>
+    <ul>
+      <li>Teach Python, JavaScript/TypeScript, C++, and Java to students of all levels</li>
+      <li>Designed the curriculum for and led a student team contributing to a <a href="https://playerpathwayproject.org/">production TypeScript codebase</a> (React/Tailwind, Nest.js/Prisma) in a collaboration with Coerver Coaching, an international soccer coaching company</li>
+      <li>Promoted to Assistant Manager (Jul 2025 – Apr 2026): onboarded and assessed teachers and launched new program offerings; stepped back to focus on engineering</li>
+    </ul>
+  </article>
+
+  <article class="entry">
+    <div class="entry-head">
+      <h3>Web Developer / Coding Manager — KillThatNoise (sports news site)</h3>
+      <span class="dates">Jun 2023 – Oct 2023</span>
+    </div>
+    <ul>
+      <li>Proposed and led the site's migration from WordPress to Next.js/TypeScript/Tailwind, keeping WordPress as a headless CMS via its REST API</li>
+      <li>Promoted to coding manager; coordinated the intern dev team using agile practices</li>
+    </ul>
+  </article>
+</section>
+
+<section class="education">
+  <h2>Education</h2>
+
+  <article class="entry">
+    <h3>B.A. Economics, minor in Audio Technology — Western Washington University, 2017–2022</h3>
+    <p class="edu-detail">Quantitative and statistical coursework; econometrics-style data analysis</p>
+  </article>
+
+  <article class="entry">
+    <h3>Software engineering mentorship — 2022–Present</h3>
+    <p class="edu-detail">Biweekly mentorship with a senior software architect since my first day of programming, four years running</p>
+  </article>
+</section>
+
+</body>
+</html>

@@ -4,11 +4,15 @@ import '../styles/global.scss'
 interface Props {
   title?: string;
   description?: string;
+  // Variant home pages (/web, /ai, ...) are near-duplicates of / — they pass
+  // canonical="/" so search engines don't see them as competing pages.
+  canonical?: string;
 }
 
 const {
   title = "Tyler Teuber | Software Engineer",
   description = "Software engineer building across the whole signal chain — real-time C++ audio DSP, full-stack web apps, and AI-powered tools.",
+  canonical = Astro.url.pathname,
 } = Astro.props;
 ---
 
@@ -20,7 +24,7 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
-    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="canonical" href={new URL(canonical, Astro.site)} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />

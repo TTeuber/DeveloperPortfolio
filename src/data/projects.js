@@ -214,6 +214,23 @@ export const projects = [
   },
 ];
 
+// Reorder/re-feature the project list for a variant home page (see variants.js).
+// `order` lists the ids to move to the front (unlisted projects keep their
+// relative order after them); `featured` replaces the per-project featured flags.
+export function projectsForVariant({ order, featured } = {}) {
+  let list = projects;
+  if (order?.length) {
+    const rank = new Map(order.map((id, i) => [id, i]));
+    list = [...list].sort(
+      (a, b) => (rank.get(a.id) ?? order.length) - (rank.get(b.id) ?? order.length)
+    );
+  }
+  if (featured) {
+    list = list.map((p) => ({ ...p, featured: featured.includes(p.id) }));
+  }
+  return list;
+}
+
 export const languageFilters = [...new Set(projects.flatMap((p) => p.languages))];
 export const areaFilters = [...new Set(projects.flatMap((p) => p.areas))];
 

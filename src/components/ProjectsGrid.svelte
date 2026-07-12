@@ -2,12 +2,14 @@
   import { onMount } from 'svelte';
   import { fade, scale } from 'svelte/transition';
   import { flip } from 'svelte/animate';
-  import { projects, languageFilters, areaFilters } from '../data/projects.js';
+  import { projects as allProjects, languageFilters, areaFilters } from '../data/projects.js';
 
   // Optimized responsive variants keyed by project id (one array per project),
-  // generated with getImage() in index.astro. If a project isn't in the map,
+  // generated with getImage() in HomePage.astro. If a project isn't in the map,
   // fall back to the raw entries from projects.js.
-  let { images = {} } = $props();
+  // `projects` lets variant home pages pass a reordered/re-featured list
+  // (see projectsForVariant in projects.js).
+  let { images = {}, projects = allProjects } = $props();
 
   let active = $state('All');
   let videoProject = $state(null);
