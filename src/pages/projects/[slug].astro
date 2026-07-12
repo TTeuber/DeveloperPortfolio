@@ -1,10 +1,11 @@
 ---
 // Per-project detail page: a shareable URL with the long-form write-up from
 // `details` in src/data/projects.js.
-import { Image } from 'astro:assets';
+import { getImage } from 'astro:assets';
 import Layout from '../../Layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import Carousel from '../../components/Carousel.svelte';
 import { projects } from '../../data/projects.js';
 
 export function getStaticPaths() {
@@ -15,6 +16,27 @@ export function getStaticPaths() {
 }
 
 const { project } = Astro.props;
+
+// Optimized responsive variants for the media block. GIF entries (plain path
+// strings) skip the pipeline; `portrait` flags phone screenshots so the
+// carousel letterboxes them instead of crop-zooming.
+const media = await Promise.all(
+  (project.images ?? []).map(async (image) => {
+    if (typeof image === 'string') return { src: image };
+    const img = await getImage({
+      src: image,
+      format: 'webp',
+      widths: [720, 1440],
+      sizes: '(min-width: 920px) 860px, 100vw',
+    });
+    return {
+      src: img.src,
+      srcset: img.srcSet.attribute,
+      sizes: img.attributes.sizes,
+      portrait: image.height > image.width,
+    };
+  })
+);
 ---
 
 <Layout title={`${project.title} | Tyler Teuber`} description={project.description}>
@@ -33,18 +55,18 @@ const { project } = Astro.props;
       </div>
     </header>
 
-    {project.image && (
+    {media.length > 1 ? (
+      <div class="detail-media-slot">
+        <Carousel client:load images={media} title={project.title} />
+      </div>
+    ) : media.length === 1 && (
       <div class="detail-media">
-        {typeof project.image === 'string' ? (
-          <img src={project.image} alt={`${project.title} screenshot`} />
-        ) : (
-          <Image
-            src={project.image}
-            alt={`${project.title} screenshot`}
-            widths={[720, 1440]}
-            sizes="(min-width: 920px) 860px, 100vw"
-          />
-        )}
+        <img
+          src={media[0].src}
+          srcset={media[0].srcset}
+          sizes={media[0].sizes}
+          alt={`${project.title} screenshot`}
+        />
       </div>
     )}
 
@@ -138,6 +160,10 @@ const { project } = Astro.props;
     border: 1px solid var(--line);
     color: var(--text-dim);
     background: var(--panel);
+  }
+
+  .detail-media-slot {
+    margin-bottom: 40px;
   }
 
   .detail-media {

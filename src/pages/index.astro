@@ -8,21 +8,34 @@ import { projects, filterableTags } from '../data/projects.js';
 import { skillGroups } from '../data/skills.js';
 import portrait from '../assets/Portrait.jpg';
 
-// Optimized responsive variants for the project cards. Only src/assets imports
-// go through the pipeline — GIF cards keep their public/ path (see projects.js).
+// Optimized responsive variants for the project cards, one array per project.
+// Only src/assets imports go through the pipeline — GIF entries keep their
+// public/ path (see projects.js). `portrait` flags phone screenshots so the
+// card letterboxes them instead of crop-zooming.
 const cardImages = Object.fromEntries(
   await Promise.all(
     projects
-      .filter((p) => p.image && typeof p.image === 'object')
-      .map(async (p) => {
-        const img = await getImage({
-          src: p.image,
-          format: 'webp',
-          widths: [480, 960, 1440],
-          sizes: '(min-width: 861px) 640px, 100vw',
-        });
-        return [p.id, { src: img.src, srcset: img.srcSet.attribute, sizes: img.attributes.sizes }];
-      })
+      .filter((p) => p.images?.length)
+      .map(async (p) => [
+        p.id,
+        await Promise.all(
+          p.images.map(async (image) => {
+            if (typeof image === 'string') return { src: image };
+            const img = await getImage({
+              src: image,
+              format: 'webp',
+              widths: [480, 960, 1440],
+              sizes: '(min-width: 861px) 640px, 100vw',
+            });
+            return {
+              src: img.src,
+              srcset: img.srcSet.attribute,
+              sizes: img.attributes.sizes,
+              portrait: image.height > image.width,
+            };
+          })
+        ),
+      ])
   )
 );
 ---

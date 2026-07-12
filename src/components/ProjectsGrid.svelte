@@ -4,9 +4,9 @@
   import { flip } from 'svelte/animate';
   import { projects, languageFilters, areaFilters } from '../data/projects.js';
 
-  // Optimized responsive variants keyed by project id, generated with
-  // getImage() in index.astro. GIF cards aren't in the map and fall back to
-  // their public/ path (or the imported asset's own src).
+  // Optimized responsive variants keyed by project id (one array per project),
+  // generated with getImage() in index.astro. If a project isn't in the map,
+  // fall back to the raw entries from projects.js.
   let { images = {} } = $props();
 
   let active = $state('All');
@@ -14,8 +14,19 @@
   let modalEl = $state(null);
   let lastFocused = null;
 
-  function imageSrc(project) {
-    return typeof project.image === 'string' ? project.image : project.image.src;
+  // Advances every few seconds so multi-image cards cycle through their
+  // screenshots in step; single-image cards ignore it (tick % 1 === 0).
+  let tick = $state(0);
+
+  function mediaList(project) {
+    return (
+      images[project.id] ??
+      (project.images ?? []).map((img) =>
+        typeof img === 'string'
+          ? { src: img }
+          : { src: img.src, portrait: img.height > img.width }
+      )
+    );
   }
 
   const matches = (p, f) =>
@@ -44,7 +55,17 @@
       active = projects.some((p) => matches(p, tag)) ? tag : 'All';
     };
     window.addEventListener('filter-projects', onFilter);
-    return () => window.removeEventListener('filter-projects', onFilter);
+
+    // Auto-cycle multi-image cards, unless the user prefers reduced motion.
+    let interval;
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      interval = setInterval(() => (tick += 1), 4500);
+    }
+
+    return () => {
+      window.removeEventListener('filter-projects', onFilter);
+      clearInterval(interval);
+    };
   });
 
   $effect(() => {
@@ -119,14 +140,21 @@
       transition:scale={{ duration: 250, start: 0.96 }}
     >
       <div class="pcard-media">
-        {#if project.image}
-          <img
-            src={images[project.id]?.src ?? imageSrc(project)}
-            srcset={images[project.id]?.srcset}
-            sizes={images[project.id]?.sizes}
-            alt={`${project.title} screenshot`}
-            loading="lazy"
-          />
+        {#if mediaList(project).length}
+          {@const media = mediaList(project)}
+          {#each media as m, i (m.src)}
+            <img
+              src={m.src}
+              srcset={m.srcset}
+              sizes={m.sizes}
+              class="pcard-img"
+              class:stacked={media.length > 1}
+              class:current={i === tick % media.length}
+              class:portrait={m.portrait}
+              alt={media.length > 1 ? `${project.title} screenshot ${i + 1} of ${media.length}` : `${project.title} screenshot`}
+              loading="lazy"
+            />
+          {/each}
         {:else}
           <div class="pcard-placeholder" aria-hidden="true">
             <span class="ph-initials">{initials(project.title)}</span>
@@ -315,12 +343,31 @@
     overflow: hidden;
     background: var(--bg-deep);
     border-bottom: 1px solid var(--line);
+    position: relative;
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.5s ease;
+
+      // Multi-image cards stack their screenshots and crossfade on `tick`.
+      &.stacked {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transition: transform 0.5s ease, opacity 0.9s ease;
+
+        &.current {
+          opacity: 1;
+        }
+      }
+
+      // Phone screenshots letterbox against the deep background instead of
+      // being crop-zoomed by object-fit: cover.
+      &.portrait {
+        object-fit: contain;
+      }
     }
   }
 
