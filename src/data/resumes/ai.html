@@ -29,17 +29,17 @@ not just API wrappers, and ships them behind production concerns
 
 <section class="summary">
   <h2>Summary</h2>
-  <p>Software engineer building LLM-powered applications end to end. Designed and built a multi-agent framework from scratch — four specialized agents with a bounded tool-use loop and a four-level hierarchical context model — powering a desktop app that generates complete personalized courses. Shipped a production AI feature (natural language → synthesizer parameters) behind a rate-limited Cloudflare Worker proxy with origin-locked CORS and per-IP limits. Daily agentic-tooling power user: Claude Code on every real project since early 2025, current on MCP, skills, structured outputs, and the frontier model landscape. Strong general engineering base across TypeScript/React, Python, and real-time C++, with four years of biweekly mentorship from a senior software architect.</p>
+  <p>Software engineer building LLM-powered applications from frontend to backend. Built a multi-agent framework from scratch that turns a short interview into a complete personalized course, and shipped a production AI feature using the Claude API. Claude Code has been my primary development tool on every project since early 2025. Strong engineering foundation in TypeScript/React, Python, and real-time C++, with four years of biweekly mentorship from a senior software architect.</p>
 </section>
 
 <section class="skills">
   <h2>Skills</h2>
   <ul>
-    <li><strong>LLM engineering:</strong> Claude API, OpenRouter, agent architectures (tool-use loops, multi-agent orchestration, hierarchical context management), structured outputs, prompt design, rate limiting and abuse protection for AI endpoints</li>
-    <li><strong>AI tooling fluency:</strong> Claude Code (daily driver on all projects), MCP, agent skills, Codex/Cursor familiarity; track frontier model capabilities and tradeoffs closely</li>
-    <li><strong>Web &amp; app:</strong> TypeScript, React 19, Next.js, Svelte, Electron (sandboxed renderer, path-validated IPC), Node.js, Nest.js, Prisma, Cloudflare Workers + KV</li>
-    <li><strong>Other languages:</strong> Python (FastAPI, pandas, Selenium), C++17/20 (real-time audio, lock-free design), Kotlin, Java</li>
-    <li><strong>Tooling:</strong> Git, GitHub Actions CI, Docker, Linux, pytest/Catch2 testing</li>
+    <li><strong>LLM engineering:</strong> Claude API, OpenRouter, multi-agent architectures, structured outputs, prompt design</li>
+    <li><strong>AI tooling:</strong> Claude Code (daily driver), MCP, agent skills, Cursor, Codex</li>
+    <li><strong>Web &amp; applications:</strong> TypeScript, React, Next.js, Electron, Node.js, Nest.js, Prisma, Cloudflare Workers</li>
+    <li><strong>Languages:</strong> Python (FastAPI, pandas), C++17/20, Kotlin, Java</li>
+    <li><strong>Tools:</strong> Git, GitHub Actions, Docker, Linux</li>
   </ul>
 </section>
 
@@ -48,22 +48,22 @@ not just API wrappers, and ships them behind production concerns
 
   <article class="entry">
     <h3>Personal Lesson Agent — multi-agent learning platform <span class="links"><a href="https://github.com/TTeuber/PersonalLessonAgent">github</a></span></h3>
-    <p>AI-powered desktop app (Electron, React 19, TypeScript) that turns a short interview into a complete personalized course — lessons, multi-file coding exercises, quizzes — with a context-aware tutor beside every module. Built the agent framework from scratch: four specialized agents (Interview, CourseDesigner, ContentGenerator, Tutor) extend a shared abstract base with a bounded tool-use loop, calling Claude through a typed OpenRouter client. The defining design is a four-level hierarchical context model (User → Subject → Course → Module) so every AI interaction knows the learner's background, tools, and current objective. Data persists as inspectable JSON/Markdown; the renderer is sandboxed behind a path-validated IPC layer.</p>
+    <p>AI-powered desktop app (Electron, React 19, TypeScript) that turns a short interview into a complete personalized course — lessons, coding exercises, quizzes — with an AI tutor beside every module. Built the multi-agent framework from scratch: four specialized agents with shared tooling, hierarchical context management so every interaction knows the learner's background and current objective, and a typed OpenRouter/Claude client.</p>
   </article>
 
   <article class="entry">
     <h3>ArcadeSoundFX — AI-assisted sound effects generator <span class="links"><a href="https://tteuber.github.io/ArcadeSoundFX/">live demo</a> · <a href="https://github.com/TTeuber/ArcadeSoundFX">github</a></span></h3>
-    <p>Browser-based 8-bit sound generator (React 19, TypeScript, Tone.js) whose AI prompt bar turns text like "a sad laser powering down" into synth parameters via the Claude API — a structured-output problem mapping natural language onto a constrained parameter space. The endpoint is production-hardened: a Cloudflare Worker proxy with origin-locked CORS and per-IP/global rate limits in Workers KV, plus a bring-your-own-key fallback. Custom WAV encoder, shareable patch URLs, deployed to GitHub Pages via CI.</p>
+    <p>Browser-based 8-bit sound generator (React 19, TypeScript, Tone.js) whose AI prompt bar turns text like "a sad laser powering down" into synthesizer parameters via the Claude API. Secured through a rate-limited Cloudflare Worker proxy and deployed via GitHub Actions — built so my coding students could add sound to their games.</p>
   </article>
 
   <article class="entry">
     <h3>GestureSynth — polyphonic synthesizer plugin <span class="links"><a href="https://github.com/TTeuber/GestureSynth">github</a></span></h3>
-    <p>C++20/JUCE 8 subtractive synth with entirely hand-written DSP and a real-time-safe audio path (lock-free messaging, no allocations on the audio thread). Evidence of the systems depth under the AI work — Catch2 tests, pluginval, 3-OS CI.</p>
+    <p>C++20/JUCE 8 synthesizer plugin with entirely hand-written DSP, a real-time-safe audio architecture, automated testing, and cross-platform CI.</p>
   </article>
 
   <article class="entry">
     <h3>HyprBlocker — tamper-resistant Linux content blocker <span class="links"><a href="https://github.com/TTeuber/HyprBlocker">github</a></span></h3>
-    <p>Python/FastAPI daemon with a self-healing watchdog mesh, NTP-verified time locks, and a heartbeat-tracked browser extension; React + TypeScript GUI. Adversarial-by-design systems thinking — the same instinct AI endpoints need.</p>
+    <p>Python/FastAPI content blocker with watchdog processes, verified time locks, and browser extension integration, managed from a React + TypeScript interface.</p>
   </article>
 </section>
 
@@ -76,9 +76,9 @@ not just API wrappers, and ships them behind production concerns
       <span class="dates">Aug 2024 – Present</span>
     </div>
     <ul>
-      <li>Teach Python, JavaScript/TypeScript, C++, and Java to students of all levels</li>
+      <li>Teach Python, JavaScript/TypeScript, C++, and Java to students of all levels — 50+ students since the branch opened</li>
       <li>Designed the curriculum for and led a student team contributing to a <a href="https://playerpathwayproject.org/">production TypeScript codebase</a> (React/Tailwind, Nest.js/Prisma) in a collaboration with Coerver Coaching, an international soccer coaching company</li>
-      <li>Promoted to Assistant Manager (Jul 2025 – Apr 2026); stepped back to focus on engineering</li>
+      <li>Promoted to Assistant Manager (Jul 2025 – Apr 2026) as the branch grew to 100+ students; stepped back to focus on engineering</li>
     </ul>
   </article>
 
@@ -88,7 +88,7 @@ not just API wrappers, and ships them behind production concerns
       <span class="dates">Jun 2023 – Oct 2023</span>
     </div>
     <ul>
-      <li>Proposed and led the site's migration from WordPress to Next.js/TypeScript/Tailwind, keeping WordPress as a headless CMS; promoted to coding manager, coordinating the intern team with agile practices</li>
+      <li>Proposed and led the site's migration from WordPress to Next.js/TypeScript/Tailwind; promoted to coding manager, leading a team of up to 5 interns with agile practices</li>
     </ul>
   </article>
 
@@ -98,7 +98,7 @@ not just API wrappers, and ships them behind production concerns
       <span class="dates">Sep 2022 – Dec 2022</span>
     </div>
     <ul>
-      <li>Built and maintained web scraping pipelines (Python, Selenium) and processed datasets with pandas; earned a letter of recommendation</li>
+      <li>Built and maintained web scraping pipelines (Python, Selenium) gathering data on tens of thousands of profiles, processed with pandas; earned a letter of recommendation</li>
     </ul>
   </article>
 </section>

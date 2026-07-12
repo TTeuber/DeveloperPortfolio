@@ -13,7 +13,10 @@ import { variants } from '../data/variants.js';
 import portrait from '../assets/Portrait.jpg';
 
 interface Props {
-  variant: (typeof variants)[keyof typeof variants];
+  // Variants from variants.js, or targets from targets.js (which add `pitch`).
+  variant: (typeof variants)[keyof typeof variants] & {
+    pitch?: { heading: string; html: string };
+  };
 }
 
 const { variant } = Astro.props;
@@ -88,6 +91,24 @@ const cardImages = Object.fromEntries(
   </div>
 </section>
 
+{
+  // Target pages (/for/...) open with a role-specific pitch; variants leave
+  // `pitch` undefined and render identically to before. Numbered 00 so the
+  // shared 01–05 sections keep their numbers.
+  variant.pitch && (
+    <section id="pitch">
+      <div class="container reveal">
+        <div class="section-head">
+          <span class="section-num">00</span>
+          <h2>{variant.pitch.heading}</h2>
+          <span class="section-rule" aria-hidden="true" />
+        </div>
+        <div class="pitch-text" set:html={variant.pitch.html} />
+      </div>
+    </section>
+  )
+}
+
 <!-- Projects -->
 <section id="projects">
   <div class="container reveal">
@@ -115,12 +136,15 @@ const cardImages = Object.fromEntries(
       <div class="about-text">
         <p set:html={aboutIntro} />
         <p>
-          I'm self-taught with an asterisk: since my first day of programming four years
-          ago, I've met biweekly with a senior software architect who tells me what to
-          learn next, and I go learn it. Along the way I've taught programming
-          professionally, led a student team contributing to a
+          I'm mostly self-taught, but not entirely: since the day I started learning
+          programming four years ago, I've met every other week with a senior software
+          architect. He tells me what I should learn next and I go do that. Along the
+          way I've taught programming to over 50 students, led a student team
+          contributing to a
           <a href="https://playerpathwayproject.org" target="_blank" rel="noopener">production codebase</a>,
-          and shipped tools that people still use every week without me.
+          and built tools that people still use every week even though I've moved on.
+          Thousands of hours in, I just really love building things. I'm the type of
+          person who doesn't want to go to sleep until the bug is solved.
         </p>
         <ul class="about-facts">
           <li><span class="fact-label">Education</span>B.A. Economics + Audio Technology minor, Western Washington University</li>
@@ -152,7 +176,7 @@ const cardImages = Object.fromEntries(
           <span class="timeline-date">Aug 2024 — Present</span>
           <ul>
             <li>Teach Python, JavaScript/TypeScript, C++, and Java to students of all levels</li>
-            <li>Designed the curriculum for and led a student team contributing to <a href="https://playerpathwayproject.org" target="_blank" rel="noopener">playerpathwayproject.org</a> — a production TypeScript codebase (React/Tailwind frontend, Nest.js/Prisma backend) built in collaboration with Coerver Coaching, an international soccer coaching company</li>
+            <li>Designed the curriculum for and led a student team contributing to <a href="https://playerpathwayproject.org" target="_blank" rel="noopener">playerpathwayproject.org</a>, a production TypeScript codebase (React/Tailwind frontend, Nest.js/Prisma backend) built in collaboration with Coerver Coaching, an international soccer coaching company</li>
             <li>Currently guiding students building an SAT vocabulary app in React Native</li>
             <li>Promoted to Assistant Manager (Jul 2025 — Apr 2026): onboarded and assessed teachers and launched new program offerings as the branch grew; stepped back to focus on engineering</li>
           </ul>
@@ -201,7 +225,7 @@ const cardImages = Object.fromEntries(
       <h2>Skills</h2>
       <span class="section-rule" aria-hidden="true"></span>
     </div>
-    <p class="skills-hint">Skills with an underline are wired to a project — click one to see it in action.</p>
+    <p class="skills-hint">Skills with an underline are wired to a project. Click one to see it in action.</p>
     <div class="skills-grid">
       {orderedSkillGroups.map((group) => (
         <div class="skill-group reveal">

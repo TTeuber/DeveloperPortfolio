@@ -1,0 +1,17 @@
+---
+// /for/<slug>/resume — the tailored resume for a target application, rendered
+// from src/data/resumes/<slug>.html like the variant resumes. Noindex.
+import Layout from '../../../Layouts/Layout.astro';
+import ResumePageShell from '../../../components/ResumePageShell.astro';
+import { targets, targetIds } from '../../../data/targets.js';
+
+export function getStaticPaths() {
+  return targetIds.map((id) => ({ params: { target: id } }));
+}
+
+const target = targets[Astro.params.target];
+---
+
+<Layout title="Résumé | Tyler Teuber" description={target.description} noindex>
+  <ResumePageShell variant={target.id} backPath={target.path} />
+</Layout>

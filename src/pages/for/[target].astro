@@ -1,0 +1,18 @@
+---
+// Unlisted, application-specific home pages (/for/<slug>) driven by
+// src/data/targets.js — noindex, absent from nav and sitemap, reachable only
+// by URL (the tailored resume's contact line links here).
+import Layout from '../../Layouts/Layout.astro';
+import HomePage from '../../components/HomePage.astro';
+import { targets, targetIds } from '../../data/targets.js';
+
+export function getStaticPaths() {
+  return targetIds.map((id) => ({ params: { target: id } }));
+}
+
+const target = targets[Astro.params.target];
+---
+
+<Layout title={target.title} description={target.description} noindex>
+  <HomePage variant={target} />
+</Layout>

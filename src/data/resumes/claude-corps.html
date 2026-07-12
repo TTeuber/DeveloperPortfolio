@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tyler Teuber — Resume (Claude Corps)</title>
+<!--
+TARGET: Anthropic's Claude Corps fellowship (via CodePath) — a year embedded
+at a nonprofit helping it use Claude effectively. NOT an engineering resume:
+the reviewer is screening for curiosity, mission-drive, and evidence the
+applicant can help non-engineers use AI well. So the story leads with
+teaching (50+ students, curriculum design, branch growth) and motivation,
+with the engineering work as credibility underneath. Experience sits above
+projects, skills near the bottom, volunteer/church service included — it's
+direct evidence of making technology serve an organization's mission.
+Contact line links to the unlisted /for/claude-corps page.
+-->
+<link rel="stylesheet" href="../styles/resume.css">
+</head>
+<body>
+
+<header class="resume-header">
+  <h1>Tyler Teuber</h1>
+  <p class="role">Coding Instructor &amp; Software Engineer</p>
+  <p class="contact">
+    <a href="mailto:tyler.teuber@gmail.com">tyler.teuber@gmail.com</a> ·
+    <a href="https://github.com/TTeuber">github.com/TTeuber</a> ·
+    <a href="https://tylerteuber.com/for/claude-corps">tylerteuber.com/for/claude-corps</a> ·
+    Greater Seattle, WA
+  </p>
+</header>
+
+<section class="summary">
+  <h2>Summary</h2>
+  <p>Coding instructor and software engineer. I've taught 50+ students to program while building LLM-powered software of my own — including a multi-agent learning platform that turns a short interview into a complete personalized course. Claude Code has been my primary development tool on every project since early 2025. I got into technology to build tools people actually use, and helping others get real leverage out of AI is the work I want to do.</p>
+</section>
+
+<section class="experience">
+  <h2>Experience</h2>
+
+  <article class="entry">
+    <div class="entry-head">
+      <h3>Coding Instructor / Assistant Manager — Coding Mind</h3>
+      <span class="dates">Aug 2024 – Present</span>
+    </div>
+    <ul>
+      <li>Teach Python, JavaScript/TypeScript, C++, and Java to students of all ages and levels — 50+ students since the branch opened</li>
+      <li>Designed the curriculum for and led a student team contributing to a <a href="https://playerpathwayproject.org/">production TypeScript codebase</a> in a collaboration with Coerver Coaching, an international soccer coaching company</li>
+      <li>Currently guiding students building an SAT vocabulary study app in React Native</li>
+      <li>Promoted to Assistant Manager (Jul 2025 – Apr 2026): onboarded and assessed 10–15 teachers and helped launch new program offerings (e.g. 3D printing) as the branch grew from opening day to 100+ students</li>
+    </ul>
+  </article>
+
+  <article class="entry">
+    <div class="entry-head">
+      <h3>Guitar &amp; Bass Instructor — School of Rock</h3>
+      <span class="dates">Apr 2023 – Feb 2024</span>
+    </div>
+    <ul>
+      <li>Taught individual and group guitar and bass lessons</li>
+    </ul>
+  </article>
+
+  <article class="entry">
+    <div class="entry-head">
+      <h3>Web Developer / Coding Manager — KillThatNoise (sports news site)</h3>
+      <span class="dates">Jun 2023 – Oct 2023</span>
+    </div>
+    <ul>
+      <li>Proposed and led the site's migration from WordPress to Next.js/TypeScript; promoted to coding manager, leading a team of up to 5 interns</li>
+    </ul>
+  </article>
+
+  <article class="entry">
+    <div class="entry-head">
+      <h3>Python Data Engineering Intern — developerDB (tech recruiting)</h3>
+      <span class="dates">Sep 2022 – Dec 2022</span>
+    </div>
+    <ul>
+      <li>Built web scraping pipelines gathering data on tens of thousands of profiles; earned a letter of recommendation</li>
+    </ul>
+  </article>
+</section>
+
+<section class="projects">
+  <h2>Selected Projects</h2>
+
+  <article class="entry">
+    <h3>Personal Lesson Agent — AI-powered learning platform <span class="links"><a href="https://github.com/TTeuber/PersonalLessonAgent">github</a></span></h3>
+    <p>Desktop app that turns a short interview into a complete personalized course — lessons, coding exercises, quizzes — with an AI tutor beside every module. Built the multi-agent framework from scratch: four specialized agents with shared tooling, hierarchical context management, and a typed OpenRouter/Claude client. Electron, React, TypeScript.</p>
+  </article>
+
+  <article class="entry">
+    <h3>ArcadeSoundFX — AI-assisted sound effects generator <span class="links"><a href="https://tteuber.github.io/ArcadeSoundFX/">live demo</a> · <a href="https://github.com/TTeuber/ArcadeSoundFX">github</a></span></h3>
+    <p>Browser-based sound generator built so my coding students could add sound to their games. Its AI prompt bar turns text like "a sad laser powering down" into synthesizer parameters via the Claude API, secured behind a rate-limited Cloudflare Worker proxy.</p>
+  </article>
+
+  <article class="entry">
+    <h3>Sermon Slides Generator — desktop automation for a small organization <span class="links"><a href="https://github.com/TTeuber/Sermon_Slides_Generator">github</a></span></h3>
+    <p>macOS app that replaced a weekly manual copy-paste job at my church, turning a list of text references into presentation-ready slides in seconds — still used every week, years on.</p>
+  </article>
+
+  <article class="entry">
+    <h3>GestureSynth — polyphonic synthesizer plugin <span class="links"><a href="https://github.com/TTeuber/GestureSynth">github</a></span></h3>
+    <p>C++20/JUCE synthesizer with entirely hand-written DSP, a real-time-safe audio architecture, automated testing, and cross-platform CI.</p>
+  </article>
+</section>
+
+<section class="volunteer">
+  <h2>Volunteer — Community &amp; Live Production</h2>
+  <p>Weekly volunteer guitarist and audio tech at church for 2.5 years. Brought a church plant's production from scratch to a modern workflow — in-ear monitors, click track, MultiTracks Playback, ProPresenter — and trained the volunteers who still run every system. Currently serving at Doxa Church in Redmond.</p>
+</section>
+
+<section class="skills">
+  <h2>Skills</h2>
+  <ul>
+    <li><strong>AI fluency:</strong> Claude Code (daily driver since early 2025), Claude API, MCP, agent skills, structured outputs, prompt design</li>
+    <li><strong>Teaching:</strong> curriculum design, one-on-one and group instruction, teacher onboarding and assessment, training non-technical volunteers on new systems</li>
+    <li><strong>Engineering:</strong> TypeScript/React, Python, C++, Git, GitHub Actions, Docker, Linux</li>
+  </ul>
+</section>
+
+<section class="education">
+  <h2>Education</h2>
+
+  <article class="entry">
+    <h3>B.A. Economics, minor in Audio Technology — Western Washington University, 2017–2022</h3>
+  </article>
+
+  <article class="entry">
+    <h3>Software engineering mentorship — 2022–Present</h3>
+    <p class="edu-detail">Biweekly mentorship with a senior software architect since my first day of programming, four years running</p>
+  </article>
+</section>
+
+</body>
+</html>

@@ -460,6 +460,22 @@ a:hover {
   border-bottom: 1px solid var(--line);
 }
 
+/* Pitch section on target pages (/for/...) */
+.pitch-text {
+  max-width: 720px;
+
+  p {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: var(--text-dim);
+    margin: 0 0 20px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
 .about-grid {
   display: grid;
   grid-template-columns: 300px 1fr;
