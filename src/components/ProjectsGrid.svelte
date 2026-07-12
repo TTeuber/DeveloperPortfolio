@@ -479,6 +479,70 @@
     flex: 1;
   }
 
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    padding: 5px 12px;
+    border-radius: 100px;
+    border: 1px solid var(--line);
+    color: var(--text-dim);
+    background: var(--bg-deep);
+  }
+
+  .project-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .project-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 18px;
+    border-radius: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    border: 1px solid var(--amber);
+    background: var(--amber);
+    color: var(--bg);
+    text-decoration: none;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: var(--amber-bright);
+      border-color: var(--amber-bright);
+      color: var(--bg);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 18px var(--amber-glow);
+    }
+  }
+
+  .project-btn-outline {
+    background: transparent;
+    border-color: var(--line-strong);
+    color: var(--text);
+
+    &:hover {
+      background: transparent;
+      color: var(--amber);
+      border-color: var(--amber-dim);
+      box-shadow: none;
+    }
+  }
+
   /* ---- Video modal ---- */
   .modal-backdrop {
     position: fixed;
