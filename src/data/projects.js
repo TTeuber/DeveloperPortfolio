@@ -9,6 +9,9 @@ import hyprBrowsers from '../assets/Blocker/HyprBlocker_Browsers.png';
 import hyprSettings from '../assets/Blocker/HyprBlocker_Settings.png';
 import androidScreens from '../assets/SelfControlAndroid/AndroidBlocker_3Screens.png';
 import sermonSlides from '../assets/SermonSlides/SermonSlides.png';
+import pedalboardWebUI from '../assets/Pedalboard/PedalboardWebUI.png';
+import pistompSimulator from '../assets/PistompHAL/PistompSimulator.png';
+import portfolioWebsite from '../assets/Portfolio/PortfolioWebsite.png';
 
 // Single source of truth for the projects shown on the site.
 // `languages` and `areas` drive the filter bar; `tags` are the chips displayed on each card.
@@ -54,13 +57,12 @@ export const projects = [
     context: 'Embedded Real-Time Audio · My Live Rig in Progress',
     description:
       'A C++17 multi-effect guitar pedalboard on a Raspberry Pi 5 — the rig I\'m building to perform through live, nearly complete. One binary runs 30+ JUCE effects plus real-time neural amp modeling, an on-device LVGL UI, and a phone-friendly Svelte control surface synced over Server-Sent Events. The audio thread never takes a lock: chain edits publish through epoch-based RCU, so effects reorder mid-performance without a click.',
-    images: [], // TODO(Tyler): photo of the physical pedalboard
+    images: [pedalboardWebUI], // TODO(Tyler): add photo of the physical pedalboard
     tags: ['C++', 'JUCE', 'Svelte', 'LVGL', 'Embedded'],
     languages: ['C++'],
     areas: ['Audio & DSP', 'Systems'],
     video: null, // TODO(Tyler): YouTube ID of a live playing/demo video
     featured: true,
-    mediaPlanned: true,
     links: {
       code: 'https://github.com/TTeuber/PistompPedalboard',
     },
@@ -77,11 +79,10 @@ export const projects = [
     context: 'C++ Library + Hardware Drivers',
     description:
       'A JUCE-free C++17 hardware abstraction layer extracted from the pedalboard: rotary encoders, footswitches, NeoPixel LEDs, an LVGL display, and a realtime ALSA duplex audio loop behind clean headers — the board object owns the shared SPI mutex so consumers can never corrupt the bus. The same headers are backed by a full macOS simulator, so an entire pedal app can be developed with no Pi attached.',
-    images: [], // TODO(Tyler): screenshot of the macOS simulator next to the real hardware
+    images: [pistompSimulator],
     tags: ['C++', 'ALSA', 'LVGL', 'CMake', 'Embedded'],
     languages: ['C++'],
     areas: ['Systems', 'Audio & DSP'],
-    mediaPlanned: true,
     links: {
       code: 'https://github.com/TTeuber/pistomp-hal',
     },
@@ -199,7 +200,7 @@ export const projects = [
     context: "You're Looking at It",
     description:
       'This site — designed and built from scratch with Astro, Svelte 5, and Sass. Static-first with islands of interactivity like the project filter above, and a design system borrowed from the hardware I build: signal-chain sections, silkscreen labels, and one amber LED too many.',
-    images: [],
+    images: [portfolioWebsite],
     tags: ['Astro', 'Svelte', 'Sass'],
     languages: ['JavaScript'],
     areas: ['Web'],
