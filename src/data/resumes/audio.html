@@ -39,7 +39,7 @@ live-production line. Leads with the ear + DSP + shipped-plugin combination.
     <li><strong>Audio C++:</strong> C++17/20, JUCE 8 (AU, VST3, AUv3, CLAP), real-time-safe design (lock-free messaging, epoch-based RCU, no locks/allocations on the audio thread), ALSA (SCHED_FIFO, xrun recovery), CoreAudio/miniaudio</li>
     <li><strong>Testing &amp; tooling:</strong> Catch2 tests + benchmarks, pluginval, TSan/ASan, CMake, cross-platform GitHub Actions CI, Docker</li>
     <li><strong>Music &amp; production:</strong> guitar/bass (performing + former instructor), Logic Pro, Pro Tools, analog consoles and outboard gear, mic technique, live sound (IEMs, click/playback workflows); learning Dante</li>
-    <li><strong>Also:</strong> TypeScript/React/Svelte, Python, Kotlin, LVGL embedded UIs, Claude API integration</li>
+    <li><strong>Also:</strong> TypeScript/React/Svelte, Python, Kotlin, LVGL embedded UIs, STM32/ESP32 firmware, Claude API integration</li>
   </ul>
 </section>
 
@@ -57,8 +57,8 @@ live-production line. Leads with the ear + DSP + shipped-plugin combination.
   </article>
 
   <article class="entry">
-    <h3>pistomp-hal — audio hardware abstraction layer + simulator <span class="links"><a href="https://github.com/TTeuber/pistomp-hal">github</a></span></h3>
-    <p>JUCE-free C++17 HAL for the pi-Stomp v3 platform: realtime duplex ALSA audio (SCHED_FIFO, xrun recovery), encoders, SPI footswitches, NeoPixels, and an LVGL TFT behind clean headers, with a full macOS simulator (SDL2 + CoreAudio/miniaudio) so pedal apps develop with no hardware attached.</p>
+    <h3>StompLink — two-microcontroller guitar pedal <span class="links"><a href="https://github.com/TTeuber/StompLink">github</a></span></h3>
+    <p>Stereo effects pedal (overdrive, tremolo, delay) with firmware split across two MCUs: a Daisy Seed (STM32H750) runs the DSP at 48 kHz in interrupt context while an ESP32-S3 handles USB, WiFi, and a web UI served from the pedal itself. Knobs, OLED, and every connected browser stay in bidirectional sync over one protocol; the audio callback never takes a lock, and parameters are de-zippered per sample so edits are click-free. Tap tempo, host-tested protocol code, CI.</p>
   </article>
 
   <article class="entry">

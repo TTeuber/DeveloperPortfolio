@@ -70,6 +70,13 @@ const media = await Promise.all(
       </div>
     )}
 
+    {project.video?.file && (
+      <div class="detail-media">
+        {/* Local demo video (see `video` in projects.js); YouTube demos stay a link below. */}
+        <video src={project.video.file} controls playsinline preload="metadata"></video>
+      </div>
+    )}
+
     <div class="detail-body">
       {(project.details ?? [project.description]).map((paragraph) => <p>{paragraph}</p>)}
     </div>
@@ -81,7 +88,7 @@ const media = await Promise.all(
       {project.links.demo && (
         <a href={project.links.demo} target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Live Demo</a>
       )}
-      {project.video && (
+      {typeof project.video === 'string' && (
         <a href={`https://www.youtube.com/watch?v=${project.video}`} target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Watch the Demo</a>
       )}
     </div>
@@ -174,7 +181,8 @@ const media = await Promise.all(
     margin-bottom: 40px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 
-    img {
+    img,
+    video {
       width: 100%;
       height: auto;
       display: block;

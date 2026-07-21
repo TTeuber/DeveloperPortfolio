@@ -85,7 +85,7 @@ export const variants = {
         'Musician-engineer building audio software: a synth plugin with every stage of the DSP hand-written, and the pedalboard that\'s becoming my live rig.',
     },
     projects: {
-      order: ['gesture-synth', 'pistomp-pedalboard', 'pistomp-hal', 'arcade-sfx'],
+      order: ['gesture-synth', 'pistomp-pedalboard', 'stomplink', 'pistomp-hal', 'arcade-sfx'],
       featured: ['gesture-synth', 'pistomp-pedalboard'],
     },
     aboutIntro:
@@ -106,7 +106,7 @@ export const variants = {
         'C++ engineer for real-time and embedded systems: lock-free audio code, TSan/ASan-verified, running on real hardware.',
     },
     projects: {
-      order: ['gesture-synth', 'pistomp-pedalboard', 'pistomp-hal'],
+      order: ['gesture-synth', 'pistomp-pedalboard', 'pistomp-hal', 'stomplink'],
       featured: ['gesture-synth', 'pistomp-pedalboard'],
     },
     aboutIntro:
@@ -120,18 +120,18 @@ export const variants = {
     resumePath: '/resume/embedded',
     title: 'Tyler Teuber | Embedded Software Engineer',
     description:
-      'Embedded software engineer building audio devices: hand-written C++ drivers (GPIO, SPI, ADCs, displays), realtime audio at millisecond latencies, and a hardware abstraction layer with a full desktop simulator.',
+      'Embedded software engineer building audio devices: microcontroller firmware on STM32 and ESP32, hand-written C++ drivers (GPIO, SPI, ADCs, displays), and realtime audio at millisecond latencies.',
     hero: {
       status: 'OPEN TO EMBEDDED ROLES',
       tagline:
         'I build audio devices: embedded C++ drivers for the knobs, switches, LEDs, and displays they need, and realtime audio with a millisecond latency budget.',
     },
     projects: {
-      order: ['pistomp-hal', 'pistomp-pedalboard', 'gesture-synth', 'hypr-blocker'],
-      featured: ['pistomp-hal', 'pistomp-pedalboard'],
+      order: ['stomplink', 'pistomp-hal', 'pistomp-pedalboard', 'gesture-synth'],
+      featured: ['stomplink', 'pistomp-hal'],
     },
     aboutIntro:
-      'For me, embedded is about building audio devices. I learned programming hoping to someday build the kind of music tools I was so passionate about using, and it turns out a lot of the ones I want to build are physical: things with knobs, footswitches, LEDs, and screens that make sound within a latency budget of a few milliseconds. The biggest one so far is a <a href="/projects/pistomp-pedalboard">Raspberry Pi pedalboard</a> I\'m building as my live rig, whose drivers I extracted into a <a href="/projects/pistomp-hal">standalone C++17 hardware abstraction layer</a> with a full macOS simulator behind the same headers. I also work with microcontrollers like the STM32 and ESP32 (a project I\'ll upload soon), and the skills carry straight over: SPI and ADCs, driving displays with LVGL, and audio code that never allocates or takes a lock on the hot path.',
+      'For me, embedded is about building audio devices. I learned programming hoping to someday build the kind of music tools I was so passionate about using, and it turns out a lot of the ones I want to build are physical: things with knobs, footswitches, LEDs, and screens that make sound within a latency budget of a few milliseconds. My latest is <a href="/projects/stomplink">StompLink</a>, a guitar pedal that splits its firmware across two microcontrollers: bare-metal audio on an STM32, with an ESP32-S3 handling USB, WiFi, and a web UI served from the pedal itself. Before that came a <a href="/projects/pistomp-pedalboard">Raspberry Pi pedalboard</a> I\'m building as my live rig, whose drivers I extracted into a <a href="/projects/pistomp-hal">standalone C++17 hardware abstraction layer</a> with a full macOS simulator behind the same headers. The skills carry across all of it: SPI and ADCs, driving displays, and audio code that never allocates or takes a lock on the hot path.',
     skillGroupOrder: ['Audio & Native', 'Languages', 'Tools & AI', 'Backend', 'Frontend'],
   },
 

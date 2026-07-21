@@ -91,7 +91,7 @@
   // Keep Tab / Shift+Tab cycling inside the open dialog.
   function trapFocus(e) {
     if (e.key !== 'Tab' || !modalEl) return;
-    const focusables = modalEl.querySelectorAll('button, a[href], iframe, [tabindex]:not([tabindex="-1"])');
+    const focusables = modalEl.querySelectorAll('button, a[href], iframe, video, [tabindex]:not([tabindex="-1"])');
     if (!focusables.length) return;
     const first = focusables[0];
     const last = focusables[focusables.length - 1];
@@ -211,12 +211,17 @@
         <button class="modal-close" onclick={() => (videoProject = null)} aria-label="Close demo">✕</button>
       </div>
       <div class="modal-video">
-        <iframe
-          src={`https://www.youtube.com/embed/${videoProject.video}?autoplay=1`}
-          title={`${videoProject.title} demo video`}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+        {#if videoProject.video.file}
+          <!-- svelte-ignore a11y_media_has_caption -->
+          <video src={videoProject.video.file} controls autoplay playsinline></video>
+        {:else}
+          <iframe
+            src={`https://www.youtube.com/embed/${videoProject.video}?autoplay=1`}
+            title={`${videoProject.title} demo video`}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        {/if}
       </div>
     </div>
   </div>
@@ -605,12 +610,14 @@
   .modal-video {
     aspect-ratio: 16 / 9;
 
-    iframe {
+    iframe,
+    video {
       width: 100%;
       height: 100%;
       border: 0;
       border-radius: 10px;
       display: block;
+      background: var(--bg-deep);
     }
   }
 

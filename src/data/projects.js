@@ -12,6 +12,8 @@ import sermonSlides from '../assets/SermonSlides/SermonSlides.png';
 import pedalboardWebUI from '../assets/Pedalboard/PedalboardWebUI.png';
 import pistompSimulator from '../assets/PistompHAL/PistompSimulator.png';
 import portfolioWebsite from '../assets/Portfolio/PortfolioWebsite.png';
+import stompLinkHardware from '../assets/StompLink/hardware.jpg';
+import stompLinkDemo from '../assets/StompLink/knob-demo.mp4';
 
 // Single source of truth for the projects shown on the site.
 // `languages` and `areas` drive the filter bar; `tags` are the chips displayed on each card.
@@ -22,7 +24,8 @@ import portfolioWebsite from '../assets/Portfolio/PortfolioWebsite.png';
 // /public path string (the animated GIFs, which the pipeline would flatten to
 // a single frame). Multi-image projects auto-cycle on the cards and get a
 // manual carousel on their detail page.
-// `video` is a YouTube video ID shown in the demo modal.
+// `video` is a YouTube video ID shown in the demo modal, or `{ file }` with an
+// imported local video, played directly in the modal instead of an embed.
 // `mediaPlanned: true` marks projects whose screenshots/videos are still being produced —
 // the placeholder shows a "media in production" chip until an `image` or `video` lands.
 // `details` is the long-form write-up shown on the project's /projects/<id> page,
@@ -91,6 +94,27 @@ export const projects = [
       'A JUCE-free C++17 hardware abstraction layer for the pi-Stomp v3 guitar-pedal platform (Raspberry Pi 5), extracted from the Pistomp Pedalboard project and consumed as a static library via CMake FetchContent.',
       'It packages rotary encoders (libgpiod), SPI footswitches, NeoPixel LEDs, an ILI9341 TFT driven by LVGL v9, ADC input metering, and a realtime duplex ALSA audio path (SCHED_FIFO, xrun recovery) behind clean headers — the Board class owns the shared SPI mutex so consumers can’t corrupt the bus.',
       'The same headers are backed by a macOS simulator — LVGL rendering in SDL2, audio through CoreAudio/miniaudio, keyboard-mapped controls — so an entire pedal app can be developed and tested with no Pi attached.',
+    ],
+  },
+  {
+    id: 'stomplink',
+    title: 'StompLink',
+    context: 'Dual-MCU Guitar Pedal',
+    description:
+      'A stereo guitar pedal (overdrive, tremolo, delay) with its firmware split across two microcontrollers: a Daisy Seed (STM32) does nothing but audio at 48 kHz, while an ESP32-S3 handles USB, WiFi, and a web UI served from the pedal itself. Turn a physical knob and the OLED and every connected browser update instantly; move a slider in the browser and the pedal follows. The audio callback never takes a lock, and the shared protocol has host-runnable unit tests in CI.',
+    images: [stompLinkHardware],
+    tags: ['C', 'C++', 'STM32', 'ESP32', 'FreeRTOS'],
+    languages: ['C', 'C++'],
+    areas: ['Audio & DSP', 'Systems'],
+    video: { file: stompLinkDemo },
+    links: {
+      code: 'https://github.com/TTeuber/StompLink',
+    },
+    accent: 300,
+    details: [
+      'A stereo guitar effects pedal, built into a Hothouse enclosure, that splits its firmware across two microcontrollers so the real-time work and the bursty work never compete: a Daisy Seed (STM32H750, Cortex-M7 at 480 MHz) runs overdrive, tremolo, and delay at 48 kHz in interrupt context, while an ESP32-S3 acts as USB host, WiFi gateway, and web server, and drives an SSD1306 OLED over I2C. The controls are the real thing: six knobs, three toggles, and two footswitches for bypass and tap tempo.',
+      'One ASCII protocol travels over both USB CDC and WebSocket, so state stays in sync bidirectionally no matter where a change comes from: turn a knob and the OLED and every connected browser update, edit in the browser and the pedal follows, with parameter ownership arbitrated so web writes never fight the physical knobs. The audio callback never takes a lock. Parameters cross context boundaries as single-word volatile writes and get de-zippered per sample so changes are click-free.',
+      'The web UI is a gzipped single page embedded in flash, with WiFi provisioning, mDNS, and simultaneous SoftAP + station mode (ESP-IDF v5.5, FreeRTOS). The shared protocol header is plain C that compiles as C99 or C++ and runs its unit tests on the host in CI on every commit. It also surfaced the kind of bugs you only meet on real hardware: USB VBUS sensing blocking enumeration, newlib-nano missing float formatting, and the CDC link silently dropping burst data, solved with retry logic.',
     ],
   },
   {

@@ -28,14 +28,14 @@ code is engineered for real-time constraints with a real user (me).
 
 <section class="summary">
   <h2>Summary</h2>
-  <p>C++ engineer focused on real-time and embedded systems, with three substantial projects: a polyphonic synthesizer plugin with hand-written DSP (C++20/JUCE 8), a multi-effect guitar pedalboard on Raspberry Pi 5 that I'm building as my own live performance rig, and a standalone hardware abstraction library with a full macOS simulator. I write real-time-safe code and prove it — sanitizer sweeps, Catch2 suites, cross-platform CI. Also productive in TypeScript and Python; four years of biweekly mentorship from a senior software architect.</p>
+  <p>C++ engineer focused on real-time and embedded systems, with four substantial projects: a polyphonic synthesizer plugin with hand-written DSP (C++20/JUCE 8), a multi-effect guitar pedalboard on Raspberry Pi 5 that I'm building as my own live performance rig, a standalone hardware abstraction library with a full macOS simulator, and a guitar pedal with C/C++ firmware split across two microcontrollers. I write real-time-safe code and prove it — sanitizer sweeps, Catch2 suites, cross-platform CI. Also productive in TypeScript and Python; four years of biweekly mentorship from a senior software architect.</p>
 </section>
 
 <section class="skills">
   <h2>Skills</h2>
   <ul>
     <li><strong>C++:</strong> C++17/20, real-time-safe design (lock-free queues, atomics, epoch-based RCU, no allocations on hot paths), JUCE 8, LVGL, DSP (oscillators, filters, delays, FDN reverb), Neural Amp Modeler integration</li>
-    <li><strong>Systems &amp; embedded:</strong> Linux, ALSA (SCHED_FIFO, xrun recovery), Raspberry Pi 5, libgpiod, SPI peripherals, systemd, cross-compilation, containerized arm64 builds</li>
+    <li><strong>Systems &amp; embedded:</strong> Linux, ALSA (SCHED_FIFO, xrun recovery), Raspberry Pi 5, STM32 (libDaisy), ESP32 (ESP-IDF, FreeRTOS), libgpiod, SPI/I2C peripherals, USB CDC, systemd, cross-compilation, containerized arm64 builds</li>
     <li><strong>Testing &amp; tooling:</strong> CMake (FetchContent), Catch2 (tests + benchmarks), TSan/ASan, pluginval, GitHub Actions CI (3-OS), Docker, Git</li>
     <li><strong>Other languages:</strong> TypeScript/React/Svelte, Python (FastAPI, pandas), Kotlin, Java</li>
   </ul>
@@ -60,8 +60,8 @@ code is engineered for real-time constraints with a real user (me).
   </article>
 
   <article class="entry">
-    <h3>SelfControl — Android content blocker <span class="links"><a href="https://github.com/TTeuber/AndroidPhoneManager">github</a></span></h3>
-    <p>Kotlin 2.0 / Jetpack Compose app using Device Owner APIs (the enterprise-MDM layer) to suspend apps at the OS level and push Chrome managed configurations. Add-only lock semantics enforced in a single <code>LockManager</code>; unit-tested domain logic and CI.</p>
+    <h3>StompLink — two-microcontroller guitar pedal <span class="links"><a href="https://github.com/TTeuber/StompLink">github</a></span></h3>
+    <p>Stereo effects pedal (overdrive, tremolo, delay) with C/C++ firmware split across two MCUs: a Daisy Seed (STM32H750) runs the audio at 48 kHz in interrupt context while an ESP32-S3 (ESP-IDF, FreeRTOS) handles USB host, WiFi, and an embedded web server. One ASCII protocol over USB CDC and WebSocket keeps knobs, OLED, and every connected browser in bidirectional sync; the audio callback never takes a lock — parameters cross contexts as single-word volatile writes, de-zippered per sample. Shared protocol header is host-testable C99/C++, run in CI.</p>
   </article>
 </section>
 
