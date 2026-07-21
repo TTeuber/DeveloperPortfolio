@@ -6,7 +6,7 @@
     <!--
 TARGET ROLE: Embedded Software Engineer (junior/associate) — device drivers,
 MCU/realtime work, hardware bring-up. Leads with StompLink (real MCU firmware:
-bare-metal STM32H750 audio + ESP32-S3 on ESP-IDF/FreeRTOS) as the hook for MCU
+STM32H750 audio + ESP32-S3 on ESP-IDF/FreeRTOS) as the hook for MCU
 screeners, then pistomp-hal for driver/API depth. Summaries kept
 resume-length — the GitHub links carry the depth. The pedalboard is framed
 honestly as the rig I'm building for my own live performances (nearly
@@ -29,14 +29,14 @@ complete, not yet gigged).
     <section class="summary">
       <h2>Summary</h2>
       <p>
-        Embedded software engineer building audio devices in C and C++. I
-        write firmware and drivers for real hardware — GPIO, SPI, I2C, ADCs,
+        Embedded software engineer building audio devices in C and C++. I write
+        firmware and drivers for real hardware — GPIO, SPI, I2C, ADCs,
         addressable LEDs, displays — and realtime audio at millisecond
         latencies, where the hot path never allocates or takes a lock. Recent
         flagships: a guitar pedal with firmware split across two
-        microcontrollers (bare-metal STM32 audio + ESP32-S3 on
-        ESP-IDF/FreeRTOS), and a hardware abstraction layer for a Raspberry Pi
-        pedalboard with a full desktop simulator behind the same headers.
+        microcontrollers (STM32 audio + ESP32-S3 on ESP-IDF/FreeRTOS), and a
+        hardware abstraction layer for a Raspberry Pi pedalboard with a full
+        desktop simulator behind the same headers.
       </p>
     </section>
 
@@ -52,8 +52,8 @@ complete, not yet gigged).
         <li>
           <strong>Realtime:</strong> 48 kHz interrupt-context audio on
           Cortex-M7, ALSA duplex audio (SCHED_FIFO, mlockall, xrun recovery,
-          64-frame/~1.3 ms periods), lock-free design (atomics, epoch-based
-          RCU, single-word volatile handoff, per-sample parameter smoothing, no
+          64-frame/~1.3 ms periods), lock-free design (atomics, epoch-based RCU,
+          single-word volatile handoff, per-sample parameter smoothing, no
           allocations on hot paths), CoreAudio/miniaudio, JUCE 8, hand-written
           DSP
         </li>
@@ -90,8 +90,8 @@ complete, not yet gigged).
           bidirectional sync, with parameter ownership arbitrated so web writes
           don't fight the hardware. The audio callback never takes a lock —
           parameters cross contexts as single-word volatile writes, de-zippered
-          per sample — and the shared protocol header is host-testable
-          C99/C++, run in CI on every commit.
+          per sample — and the shared protocol header is host-testable C99/C++,
+          run in CI on every commit.
         </p>
       </article>
 
@@ -155,7 +155,6 @@ complete, not yet gigged).
           validation, cross-platform CI.
         </p>
       </article>
-
     </section>
 
     <section class="experience">
