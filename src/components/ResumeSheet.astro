@@ -24,7 +24,10 @@ const match = raw.match(/<body>([\s\S]*)<\/body>/);
 if (!match) {
   throw new Error(`Could not find <body> in resume html for "${variant}"`);
 }
-const body = match[1];
+// Strip the phone number (and its trailing separator) at build time: it stays
+// in the shared html for ResumeBuilder's PDF/Word exports, but never ships in
+// the public site's markup.
+const body = match[1].replace(/\s*<a href="tel:[^"]*">[^<]*<\/a>\s*·/g, '');
 ---
 
 <article class="sheet" set:html={body} />
