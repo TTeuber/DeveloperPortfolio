@@ -213,7 +213,7 @@
       <div class="modal-video">
         {#if videoProject.video.file}
           <!-- svelte-ignore a11y_media_has_caption -->
-          <video src={videoProject.video.file} controls autoplay playsinline></video>
+          <video src={videoProject.video.file} controls autoplay muted playsinline></video>
         {:else}
           <iframe
             src={`https://www.youtube.com/embed/${videoProject.video}?autoplay=1`}
