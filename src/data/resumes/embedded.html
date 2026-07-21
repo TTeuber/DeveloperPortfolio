@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Tyler Teuber — Resume (Embedded)</title>
+    <!--
+TARGET ROLE: Embedded Software Engineer (junior/associate) — device drivers,
+MCU/realtime work, hardware bring-up. Emphasizes the skills that transfer to
+microcontroller programming (GPIO, SPI, ADCs, quadrature/debounce, LVGL,
+millisecond-latency audio, no allocations on hot paths) rather than the Pi
+specifically; STM32 and ESP32 experience is mentioned per Tyler. Leads
+with pistomp-hal as the flagship, with summaries kept resume-length — the
+GitHub links carry the depth. The pedalboard is framed honestly as the rig
+I'm building for my own live performances (nearly complete, not yet gigged).
+-->
+    <link rel="stylesheet" href="../styles/resume.css" />
+  </head>
+  <body>
+    <header class="resume-header">
+      <h1>Tyler Teuber</h1>
+      <p class="role">Software Engineer — Embedded</p>
+      <p class="contact">
+        <a href="mailto:tyler.teuber@gmail.com">tyler.teuber@gmail.com</a> ·
+        <a href="https://github.com/TTeuber">github.com/TTeuber</a> ·
+        <a href="https://tylerteuber.com/embedded">tylerteuber.com/embedded</a>
+        · Greater Seattle, WA
+      </p>
+    </header>
+
+    <section class="summary">
+      <h2>Summary</h2>
+      <p>
+        Embedded software engineer building audio devices in C++. I write
+        drivers for real hardware — GPIO, SPI, ADCs, addressable LEDs, displays
+        with LVGL — and realtime audio at millisecond latencies, where the hot
+        path never allocates or takes a lock. Flagship project: a hardware
+        abstraction layer for a Raspberry Pi pedalboard with a full desktop
+        simulator behind the same headers. I also work with microcontrollers
+        like the STM32 and ESP32.
+      </p>
+    </section>
+
+    <section class="skills">
+      <h2>Skills</h2>
+      <ul>
+        <li>
+          <strong>Embedded &amp; drivers:</strong> GPIO, SPI, I2C, ADCs,
+          quadrature decoding, debounce/edge detection, LVGL, pin-map/board
+          abstraction, shared-bus locking; Raspberry Pi, STM32, ESP32
+        </li>
+        <li>
+          <strong>Realtime:</strong> ALSA duplex audio (SCHED_FIFO, mlockall,
+          xrun recovery, 64-frame/~1.3 ms periods), lock-free design (atomics,
+          epoch-based RCU, no allocations on hot paths), CoreAudio/miniaudio,
+          JUCE 8, hand-written DSP
+        </li>
+        <li>
+          <strong>C++ &amp; tooling:</strong> C++17/20, CMake, pimpl and
+          header-contract API design, Catch2, TSan/ASan, containerized arm64
+          builds, GitHub Actions CI, Docker, Linux, systemd, Git
+        </li>
+        <li>
+          <strong>Other languages:</strong> TypeScript/React/Svelte, Python
+          (FastAPI, pandas), Kotlin, Java
+        </li>
+      </ul>
+    </section>
+
+    <section class="projects">
+      <h2>Selected Projects</h2>
+
+      <article class="entry">
+        <h3>
+          pistomp-hal — hardware abstraction layer + simulator
+          <span class="links"
+            ><a href="https://github.com/TTeuber/pistomp-hal">github</a></span
+          >
+        </h3>
+        <p>
+          C++17 HAL for the pi-Stomp v3 pedal platform, consumed as a static
+          library via CMake FetchContent. Hand-written drivers for the whole
+          control surface — quadrature encoders (GPIO/libgpiod), footswitches
+          via an MCP3008 SPI ADC, WS2812 LEDs, an ILI9341 TFT on LVGL v9 — plus
+          a realtime duplex ALSA path (64-frame periods ≈1.3 ms, SCHED_FIFO,
+          xrun recovery). The <code>Board</code> class owns the shared SPI bus
+          mutex so consumers can't corrupt the bus, and a full macOS simulator
+          backs the same headers, so apps compile unchanged for hardware or
+          desktop — enforced by two-backend CI. Quadrature/debounce logic is
+          header-only and Catch2-tested.
+        </p>
+      </article>
+
+      <article class="entry">
+        <h3>
+          PistompPedalboard — live multi-effect pedalboard on Raspberry Pi 5
+          <span class="links"
+            ><a href="https://github.com/TTeuber/PistompPedalboard"
+              >github</a
+            ></span
+          >
+        </h3>
+        <p>
+          C++17 pedalboard I'm building as my own live performance rig —
+          engineered to real-world reliability requirements, not as a demo. One
+          binary drives 30+ effects, a Neural Amp Modeler block running amp
+          captures in realtime, the on-device screen/encoders/footswitches
+          through the HAL above, and a Svelte web control surface synced over
+          Server-Sent Events. Chain edits are lock-free via epoch-based RCU, so
+          effects reorder mid-performance without a click — verified by a
+          TSan/ASan-swept stress test.
+        </p>
+      </article>
+
+      <article class="entry">
+        <h3>
+          GestureSynth — polyphonic synthesizer plugin
+          <span class="links"
+            ><a href="https://github.com/TTeuber/GestureSynth">github</a></span
+          >
+        </h3>
+        <p>
+          Juno-inspired subtractive synth built from scratch in C++20/JUCE 8,
+          shipping as Standalone, AU, VST3, AUv3, and CLAP. All DSP
+          hand-written: PolyBLEP anti-aliased 4×-oversampled oscillators,
+          resonant state-variable filter, chorus, bucket-brigade-style delay,
+          16-line feedback-delay-network reverb. Real-time-safe throughout:
+          lock-free UI↔audio messaging, cached atomics, no locks or allocations
+          in <code>processBlock</code>. Catch2 tests/benchmarks, pluginval
+          validation, cross-platform CI.
+        </p>
+      </article>
+
+      <article class="entry">
+        <h3>
+          HyprBlocker — tamper-resistant Linux blocker
+          <span class="links"
+            ><a href="https://github.com/TTeuber/HyprBlocker">github</a></span
+          >
+        </h3>
+        <p>
+          Python/FastAPI daemon under systemd that fails closed on any error,
+          defended by a self-healing mesh of watchdog processes and NTP-verified
+          time locks so clock tampering can't end a block early; managed from a
+          React + TypeScript GUI.
+        </p>
+      </article>
+    </section>
+
+    <section class="experience">
+      <h2>Experience</h2>
+
+      <article class="entry">
+        <div class="entry-head">
+          <h3>Coding Instructor / Assistant Manager — Coding Mind</h3>
+          <span class="dates">Aug 2024 – Present</span>
+        </div>
+        <ul>
+          <li>
+            Teach Python, JavaScript/TypeScript, C++, and Java to students of
+            all levels — 50+ students since the branch opened
+          </li>
+          <li>
+            Designed the curriculum for and led a student team contributing to a
+            <a href="https://playerpathwayproject.org/"
+              >production TypeScript codebase</a
+            >
+            (React/Tailwind, Nest.js/Prisma) in a collaboration with Coerver
+            Coaching, an international soccer coaching company
+          </li>
+          <li>
+            Promoted to Assistant Manager (Jul 2025 – Apr 2026) as the branch
+            grew to 100+ students; stepped back to focus on engineering
+          </li>
+        </ul>
+      </article>
+
+      <article class="entry">
+        <div class="entry-head">
+          <h3>
+            Web Developer / Coding Manager — KillThatNoise (sports news site)
+          </h3>
+          <span class="dates">Jun 2023 – Oct 2023</span>
+        </div>
+        <ul>
+          <li>
+            Proposed and led the site's migration from WordPress to
+            Next.js/TypeScript/Tailwind; promoted to coding manager, leading a
+            team of up to 5 interns with agile practices
+          </li>
+        </ul>
+      </article>
+
+      <article class="entry">
+        <div class="entry-head">
+          <h3>
+            Python Data Engineering Intern — developerDB (tech recruiting)
+          </h3>
+          <span class="dates">Sep 2022 – Dec 2022</span>
+        </div>
+        <ul>
+          <li>
+            Built and maintained web scraping pipelines (Python, Selenium)
+            gathering data on tens of thousands of profiles, processed with
+            pandas; earned a letter of recommendation
+          </li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="education">
+      <h2>Education</h2>
+
+      <article class="entry">
+        <h3>
+          B.A. Economics, minor in Audio Technology — Western Washington
+          University, 2017–2022
+        </h3>
+        <p class="edu-detail">
+          Audio minor: digital audio fundamentals, Pro Tools, analog signal
+          chains — the domain grounding behind the audio work
+        </p>
+      </article>
+
+      <article class="entry">
+        <h3>Software engineering mentorship — 2022–Present</h3>
+        <p class="edu-detail">
+          Biweekly mentorship with a senior software architect since my first
+          day of programming, four years running
+        </p>
+      </article>
+    </section>
+  </body>
+</html>

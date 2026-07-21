@@ -1,4 +1,4 @@
-// Variant home pages: /web, /ai, /audio, /cpp, /python serve tailored versions
+// Variant home pages: /web, /ai, /audio, /cpp, /embedded, /python serve tailored versions
 // of the main page, and each tailored resume (src/data/resumes/<id>.html) links
 // to its variant route from its contact line — so a recruiter reading the web
 // resume lands on the web-tailored portfolio.
@@ -114,6 +114,27 @@ export const variants = {
     skillGroupOrder: ['Languages', 'Audio & Native', 'Tools & AI', 'Backend', 'Frontend'],
   },
 
+  embedded: {
+    id: 'embedded',
+    path: '/embedded',
+    resumePath: '/resume/embedded',
+    title: 'Tyler Teuber | Embedded Software Engineer',
+    description:
+      'Embedded software engineer building music devices: hand-written C++ drivers (GPIO, SPI, ADCs, displays), realtime audio at millisecond latencies, and a hardware abstraction layer with a full desktop simulator.',
+    hero: {
+      status: 'OPEN TO EMBEDDED ROLES',
+      tagline:
+        'I build music devices: embedded C++ drivers for the knobs, switches, LEDs, and displays they need, and realtime audio with a millisecond latency budget.',
+    },
+    projects: {
+      order: ['pistomp-hal', 'pistomp-pedalboard', 'gesture-synth', 'hypr-blocker'],
+      featured: ['pistomp-hal', 'pistomp-pedalboard'],
+    },
+    aboutIntro:
+      'For me, embedded is about building music devices. I learned programming hoping to someday build the kind of music tools I was so passionate about using, and it turns out a lot of the ones I want to build are physical: things with knobs, footswitches, LEDs, and screens that make sound within a latency budget of a few milliseconds. The biggest one so far is a <a href="/projects/pistomp-pedalboard">Raspberry Pi pedalboard</a> I\'m building as my live rig, whose drivers I extracted into a <a href="/projects/pistomp-hal">standalone C++17 hardware abstraction layer</a> with a full macOS simulator behind the same headers. I also work with microcontrollers like the Daisy Seed and ESP32 (a project I\'ll upload soon), and the skills carry straight over: SPI and ADCs, driving displays with LVGL, and audio code that never allocates or takes a lock on the hot path.',
+    skillGroupOrder: ['Audio & Native', 'Languages', 'Tools & AI', 'Backend', 'Frontend'],
+  },
+
   python: {
     id: 'python',
     path: '/python',
@@ -137,7 +158,7 @@ export const variants = {
 };
 
 // Variants that get a tailored home page route (src/pages/[variant].astro).
-export const homeVariantIds = ['web', 'ai', 'audio', 'cpp', 'python'];
+export const homeVariantIds = ['web', 'ai', 'audio', 'cpp', 'embedded', 'python'];
 
 // Variants with a resume page at /resume/<id>. Ministry is resume-only:
 // the portfolio content doesn't tailor to it, so it links back to `/`.
